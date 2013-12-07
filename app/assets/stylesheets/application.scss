@@ -2,3 +2,8 @@
 @import 'trove/source/sass/style';
 
 @import 'icons';
+
+@import 'modules/message', 
+        'modules/animations';
+
+@import 'sections/header';

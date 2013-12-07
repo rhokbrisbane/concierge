@@ -4,6 +4,7 @@ ruby '2.0.0'
 gem 'rails', '4.0.2'
 
 gem 'active_model_serializers'
+gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'compass-rails', '~> 2.0.alpha.0'
 gem 'countries'
@@ -15,7 +16,6 @@ gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'pg'
-gem 'cancan'
 gem 'sass-rails', '~> 4.0.0'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
@@ -44,4 +44,3 @@ group :test do
   gem 'spring'
   gem 'spring-commands-rspec', require: false
 end
-

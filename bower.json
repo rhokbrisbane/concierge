@@ -1,0 +1,6 @@
+{
+  "name": "rhokbrisbane_2013 dependencies",
+  "dependencies": {
+    "trove": "*"
+  }
+}

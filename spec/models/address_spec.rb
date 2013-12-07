@@ -24,7 +24,7 @@ describe Address do
       address = Address.create(attributes_for(:address).merge(longitude: nil, latitude: nil))
 
       expect(address.latitude).to eql(40.7143528)
-      expect(address.latitude).to eql(-74.0059731)
+      expect(address.longitude).to eql(-74.0059731)
     end
   end
 end

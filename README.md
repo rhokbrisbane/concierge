@@ -1,3 +1,8 @@
-One-pager for the Brisbane chapter of RHOK 2013
 
-[http://rhokbrisbane.org](http://rhokbrisbane.org)
+[QLD Kids](http://www.queenslandkids.org)
+=========================================
+
+* **Concierge**
+* **Beacon of Hope**
+* **Big Warm Hug**
+

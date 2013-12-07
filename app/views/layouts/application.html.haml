@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %title RhokBrisbane2013
+    = stylesheet_link_tag    'application', 'data-turbolinks-track' => true, media: 'all'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .flash
+      %p.notice= notice
+      %p.alert= alert
+    = yield

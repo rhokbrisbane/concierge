@@ -1,0 +1,3 @@
+class ResourceSerializer < BaseSerializer
+
+end

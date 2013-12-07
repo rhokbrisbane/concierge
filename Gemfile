@@ -32,6 +32,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'cancan'
   gem 'guard-rspec', github: 'guard/guard-rspec', require: false
   gem 'launchy'
   gem 'poltergeist'

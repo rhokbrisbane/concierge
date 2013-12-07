@@ -1,9 +1,14 @@
-One-pager for the Brisbane chapter of RHOK 2013
+# [QLD Kids](http://www.queenslandkids.org)
 
 [http://rhokbrisbane.org](http://rhokbrisbane.org)
 
-Facebook App credentials to be inputted at server startup in `ENV["APP_ID"], ENV["APP_SECRET"]`
+* **Concierge**
+* **Beacon of Hope**
+* **Big Warm Hug**
 
+* Servers
+
+Facebook App credentials to be inputted at server startup in `ENV["APP_ID"], ENV["APP_SECRET"]`
 
 ** Development
 

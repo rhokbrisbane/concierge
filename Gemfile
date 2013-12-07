@@ -1,9 +1,13 @@
 source 'https://rubygems.org'
 
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+gem 'coffee-rails', '~> 4.0.0'
 gem 'haml'
 gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'

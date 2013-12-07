@@ -14,10 +14,10 @@ FactoryGirl.define do
     addressable { create(:user) }
   end
 
-  categories = Faker::Lorem.words(3)
+  categories = Tag::CATEGORIES
 
   factory :tag do
     name { Faker::Lorem.sentence(2) }
-    category { categories[rand(0..2)] }
+    category { categories[rand(0..categories.length)] }
   end
 end

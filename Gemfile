@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
 gem 'devise'
@@ -39,9 +38,4 @@ group :test do
   gem 'simplecov', require: false
   gem 'spring'
   gem 'spring-commands-rspec', require: false
-
-end
-
-group :production, :staging do
-  # gem 'unicorn'
 end

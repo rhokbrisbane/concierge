@@ -1,21 +1,42 @@
-# [QLD Kids](http://www.queenslandkids.org)
+# [Queensland Kids](http://www.queenslandkids.org)
 
-[http://rhokbrisbane.org](http://rhokbrisbane.org)
+## Concept names:
 
 * **Concierge**
 * **Beacon of Hope**
 * **Big Warm Hug**
 
-* Servers
+## What is this project?
+queenslandkids.org.au - The biggest problem that Queensland Kids and their families are facing is being able to access the services and information available to them.
 
-Facebook App credentials to be inputted at server startup in `ENV["APP_ID"], ENV["APP_SECRET"]`
+Our aim is to create a mobile or general web site for families allowing family to shine a beacon in the positive direction towards seeking help and finding resources. The problems today is a lot of those resources are scattered in various parts of the internet or medical services will hand you a info sheet, which may of completely irrelevant.
 
-** Development
+Second challenge is how do we share the information on the site accessible and securely/confidentially to family members, emergency services, doctors, nurses and service providers
 
-Access it through `lvh.me`, site url is a requirement for Facebook Authentication
-Start the server passing the fb credentials (the length below is correct, the values are not):
+## who's involved in the project 
 
-    export APP_ID=123456789012345
-    export APP_SECRET=c77777777777777777777777777777777
-    rails s
+Dan Sowter
+Bruce Stronge
+Mark Dunn
+Andy Fitzsimon
+Balinder
+Homan
+Clinton Roy
+Christpherys Alva
+Robert Dickie
+Neil Estandarte
+Brett
+Danny Johnson
+Jaya
+Matt Riley
+Boris S
+Justin Douglas
+Paul tasked
+Paul Quilliam
+Oli
+Lucas Caton
+Richardo Bernardell
+Brad Parker
+Erik Ecoologic
+Rowan Hogan
 

@@ -18,4 +18,3 @@
 .sass-cache
 coverage
 config/database.yml
-vendor/assets/bower_components

@@ -18,6 +18,8 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    active_model_serializers (0.8.1)
+      activemodel (>= 3.0)
     activemodel (4.0.2)
       activesupport (= 4.0.2)
       builder (~> 3.1.0)
@@ -42,6 +44,7 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     builder (3.1.4)
+    cancan (1.6.10)
     capybara (2.1.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -263,7 +266,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   better_errors
+  cancan
   capybara
   coffee-rails (~> 4.0.0)
   compass-rails (~> 2.0.alpha.0)

@@ -1,3 +1,55 @@
-$color-primary: #E08753;
+$font-family-icons:       'icomoon';
+
+$color-primary:           #8358A4;
+$color-primary-light:     lighten($color-primary, 30%);
+$color-primary-dark:      darken($color-primary, 30%);
+
+$black:                   hsl(0,0%,9%);
+$white:                   lighten($black, 93.5%);
+$gray-darker:             lighten($black, 13.5%);
+$gray-dark:               lighten($black, 20%);
+$gray:                    lighten($black, 33.5%);
+$gray-light:              lighten($black, 75%);
+$gray-lighter:            lighten($black, 87.5%);
+
+$color-success:           #90C93E;
+$color-success-light:     lighten($color-success, 35%);
+$color-warning:           #FEB400;
+$color-warning-light:     lighten($color-warning, 35%);
+$color-danger:            hsl(357, 88%, 63%);
+$color-danger-light:      lighten($color-danger, 35%);
+$color-info:              $color-primary;
+$color-info-light:        lighten($color-info, 35%);
+
+$palette: "white"         $white,
+          "black"         $black,
+          "primary"       $color-primary,
+          "primary-light" $color-primary-light,
+          "gray-darker"   $gray-darker,
+          "gray-dark"     $gray-dark,
+          "gray"          $gray,
+          "gray-light"    $gray-light,
+          "gray-lighter"  $gray-lighter,
+          "success"       $color-success,
+          "success-light" $color-success-light,
+          "warning"       $color-warning,
+          "warning-light" $color-warning-light,
+          "danger"        $color-danger,
+          "danger-light"  $color-danger-light,
+          "info"          $color-info,
+          "info-light"    $color-info-light;
+
+$input-foreground-color:        $black;
+$input-background-color:        $white;
+$input-border-color:            $gray-light;
+
+$input-hover-foreground-color:  $black;
+$input-hover-background-color:  $gray-lighter;
+$input-hover-border-color:      $gray-light;
+
+$input-focus-foreground-color:  $black;
+$input-focus-background-color:  $white;
+$input-focus-border-color:      $color-info;
+
 $fixed-left-nav: false;
 $fixed-top-header: false;

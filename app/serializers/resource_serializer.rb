@@ -1,3 +1,3 @@
-class ResourceSerializer < BaseSerializer
+class ResourceSerializer < ApplicationSerializer
   attributes :name, :content
 end

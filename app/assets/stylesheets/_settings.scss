@@ -4,6 +4,8 @@ $color-primary:           #8358A4;
 $color-primary-light:     lighten($color-primary, 30%);
 $color-primary-dark:      darken($color-primary, 30%);
 
+$green:                   #8bc53a;
+
 $black:                   hsl(0,0%,9%);
 $white:                   lighten($black, 93.5%);
 $gray-darker:             lighten($black, 13.5%);

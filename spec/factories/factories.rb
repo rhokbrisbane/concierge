@@ -13,4 +13,8 @@ FactoryGirl.define do
     country { Faker::Address.country }
     addressable { create(:user) }
   end
+
+  factory :tag do
+    name { Faker::Lorem.sentence(2) }
+  end
 end

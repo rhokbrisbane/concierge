@@ -27,14 +27,14 @@ group :development do
 end
 
 group :development, :test do
+  gem 'faker'
+  gem 'factory_girl_rails'
   gem 'pry-meta'
 end
 
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
-  gem 'faker'
   gem 'guard-rspec', github: 'guard/guard-rspec', require: false
   gem 'launchy'
   gem 'poltergeist'

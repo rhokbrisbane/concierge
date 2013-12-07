@@ -37,7 +37,7 @@ Second challenge is how do we share the information on the site accessible and s
 * Olivier Pichon
 * Paul Quilliam
 * Paul Tasked
-* Richardo Bernardeli
+* Ricardo Bernardeli
 * Robert Dickie
 * Rowan Hogan
 

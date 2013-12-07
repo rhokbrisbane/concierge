@@ -6,6 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-50.times do 
-  FactoryGirl.create(:tag)
-end
+FactoryGirl.create_list :tag, 50

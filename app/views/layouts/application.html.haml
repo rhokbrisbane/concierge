@@ -27,10 +27,8 @@
   %header
     = link_to 'Sign in with Facebook', user_omniauth_authorize_path(:facebook)
     = link_to 'Sign in with email', new_user_session_path
-  %main{ role: :main }
-    = yield
-  %footer
 
-  .flash
-    %p.notice= notice
-    %p.alert= alert
+  %main{ role: 'main' }
+    = yield
+
+  %footer

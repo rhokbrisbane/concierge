@@ -1,1 +1,9 @@
-%p Application#index
+%section
+  %div.container
+    %p Application#index
+    - if signed_in?
+      Your email is:
+      = current_user.email
+      = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "icon-exit button"
+    - else
+      You are not signed in

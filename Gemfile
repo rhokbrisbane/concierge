@@ -5,6 +5,7 @@ gem 'rails', '4.0.2'
 
 gem 'active_model_serializers'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'compass-rails', '~> 2.0.alpha.0'
 gem 'countries'
 gem 'country_select'
 gem 'devise'

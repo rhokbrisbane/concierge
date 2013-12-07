@@ -9,8 +9,7 @@ gem 'countries'
 gem 'country_select'
 gem 'devise'
 gem 'geocoder'
-gem 'haml'
-gem 'jbuilder', '~> 1.2'
+gem 'haml-rails'
 gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -45,6 +44,3 @@ group :test do
   gem 'spring-commands-rspec', require: false
 end
 
-group :production, :staging do
-  # gem 'unicorn'
-end

@@ -18,15 +18,16 @@
     = javascript_include_tag "application", data: { turbolinks_track: true }
     = csrf_meta_tag
 %body
+  .authentication= render "layouts/authentication_links"
   %div.flash
     %p.notice= notice
     %p.alert= alert
 
-  %nav{ role: 'banner' }
+  %nav{ role: :banner }
   %header
     = link_to 'Sign in with Facebook', user_omniauth_authorize_path(:facebook)
     = link_to 'Sign in with email', new_user_session_path
-  %main{:role => "main"}
+  %main{ role: :main }
     = yield
   %footer
 

@@ -1,0 +1,14 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password:
+
+development:
+  <<: *defaults
+  database: rhok_brisbane_2013_development
+
+test:
+  <<: *defaults
+  database: rhok_brisbane_2013_test

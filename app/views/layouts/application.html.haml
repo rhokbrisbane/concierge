@@ -18,13 +18,19 @@
     = javascript_include_tag "application", data: { turbolinks_track: true }
     = csrf_meta_tag
 %body
-  %div.flash
-    %p.notice= notice
-    %p.alert= alert
+  - if notice or alert
+    %div.flash
+      %p.notice= notice
+      %p.alert= alert
 
   %header
-    .container
-      = link_to 'Home', '/'
-      = link_to 'Profile', edit_user_registration_path
+    %hgroup.home-link
+      = link_to 'Home', root_path, class: 'icon-home icon-only'
+
+    %hgroup.user-actions
+      - if current_user
+        = link_to 'Profile', edit_user_registration_path
+      - else
+        = link_to 'Sign in', new_user_session_path
 
   %main{ role: 'main' }= yield

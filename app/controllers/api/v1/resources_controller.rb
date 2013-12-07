@@ -2,17 +2,17 @@ class Api::V1::ResourcesController < ApplicationController
   load_and_authorize_resource :resource, except: :create
 
   def index
-    render json: @resources, each_serializer: ResourceSerializer
+    render json: @resources
   end
 
   def show
-    render json: @resource, serializer: ResourceSerializer
+    render json: @resource
   end
 
   def create
     @resource = Resource.new(resource_params)
     if @resource.save
-      render json: @resource, serializer: ResourceSerializer
+      render json: @resource
     else
       render json: @resource.errors, status: :unprocessable_entity
     end
@@ -20,7 +20,7 @@ class Api::V1::ResourcesController < ApplicationController
 
   def update
     if  @resource.update(resource_params)
-      render json: @resource, serializer: ResourceSerializer
+      render json: @resource
     else
       render json: @resource.errors, status: :unprocessable_entity
     end

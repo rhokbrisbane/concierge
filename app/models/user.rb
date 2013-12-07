@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
+  has_many :searches
+
   before_save :set_default_name, if: -> (user) { user.name.blank? }
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)

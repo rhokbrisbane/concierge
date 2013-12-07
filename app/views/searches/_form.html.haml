@@ -1,0 +1,18 @@
+= form_for @search do |f|
+  - if @search.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@search.errors.count, "error")} prohibited this search from being saved:"
+      %ul
+        - @search.errors.full_messages.each do |msg|
+          %li= msg
+  
+  = f.label :name
+  = f.text_field :name
+
+  = fields_for :taggings do |f_taggings|
+    - @tags_by_category.each do |tag_category|
+      = f_taggings.label tag_category[0]
+      = f_taggings.collection_select :tags, tag_category[1], :id, :name, {}, multiple: true
+
+  .actions
+    = f.submit 'Save'

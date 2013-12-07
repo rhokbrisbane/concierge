@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
+  has_and_belongs_to_many :groups, join_table: :user_groups
 
   before_save :set_default_name, if: -> (user) { user.name.blank? }
 

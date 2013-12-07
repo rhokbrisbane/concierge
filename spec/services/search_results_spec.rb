@@ -17,26 +17,123 @@ describe SearchResults do
       end
     end
 
-    context "when searching for tags a,b" do
-      let(:tag1) { create(:tag, name: 'a') }
-      let(:tag2) { create(:tag, name: 'b') }
-      let(:tag3) { create(:tag, name: 'c') }
+    context "given tags a, b and c" do
+      let(:a) { create(:tag, name: 'a') }
+      let(:b) { create(:tag, name: 'b') }
+      let(:c) { create(:tag, name: 'c') }
 
-      context "given users tagged 'a' and 'c'" do
-        let(:user) { create(:user) }
-        let(:user2) { create(:user) }
+      context "when user1 is tagged 'a' - not required, and 'b' - required" do
+        let(:user1) { create(:user) }
 
         before(:each) do
-          user.tags << tag1
-          user2.tags << tag3
+          user1.taggings.create(tag: a)
+          user1.taggings.create(tag: b, required: true)
         end
 
-        it "returns a SearchResults object including the user tagged 'a'" do
-          expect(SearchResults.for(tags: [tag1.id, tag2.id]).people).to include(user)
-        end
+        context "and user2 is tagged 'c'" do
+          let(:user2) { create(:user) }
 
-        it "returns a SearchResults object not including the user tagged 'c'" do
-          expect(SearchResults.for(tags: [tag1.id, tag2.id]).people).to include(user)
+          before(:each) do
+            user2.tags << c
+          end
+
+          context "searching for tag a" do
+            let(:result) { SearchResults.for(tags: [a.id]) }
+
+            it "returns a SearchResults object not including user1" do
+              expect(result.people).to_not include(user1)
+              expect(result.all).to_not include(user1)
+            end
+
+            it "returns a SearchResults object not including user2" do
+              expect(result.people).to_not include(user2)
+              expect(result.all).to_not include(user2)
+            end
+          end
+
+          context "searching for tag b" do
+            let(:result) { SearchResults.for(tags: [b.id]) }
+
+            it "returns a SearchResults object including user1" do
+              expect(result.people).to include(user1)
+              expect(result.all).to include(user1)
+            end
+
+            it "returns a SearchResults object not including user2" do
+              expect(result.people).to_not include(user2)
+              expect(result.all).to_not include(user2)
+            end
+          end
+
+          context "searching for tag c" do
+            let(:result) { SearchResults.for(tags: [c.id]) }
+
+            it "returns a SearchResults object not including user1" do
+              expect(result.people).to_not include(user1)
+              expect(result.all).to_not include(user1)
+            end
+
+            it "returns a SearchResults object including user2" do
+              expect(result.people).to include(user2)
+              expect(result.all).to include(user2)
+            end
+          end
+
+          context "searching for tags a, b" do
+            let(:result) { SearchResults.for(tags: [a.id, b.id]) }
+
+            it "returns a SearchResults object including user1" do
+              expect(result.people).to include(user1)
+              expect(result.all).to include(user1)
+            end
+
+            it "returns a SearchResults object not including user2" do
+              expect(result.people).to_not include(user2)
+              expect(result.all).to_not include(user2)
+            end
+          end
+
+          context "searching for tags a, c" do
+            let(:result) { SearchResults.for(tags: [a.id, c.id]) }
+
+            it "returns a SearchResults object not including user1" do
+              expect(result.people).to_not include(user1)
+              expect(result.all).to_not include(user1)
+            end
+
+            it "returns a SearchResults object including user2" do
+              expect(result.people).to include(user2)
+              expect(result.all).to include(user2)
+            end
+          end
+
+          context "searching for tags b, c" do
+            let(:result) { SearchResults.for(tags: [b.id, c.id]) }
+
+            it "returns a SearchResults object including user1" do
+              expect(result.people).to include(user1)
+              expect(result.all).to include(user1)
+            end
+
+            it "returns a SearchResults object including user2" do
+              expect(result.people).to include(user2)
+              expect(result.all).to include(user2)
+            end
+          end
+
+          context "searching for tags a, b, c" do
+            let(:result) { SearchResults.for(tags: [a.id, b.id, c.id]) }
+
+            it "returns a SearchResults object including user1" do
+              expect(result.people).to include(user1)
+              expect(result.all).to include(user1)
+            end
+
+            it "returns a SearchResults object including user2" do
+              expect(result.people).to include(user2)
+              expect(result.all).to include(user2)
+            end
+          end
         end
       end
 

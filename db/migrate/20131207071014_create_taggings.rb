@@ -4,7 +4,7 @@ class CreateTaggings < ActiveRecord::Migration
       t.integer :tag_id
       t.integer :taggable_id
       t.string :taggable_type
-      t.boolean :required
+      t.boolean :required, default: false
 
       t.timestamps
     end

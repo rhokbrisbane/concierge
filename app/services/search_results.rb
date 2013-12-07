@@ -9,23 +9,34 @@ class SearchResults
     @tags = Array(args[:tags])
   end
 
+  def all
+    results
+  end
+
   def resources
-    results.where(taggable_type: 'Resource').map(&:taggable)
+    results('Resource')
   end
 
   def people
-    results.where(taggable_type: 'User').map(&:taggable)
+    results('User')
   end
 
   private
-  def results
+  def taggings
     Tagging.where(tag_id: tags)
   end
+
+  def taggable_type(type)
+    type ? taggings.where(taggable_type: type) : taggings
+  end
+
+  def results(type = nil)
+    taggable_type(type).map(&:taggable).reject do |taggable,tags|
+      missing_required_tags(taggable)
+    end
+  end
+
+  def missing_required_tags(taggable)
+    Tagging.where(taggable: taggable, required: true).where.not(tag_id: @tags).any?
+  end
 end
-
-
-# SearchResults.for(tags: [1,2,3]).people
-#   => [user1, user2]
-
-# SearchResults.for(tags: [1,2,3]).resources
-#   => [resource1, resource2]

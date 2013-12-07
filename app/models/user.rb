@@ -1,6 +1,8 @@
 # Omniauth tutorial used:
 # https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
 class User < ActiveRecord::Base
+  include HasApiToken
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,

@@ -1,10 +1,6 @@
 # [Queensland Kids](http://www.queenslandkids.org)
 
-## Concept names:
-
-* **Concierge**
-* **Beacon of Hope**
-* **Big Warm Hug**
+**Concierge**
 
 ## What is this project?
 

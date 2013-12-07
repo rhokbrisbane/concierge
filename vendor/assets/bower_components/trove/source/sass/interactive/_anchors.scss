@@ -1,0 +1,25 @@
+a {
+  color: $link-color;
+  text-decoration: none;
+  @include transition(all 0.5s ease);
+
+  &:hover { color: $link-color-hover; }
+  &:active { color: $link-color-active; }
+  &:visited { color: $link-color-visited; }
+}
+
+main a {
+  color: $main-link-color;
+
+  &:hover { color: $main-link-color-hover; }
+  &:active { color: $main-link-color-active; }
+  &:visited { color: $main-link-color-visited; }
+}
+
+footer a {
+  color: $footer-link-color;
+
+  &:hover { color: $footer-link-color-hover; }
+  &:active { color: $footer-link-color-active; }
+  &:visited { color: $footer-link-color-visited; }
+}

@@ -23,15 +23,19 @@ group :development, :test do
 end
 
 group :test do
-  # gem 'capybara'
-  # gem 'database_cleaner'
-  # gem 'factory_girl_rails'
-  # gem 'faker'
-  # gem 'launchy'
-  # gem 'poltergeist'
-  # gem 'rspec-rails'
-  # gem 'shoulda-matchers'
-  # gem 'simplecov', require: false
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'faker'
+  gem 'guard-rspec', github: 'guard/guard-rspec', require: false
+  gem 'launchy'
+  gem 'poltergeist'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+  gem "spring"
+  gem "spring-commands-rspec", require: false
+
 end
 
 group :production, :staging do

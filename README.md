@@ -57,8 +57,9 @@ Access it through `http://lvh.me`, site url is a requirement for Facebook Authen
 
 Start the server passing the Facebook credentials (the length below is correct, the values are not):
 
-    export HH_FACEBOOK_APP_ID=123456789012345
-    export HH_FACEBOOK_APP_SECRET=c77777777777777777777777777777777
-    export HH_DEVISE_SECRET_KEY='62caa77c37f8e92d7562e06427766ce1a8e71d7c92f2ce26e46a6f3f035f6a0f197a4be64a33483d79b39d7c675c4ecfc39bbcc12d9631b084e2fc16a4fff18e'
-    export HH_SECRET_KEY_BASE='54e42d09f9198aad975e6d504dbf436483bc032311f6ed55735273ce9910f245ed220badddde98cd1926ee02c7e75fad15ac657e5953706fc898622aee8ffcb0'
+    export HH_FACEBOOK_APP_ID=560486987363815
+    export HH_FACEBOOK_APP_SECRET=f1dc56416a941b380c1410f44b39f446
+    export HH_DEVISE_SECRET_KEY=62caa77c37f8e92d7562e06427766ce1a8e71d7c92f2ce26e46a6f3f035f6a0f197a4be64a33483d79b39d7c675c4ecfc39bbcc12d9631b084e2fc16a4fff18e
+    export HH_SECRET_KEY_BASE=54e42d09f9198aad975e6d504dbf436483bc032311f6ed55735273ce9910f245ed220badddde98cd1926ee02c7e75fad15ac657e5953706fc898622aee8ffcb0
     rails s
+

@@ -40,9 +40,4 @@ group :test do
   gem 'simplecov', require: false
   gem 'spring'
   gem 'spring-commands-rspec', require: false
-
-end
-
-group :production, :staging do
-  # gem 'unicorn'
 end

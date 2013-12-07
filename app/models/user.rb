@@ -1,10 +1,13 @@
+# Omniauth tutorial used:
+# https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  # https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
-  devise :omniauthable, omniauth_providers: [:facebook]
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:facebook]
+
+  before_save :set_default_name, if: -> (user) { user.name.blank? }
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     User.where(provider:  auth.provider, uid: auth.uid).first ||
@@ -22,5 +25,10 @@ class User < ActiveRecord::Base
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  private
+  def set_default_name
+    self.name = email.split('@').first
   end
 end

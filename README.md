@@ -41,8 +41,6 @@ Second challenge is how do we share the information on the site accessible and s
 
 ## Servers
 
-Facebook App credentials to be inputted at server startup in `ENV["APP_ID"], ENV["APP_SECRET"]`
-
 ### Development
 
 To get our [sass](http://sass-lang.com/) framework you need [node](http://nodejs.org/) and [bower](http://bower.io/)

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 # [Queensland Kids](http://www.queenslandkids.org)
-=======
-# Queensland Kids
->>>>>>> master
 
 ## Concept names:
 
@@ -11,7 +7,7 @@
 * **Big Warm Hug**
 
 ## What is this project?
-<<<<<<< HEAD
+
 queenslandkids.org.au - The biggest problem that Queensland Kids and their families are facing is being able to access the services and information available to them.
 
 Our aim is to create a mobile or general web site for families allowing family to shine a beacon in the positive direction towards seeking help and finding resources. The problems today is a lot of those resources are scattered in various parts of the internet or medical services will hand you a info sheet, which may of completely irrelevant.
@@ -88,10 +84,14 @@ Facebook App credentials to be inputted at server startup in `ENV["APP_ID"], ENV
 
 ### Development
 
+To get our [sass](http://sass-lang.com/) framework you need [node](http://nodejs.org/) and [bower](http://bower.io/)
+
+    bower install
+
 Access it through `http://lvh.me`, site url is a requirement for Facebook Authentication
+
 Start the server passing the Facebook credentials (the length below is correct, the values are not):
 
     export APP_ID=123456789012345
     export APP_SECRET=c77777777777777777777777777777777
     rails s
->>>>>>> master

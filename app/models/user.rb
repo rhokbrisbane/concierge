@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
+  before_save :set_default_name, if: -> (user) { user.name.blank? }
+
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     User.where(provider:  auth.provider, uid: auth.uid).first ||
     User.create(name:     auth.extra.raw_info.name,
@@ -23,5 +25,10 @@ class User < ActiveRecord::Base
         user.email = data["email"] if user.email.blank?
       end
     end
+  end
+
+  private
+  def set_default_name
+    self.name = email.split('@').first
   end
 end

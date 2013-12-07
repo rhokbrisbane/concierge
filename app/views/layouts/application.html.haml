@@ -33,8 +33,10 @@
 
     %hgroup.user-actions
       - if current_user
-        = link_to 'Profile', edit_user_registration_path
+        = link_to 'Profile', user_path(current_user)
       - else
         = link_to 'Sign in', new_user_session_path
 
-  %main{ role: 'main' }= yield
+  %main{ role: 'main' }
+    %h1.title{ class: "icon-#{params[:controller].singularize}" }= yield :title if content_for :title
+    = yield

@@ -1,0 +1,11 @@
+= content_for :title, @user
+
+- if @user.tags.any?
+  .tags
+    - @user.tags.each do |tag|
+      .tag= tag
+
+.user-description
+  = @user.description
+
+= render 'layouts/disqus'

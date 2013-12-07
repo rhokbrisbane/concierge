@@ -50,6 +50,7 @@ GEM
       xpath (~> 2.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    chunky_png (1.2.9)
     cliver (0.2.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -59,6 +60,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-rails (2.0.alpha.0)
+      compass (>= 0.12.2, < 0.14)
     countries (0.9.3)
       currencies (~> 0.4.2)
     country_select (1.2.0)
@@ -87,6 +94,7 @@ GEM
       multipart-post (~> 1.2.0)
     ffi (1.9.3)
     formatador (0.2.4)
+    fssm (0.2.10)
     geocoder (1.1.8)
     guard (2.2.4)
       formatador (>= 0.2.4)
@@ -258,6 +266,7 @@ DEPENDENCIES
   better_errors
   capybara
   coffee-rails (~> 4.0.0)
+  compass-rails (~> 2.0.alpha.0)
   countries
   country_select
   database_cleaner

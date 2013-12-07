@@ -1,0 +1,13 @@
+%section
+  %div.container
+    %h2 Forgot your password?
+    %div.one-half.first
+      = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+        = devise_error_messages!
+        %div
+          = f.label :email
+          = f.email_field :email, :autofocus => true
+        %footer= f.submit "Send me reset password instructions"
+    
+    %div.one-half.last
+      = render "devise/shared/links"

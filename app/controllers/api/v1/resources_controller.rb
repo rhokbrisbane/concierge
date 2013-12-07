@@ -1,4 +1,4 @@
-class Api::V1::ResourcesController < ApplicationController
+class Api::V1::ResourcesController < Api::V1::BaseController
   load_and_authorize_resource :resource, except: :create
 
   def index

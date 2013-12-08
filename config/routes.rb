@@ -6,9 +6,8 @@ RhokBrisbane2013::Application.routes.draw do
   resources :dashboard, only: :index
   resources :tags, only: :show
   resources :users, only: :show
-  resources :resources, except: [:index] do
-    resources :comments
-  end
+  resources :resources, except: [:index]
+  resources :comments, only: [:create, :destroy]
 
   namespace :api, constraints: { format: /json/ } do
     namespace :v1 do

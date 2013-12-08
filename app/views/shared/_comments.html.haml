@@ -1,4 +1,5 @@
 #comments
-  - @resource.comments.each do |comment|
-    .comment
-      = comment.content
+  = render @resource.comments
+
+= render 'comments/form', commentable: commentable
+

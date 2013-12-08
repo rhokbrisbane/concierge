@@ -9,4 +9,3 @@ class Resource < ActiveRecord::Base
     name
   end
 end
-

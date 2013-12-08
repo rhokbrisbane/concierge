@@ -1,0 +1,24 @@
+
+.title {
+  font-size: 2em;
+  text-align: center;
+
+  &[class*="icon-"] {
+    padding-top: 2em;
+    position: relative;
+
+    &:before {
+      font-size: .75em;
+      position: absolute;
+      top: .5em;
+      left: 50%;
+      width: 1.5em;
+      line-height: 1.5em;
+      height: 1.5em;
+      margin-left: -.75em;
+      color: #aaa;
+      border-radius: 50%;
+      border: .125em solid;
+    }
+  }
+}

@@ -31,6 +31,8 @@
     %hgroup.home-link
       = link_to 'Home', root_path, class: 'icon-home icon-only'
 
-    %hgroup.user-actions= render 'layouts/authentication_links'
+    %hgroup.user-actions
+      = login_options
 
-  %main{ role: 'main' }= yield
+  %main{ role: 'main' }
+    = yield

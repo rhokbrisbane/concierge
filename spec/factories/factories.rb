@@ -3,6 +3,14 @@ FactoryGirl.define do
     name { Faker::Name.name }
     email { Faker::Internet.email }
     password 'rhok2013'
+
+    factory :admin do
+      admin true
+    end
+  end
+
+  factory :kid do
+    name { Faker::Name.name }
   end
 
   factory :address do

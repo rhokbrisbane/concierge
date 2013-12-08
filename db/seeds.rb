@@ -7,3 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 FactoryGirl.create_list :tag, 50
+
+FactoryGirl.create(:admin, email: 'admin@example.com', password: 'rhok2013')
+FactoryGirl.create(:user, email: 'user@example.com', password: 'rhok2013')

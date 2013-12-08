@@ -1,4 +1,8 @@
 class KidsController < ApplicationController
+  def new
+    @tags_by_category = Tag.all.group_by(&:category)
+  end
+
   def create
     @kid = Kid.new(kid_params)
 
@@ -19,6 +23,6 @@ class KidsController < ApplicationController
 
   private
   def kid_params
-    params.require(:kid).permit(:name, :tag_ids, :guardian_ids)
+    params.require(:kid).permit(:name, :guardian_ids, tag_ids: [])
   end
 end

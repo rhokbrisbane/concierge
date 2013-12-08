@@ -2,9 +2,9 @@
   %h3= kid.name
   
   %dl
-    - kid.tags.group_by(&:category).each do |tags, category|
-      %dt= category
+    - kid.tags.group_by(&:category).each do |category, tags|
+      %dt= category.humanize
       - tags.each do |tag| 
-        %dt= tag
+        %dd= tag.name
 
 

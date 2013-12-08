@@ -3,37 +3,12 @@
     = render partial: 'kids/kid', collection: @kids, as: :kid
 
   - else
-    = form_for Kid.new, remote: true do |nk|
-      
-      = nk.label :name
-      = nk.text_field :name
-
-      - if current_user
-        = hidden_field_tag 'kid[guardian_ids]', current_user.id
-      
-      - @tags_by_category.each do |category, tags|
-        = label_tag category
-        = collection_select 'kid[tag_ids]', nil, tags, :id, :name
-
-      = nk.submit 'Save'
+    = link_to 'Create a new kid profile', new_kid_path
 
 .container
   - if @saved_searches and @saved_searches.any?
     = render partial: 'saved_searches/saved_search', collection: @saved_searches, as: :saved_search
-  
-  = form_for SavedSearch.new, remote: true do |nss|
-    
-    = nss.label :name
-    = nss.text_field :name
-    
-    - @tags_by_category.each do |category, tags|
-      - case category
-      - when "age"
-      - else
-        = label_tag category
-        = collection_select 'saved_search[tag_ids]', nil, tags, :id, :name
-      
 
-
-    = nss.submit 'Save'
+  - else
+    = link_to 'Search', new_saved_search_path
 

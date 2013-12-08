@@ -1,0 +1,13 @@
+.container
+  = form_for SavedSearch.new, remote: true do |nss|
+    = nss.label :name
+    = nss.text_field :name
+
+    - if current_user
+      = hidden_field_tag 'saved_search[user_id]', current_user.id
+    
+    - @tags_by_category.each do |category, tags|
+      = label_tag category
+      = collection_select 'saved_search[tag_ids]', nil, tags, :id, :name
+
+    = nss.submit 'Save'

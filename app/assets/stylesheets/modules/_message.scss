@@ -3,8 +3,10 @@
 .flash {
   position: fixed;
   z-index: $top-layer;
-  top: 0;left:0;right:0;
-  padding: $line-height * 1.333;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 $line-height;
   text-align: center;
   @include box-sizing(border-box);
   @extend .fadeInDown;

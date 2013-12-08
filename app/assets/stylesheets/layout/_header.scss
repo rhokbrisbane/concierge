@@ -10,6 +10,18 @@ body > header {
   a, a:visited {
     color: $white;
   }
+
+  .logo {
+    display: inline-block;
+    height: $line-height * 2;
+    padding: .5em 0;
+    @include box-sizing(border-box);
+
+    img {
+      display: block;
+      max-height: 100%;
+    }
+  }
 }
 
 .user-actions {

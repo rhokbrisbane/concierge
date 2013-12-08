@@ -1,10 +1,15 @@
 
 .tags {
   text-align: center;
+  margin: 0 0 1em;
+
+  .tag-list li {
+    display: inline-block;
+    margin: .25em;
+  }
 
   .tag {
-    margin: .25em;
-    font-size: 90%;
+    font-size: 85%;
   }
 }
 

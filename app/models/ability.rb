@@ -9,7 +9,7 @@ class Ability
     can :manage, :all if user.admin?
 
     can :create, Tagging
-    can :create, Resource
+    can :manage, Resource
     can :create, Note
     can :create, Kid
     can :create, SavedSearch

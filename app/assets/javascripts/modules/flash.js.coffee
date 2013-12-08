@@ -11,7 +11,7 @@ class @Message
 $ ->
   $(document).on 'click', '.flash', ->
     $(this).remove()
-  
+
   if $('.flash').is(':visible')
     $('.flash').addClass('animated')
     DisplayUtil.blink('.flash', 4000)

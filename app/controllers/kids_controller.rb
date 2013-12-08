@@ -1,6 +1,10 @@
 class KidsController < ApplicationController
+  before_action :set_kid, only: [:show, :edit, :update, :destroy]
+
+  def show
+  end
+
   def new
-    @tags_by_category = Tag.all.group_by(&:category)
   end
 
   def create
@@ -16,6 +20,24 @@ class KidsController < ApplicationController
       end
 
       format.json do
+        @kid.save
+        render json: @kid.to_json 
+      end
+    end
+  end
+
+  def create
+    respond_to do |format|
+      format.html do
+        if @kid.update(kid_params)
+          redirect_to @kid, notice: "#{ @kid.name }'s details have been saved."
+        else
+          render action: 'new'
+        end
+      end
+
+      format.json do
+        @kid.update(kid_params)
         render json: @kid.to_json 
       end
     end
@@ -24,5 +46,9 @@ class KidsController < ApplicationController
   private
   def kid_params
     params.require(:kid).permit(:name, :guardian_ids, tag_ids: [])
+  end
+
+  def set_kid
+    @kid = Kid.find(params[:id])
   end
 end

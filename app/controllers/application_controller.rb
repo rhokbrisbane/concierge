@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
   check_authorization unless: :admin_or_devise_controller?
 
   before_filter :authenticate_user!
+  before_filter :fetch_tags_by_category
+
+  private
+  def fetch_tags_by_category
+    @tags_by_category = Tag.all.group_by(&:category)
+  end
 
   def authenticate_admin_user!
     authenticate_user!

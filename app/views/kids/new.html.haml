@@ -1,0 +1,13 @@
+.container
+  = form_for Kid.new do |nk|
+    = nk.label :name
+    = nk.text_field :name
+
+    - if current_user
+      = hidden_field_tag 'kid[guardian_ids]', current_user.id
+    
+    - @tags_by_category.each do |category, tags|
+      = label_tag category
+      = collection_select 'kid[tag_ids]', nil, tags, :id, :name
+
+    = nk.submit 'Save'

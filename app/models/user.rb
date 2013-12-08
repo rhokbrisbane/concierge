@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   has_many :kids, through: :guardianships
   has_many :comments
 
+  has_many :saved_searches
+
   def to_s
     name.presence || email
   end

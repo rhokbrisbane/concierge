@@ -11,10 +11,10 @@ class User < ActiveRecord::Base
 
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
- 
-  # This line needed to pay attention for import to Titanium for
-  # later export to multi-platforms, iOS, Android, BlackBerry, Tizen, etc.
-  before_save :set_default_name, if: -> (user) { user.name.blank? }
+
+  def to_s
+    name.presence || email
+  end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     User.where(provider:  auth.provider, uid: auth.uid).first ||
@@ -32,14 +32,5 @@ class User < ActiveRecord::Base
         user.email = data["email"] if user.email.blank?
       end
     end
-  end
-
-  def to_s
-    name
-  end
-
-  private
-  def set_default_name
-    self.name = email.split('@').first
   end
 end

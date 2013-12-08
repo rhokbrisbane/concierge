@@ -12,15 +12,12 @@
       - @user.tags.each do |tag|
         = link_to tag.name, tag_path(tag), class: 'tag'
 
--# - if @user.id === current_user.id
--#   %form.new-tag
--#     .container
+    - if @user.id == current_user.id
+      = form_for @user, remote: true, url: add_tag_user_path(@user)  do |f|
+        .container
+          = select_tag :tag_id, options_for_select(@tags.map{|tag| [tag.name, tag.id]})
 
--#       %select
--#         %option New Tag
--#         - @tags.each do |tag|
--#           %option{ value: tag.id }= tag.name
--#       %button.icon-plus.icon-only{type: 'submit'} Add
+          = f.submit 'Add Tag'
 
 = render 'layouts/disqus'
 

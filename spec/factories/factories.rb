@@ -24,4 +24,19 @@ FactoryGirl.define do
     commentable { create(:tag) }
     content 'Rhok'
   end
+
+  factory :tagging do
+    tag
+    taggable factory: :user
+  end
+
+  factory :note do
+    title { Faker::Lorem.sentence(2) }
+    content { Faker::Lorem.sentence(2) }
+    user
+  end
+
+  factory :group do
+    name { Faker::Lorem.sentence(2) }
+  end
 end

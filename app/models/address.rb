@@ -1,4 +1,5 @@
 class Address < ActiveRecord::Base
+  belongs_to :user
   belongs_to :addressable, polymorphic: true
 
   validates :street1, :suburb, :state, :country, :addressable, presence: true

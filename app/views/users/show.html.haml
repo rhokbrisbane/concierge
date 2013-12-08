@@ -1,11 +1,19 @@
 = content_for :title, @user
 
-- if @user.tags.any?
-  .tags
+.tags
+  - if @user.tags.any?
     - @user.tags.each do |tag|
-      .tag= tag
+      .tag= tag.name
 
-.user-description
+  %form.new-tag
+
+    %select
+      %option New Tag
+      - @tags.each do |tag|
+        %option{ value: tag.id }= tag.name
+    %button.icon-plus.icon-only{type: 'submit'} Add
+
+.description
   = @user.description
 
 = render 'layouts/disqus'

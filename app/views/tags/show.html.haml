@@ -1,0 +1,14 @@
+= content_for :title, @tag
+
+.description
+  = @tag.description
+
+.tabs
+  %ul
+    %li= link_to "Resources", "#resources"
+    %li= link_to "Discussion", "#discussion"
+
+  #resources.tab
+    = Tag resources
+  #discussion.tab
+    = render 'layouts/disqus'

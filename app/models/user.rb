@@ -2,6 +2,7 @@
 # https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
 class User < ActiveRecord::Base
   include HasApiToken
+  include Sharable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
@@ -11,6 +12,7 @@ class User < ActiveRecord::Base
 
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
+  has_many :resources
   has_and_belongs_to_many :groups, join_table: :user_groups
 
   def to_s

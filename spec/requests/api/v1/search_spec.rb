@@ -5,12 +5,16 @@ describe "Search API" do
     let!(:user1) { create(:user) }
     let(:headers)  { { 'HTTP_AUTHORIZATION' => "Token token=\"#{user1.api_token}\"", 'Accept' => 'application/json' } }
 
-    describe "and user2, tagged" do
+    describe "user2- tagged and shared, and user3- tagged but not shared" do
       let!(:user2) { create(:user) }
+      let!(:user3) { create(:user) }
       let!(:tag) { create(:tag) }
 
       before(:each) do
         user2.tags << tag
+        user3.tags << tag
+
+        user2.shared_users << user1
       end
 
       context "when the user provides a valid API token, and the relevant tag_id" do

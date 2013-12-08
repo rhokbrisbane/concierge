@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
- 
+
   # This line needed to pay attention for import to Titanium for
   # later export to multi-platforms, iOS, Android, BlackBerry, Tizen, etc.
   before_save :set_default_name, if: -> (user) { user.name.blank? }
@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
   end
 
   private
+
   def set_default_name
     self.name = email.split('@').first
   end

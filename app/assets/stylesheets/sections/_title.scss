@@ -1,0 +1,28 @@
+
+$title-icon-size: $line-height;
+
+.title {
+  font-size: $title-icon-size;
+  padding: 0 ($title-icon-size / 2);
+  text-align: center;
+  @include ellipsis;
+
+  &[class*="icon-"] {
+    padding-top: $title-icon-size * 1.5;
+    position: relative;
+
+    &:before {
+      font-size: $title-icon-size / 2;
+      position: absolute;
+      top: $title-icon-size / 2;
+      left: 50%;
+      width: $title-icon-size;
+      line-height: $title-icon-size;
+      height: $title-icon-size;
+      margin-left: -#{$title-icon-size / 2};
+      color: $gray-light;
+      background: $gray-lighter;
+      border-radius: 50%;
+    }
+  }
+}

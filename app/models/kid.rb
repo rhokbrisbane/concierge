@@ -1,6 +1,7 @@
 class Kid < ActiveRecord::Base
-  has_many :taggings, as: :taggable
-  has_many :tags, through: :taggings
+  include Taggable
+  include Sharable
+
   has_many :guardianships, dependent: :destroy
   has_many :guardians, through: :guardianships, class_name: 'User'
 

@@ -1,4 +1,5 @@
 class Address < ActiveRecord::Base
+  belongs_to :user
   belongs_to :addressable, polymorphic: true
 
   geocoded_by :to_s

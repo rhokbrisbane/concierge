@@ -1,0 +1,49 @@
+
+.tags {
+  text-align: center;
+
+  .tag {
+    margin: .25em;
+    font-size: 90%;
+  }
+}
+
+.tag {
+  @extend .button;
+  background: $tag-color;
+  color: $black;
+}
+
+
+
+
+// Icons
+
+.icon-needs { @extend .icon-asterisk2; }
+.icon-symtoms { @extend .icon-virus; }
+.icon-age_group { @extend .icon-birthday; }
+.icon-weight_group { @extend .icon-scales; }
+
+
+
+$inline-form-size: $line-height * 1.5;
+
+form.add-tag {
+  position: relative;
+  padding-right: $inline-form-size;
+
+  select, .chosen-single {
+    height: $inline-form-size;
+    line-height: $inline-form-size;
+    padding-top: 0;
+    padding-right: 0;
+  }
+
+  button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $inline-form-size;
+    height: $inline-form-size;
+  }
+}

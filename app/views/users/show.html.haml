@@ -1,0 +1,25 @@
+= content_for :title, @user
+
+%h1.title.icon-user= @user
+
+- unless @user.description.blank?
+  .description
+    .container= @user.description
+
+.container
+  .tags
+    - if @user.tags.any?
+      - @user.tags.each do |tag|
+        = link_to tag.name, tag_path(tag), class: 'tag'
+
+    - if @user.id == current_user.id
+      = form_for @user, remote: true, url: add_tag_user_path(@user), html: { autocomplete: false, class: 'add-tag' } do |f|
+        = select_tag :tag_id, options_for_select(@tags.map{|tag| [tag.name, tag.id]}), { prompt: 'Add tag' }
+        %button.icon-plus.icon-only{type: 'submit'} Add
+
+.container
+  #comments
+    = render @user.comments
+
+  = render 'comments/form', commentable: commentable
+

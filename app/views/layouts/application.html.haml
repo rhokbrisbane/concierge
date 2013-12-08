@@ -29,8 +29,10 @@
 
   %header
     %hgroup.home-link
-      = link_to 'Home', root_path, class: 'icon-home icon-only'
+      = link_to 'Search', root_path, class: 'icon-search4 icon-only'
 
-    %hgroup.user-actions= render 'layouts/authentication_links'
+    %hgroup.user-actions
+      = login_options
 
-  %main{ role: 'main' }= yield
+  %main{ role: 'main' }
+    = yield

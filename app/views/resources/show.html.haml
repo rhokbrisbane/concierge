@@ -1,0 +1,20 @@
+= content_for :title, @resource
+
+%h1.title.icon-document= @resource
+
+- unless @resource.description.blank?
+  .description
+    .container= @resource.description
+
+.container
+  .tags
+    - if @resource.tags.any?
+      - @resource.tags.each do |tag|
+        = link_to tag.name, tag_path(tag), class: 'tag'
+
+- unless @resource.content.blank?
+  .content
+    .container= @resource.content
+
+= render 'shared/comments', commentable: @resource
+

@@ -1,5 +1,5 @@
 class SearchResults
-  attr_reader :tags
+  attr_reader :tags, :ability
 
   def self.for(args = {})
     new(args)
@@ -8,6 +8,7 @@ class SearchResults
   def initialize(args = {})
     @tags = Array(args[:tags])
     @location = args[:location].presence
+    @ability = args[:ability] || Ability.new(User.new)
   end
 
   def all
@@ -38,7 +39,9 @@ class SearchResults
   end
 
   def tag_results(type)
-    taggable_type(type).map(&:taggable).reject(&method(:missing_required_tags))
+    taggable_type(type).map(&:taggable).reject do |taggable,tags|
+      missing_required_tags(taggable) || ability.cannot?(:read, taggable)
+    end
   end
 
   def location_results(type)

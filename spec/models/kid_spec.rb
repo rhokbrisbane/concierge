@@ -6,3 +6,4 @@ describe Kid do
   it { should have_many(:guardianships).dependent(:destroy) }
   it { should have_many(:guardians).through(:guardianships) }
 end
+

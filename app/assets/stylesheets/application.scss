@@ -3,7 +3,6 @@
 
 @import 'icons';
 
-@import 'modules/message', 
-        'modules/animations';
-
-@import 'sections/header';
+@import 'modules/*';
+@import 'sections/*';
+@import 'layout/*';

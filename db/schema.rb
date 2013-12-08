@@ -136,8 +136,8 @@ ActiveRecord::Schema.define(version: 20131208060016) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "description"
     t.string   "category"
+    t.string   "description"
   end
 
   create_table "user_groups", force: true do |t|
@@ -169,8 +169,8 @@ ActiveRecord::Schema.define(version: 20131208060016) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.string   "description"
     t.string   "api_token"
+    t.string   "description"
     t.boolean  "admin",                  default: false
   end
 

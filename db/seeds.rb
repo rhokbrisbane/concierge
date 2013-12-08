@@ -11,8 +11,8 @@ public.users << user
 
 ##### Tags ######
 
-tag_attributes = File.open("#{Rails.root}/db/seeds/symtoms.txt").each_line.map do |tag_name|
-  { name: tag_name, category: 'symtoms' }
+tag_attributes = File.open("#{Rails.root}/db/seeds/symptoms.txt").each_line.map do |tag_name|
+  { name: tag_name, category: 'symptoms' }
 end
 
 puts "Importing #{tag_attributes.count} tags, it could take a while..."

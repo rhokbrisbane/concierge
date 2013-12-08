@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
+  has_many :guardianships, dependent: :destroy
+  has_many :kids, through: :guardianships
 
   def to_s
     name.presence || email

@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
   before_filter :fetch_tags_by_category
 
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
   private
 
   def fetch_tags_by_category

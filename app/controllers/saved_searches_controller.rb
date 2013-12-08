@@ -1,4 +1,4 @@
-class SavedSearchesController < ApplicationController 
+class SavedSearchesController < ApplicationController
   before_action :set_saved_search, only: [:show, :edit, :update, :destroy]
 
   def show
@@ -29,7 +29,7 @@ class SavedSearchesController < ApplicationController
 
       format.json do
         @saved_search.save
-        render json: @saved_search.to_json 
+        render json: @saved_search.to_json
       end
     end
   end
@@ -48,7 +48,7 @@ class SavedSearchesController < ApplicationController
 
       format.json do
         @saved_search.update(saved_searches_params)
-        render json: @saved_search.to_json 
+        render json: @saved_search.to_json
       end
     end
   end

@@ -108,8 +108,8 @@ ActiveRecord::Schema.define(version: 20131208021004) do
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
     t.string   "description"
+    t.integer  "user_id"
   end
 
   create_table "saved_searches", force: true do |t|
@@ -133,8 +133,8 @@ ActiveRecord::Schema.define(version: 20131208021004) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category"
     t.string   "description"
+    t.string   "category"
   end
 
   create_table "user_groups", force: true do |t|
@@ -166,8 +166,8 @@ ActiveRecord::Schema.define(version: 20131208021004) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.string   "api_token"
     t.string   "description"
+    t.string   "api_token"
     t.boolean  "admin",                  default: false
   end
 

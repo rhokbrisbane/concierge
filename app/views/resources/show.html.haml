@@ -2,9 +2,14 @@
 
 %h1.title.icon-document= @resource
 
-- unless @resource.description.blank?
-  .description
-    .container= @resource.description
+.description
+  .container= @resource.name
+
+  %p= @resource.category
+  %p= @resource.url
+  %p= @resource.phone
+  %p= "<strong>facebook.com/</strong>#{@resource.facebook}".html_safe
+  %p= "<strong>twitter.com/</strong>#{@resource.twitter}".html_safe
 
 .container
   .tags
@@ -12,9 +17,4 @@
       - @resource.tags.each do |tag|
         = link_to tag.name, tag_path(tag), class: 'tag'
 
-- unless @resource.content.blank?
-  .content
-    .container= @resource.content
-
 = render 'shared/comments', commentable: @resource
-

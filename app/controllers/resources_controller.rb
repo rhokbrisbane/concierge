@@ -37,7 +37,7 @@ class ResourcesController < ApplicationController
 
   private
 
-    def set_resource
-      @resource = Resource.find(params[:id])
-    end
+  def set_resource
+    @resource = Resource.find(params[:id])
+  end
 end

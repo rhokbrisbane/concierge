@@ -32,8 +32,6 @@ ActiveRecord::Schema.define(version: 20131208060016) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "addresses", force: true do |t|
-    t.string   "longitude"
-    t.string   "latitude"
     t.string   "suburb"
     t.string   "postcode"
     t.string   "street1"
@@ -45,6 +43,8 @@ ActiveRecord::Schema.define(version: 20131208060016) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "addresses", ["addressable_id", "addressable_type"], name: "index_addresses_on_addressable_id_and_addressable_type", using: :btree

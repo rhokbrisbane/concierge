@@ -4,6 +4,34 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password 'rhok2013'
 
+    factory :close_user do
+      name "Close User"
+      after(:build) do |u|
+        u.addresses.build street1:     "7 prospect st",
+                          suburb:      "Fortitude Valley",
+                          postcode:    "4006",
+                          state:       "QLD",
+                          country:     "AU",
+                          latitude:    -27.4521756,
+                          longitude:   153.0374968,
+                          addressable: u
+      end
+    end
+
+    factory :far_user do
+      name "Far User"
+      after(:build) do |u|
+        u.addresses.build street1:     "1 Main st",
+                          suburb:      "Akiachak",
+                          postcode:    "99551",
+                          state:       "Alaska",
+                          country:     "USA",
+                          latitude:    60.89944999999999,
+                          longitude:   -161.413426,
+                          addressable: u
+      end
+    end
+
     factory :admin do
       admin true
     end

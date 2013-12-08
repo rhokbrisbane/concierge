@@ -4,6 +4,7 @@ class Resource < ActiveRecord::Base
   include Commentable
 
   belongs_to :user
+  has_many :addresses, as: :addressable
 
   def to_s
     name

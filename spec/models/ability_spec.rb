@@ -363,6 +363,14 @@ describe Ability do
         it "should be_able_to(:create, Kid)" do
           should be_able_to(:create, Kid)
         end
+
+        it "should be_able_to(:create, SavedSearch)" do
+          should be_able_to(:create, SavedSearch)
+        end
+
+        it "should be_able_to(:create, Comment)" do
+          should be_able_to(:create, Comment)
+        end
       end
     end
   end

@@ -1,4 +1,6 @@
 class Tag < ActiveRecord::Base
+  include Commentable
+
   CATEGORIES = [
     'needs',
     'symtoms',

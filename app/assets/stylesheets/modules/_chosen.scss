@@ -14,6 +14,7 @@ $chosen-active-border-color: darken($chosen-border-color, 10%);
   *display: inline;
   @include user-select(none);
   text-align: left;
+  margin-bottom: $line-height;
 
   .chosen-drop {
     position: absolute;
@@ -158,91 +159,76 @@ $chosen-active-border-color: darken($chosen-border-color, 10%);
 /* @end */
 
 /* @group Multi Chosen */
-.chosen-container-multi{
-  .chosen-choices {
-    position: relative;
-    overflow: hidden;
-    @include box-sizing(border-box);
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: auto !important;
-    height: 1%;
-    border: 1px solid $chosen-border-color;
-    background-color: $white;
-    cursor: text;
+.chosen-container-multi .chosen-choices {
+  margin: 0;
+  padding: 0;
+  cursor: text;
+  overflow: hidden;
+  height: auto !important;
+  height: 1%;
+  position: relative;
+  width: 100%;
+  @include box-sizing(border-box);
+}
+.chosen-container-multi .chosen-choices li {
+  list-style: none;
+  padding-left: 0;
+  &:before { content: '' };
+}
+.chosen-container-multi .chosen-choices .search-field {
+  @include box-sizing(border-box);
+  width: 100% !important;
+  input {
+    width: 100% !important;
+    margin-bottom: 1px;
   }
-  .chosen-choices li {
-    float: left;
-    list-style: none;
+}
+.chosen-container-multi .chosen-choices .search-choice {
+  position: relative;
+  padding: $line-height / 6 $line-height / 4;
+  padding-right: $line-height * 1.5;
+  @include border-radius($radius);
+  margin: 0 0 $line-height / 2.5 0;
+  line-height: $line-height;
+  font-weight: 500;
+  border-width: 1px;
+  border-style: solid;
+  background-color: $color-primary-light;
+  color: $color-primary;
 
-    &:before { content: ''; }
-
-    &.search-field {
-      margin: 0;
-      padding: 0;
-      white-space: nowrap;
-
-      input[type="text"] {
-        padding: .25em;
-        outline: 0;
-        border: 0 !important;
-        background: transparent !important;
-        color: #666;
-        font-size: 100%;
-        font-family: sans-serif;
-        line-height: normal;
-        border-radius: 0;
-      }
-      .default {
-        color: #999;
-      }
-    }
-    &.search-choice {
-      position: relative;
-      margin: 3px 0 3px 5px;
-      padding: 3px 20px 3px 5px;
-      border: 1px solid $chosen-border-color;
-      border-radius: 3px;
-      background-color: #e4e4e4;
-      background-clip: padding-box;
-      color: #333;
-      line-height: 13px;
-      cursor: default;
-
-      .search-choice-close {
-        position: absolute;
-        top: 4px;
-        right: 3px;
-        display: block;
-        width: 12px;
-        height: 12px;
-        font-size: 1px;
-        &:hover {
-          background-position: -42px -10px;
-        }
-      }
-    }
-    &.search-choice-disabled {
-      padding-right: 5px;
-      border: 1px solid #ccc;
-      background-color: #e4e4e4;
-      color: #666;
-    }
-    &.search-choice-focus {
-      background: #d4d4d4;
-      // .search-choice-close {}
-    }
+  span { 
+    display: block;
+    @include ellipsis; 
   }
-  .chosen-results {
-    margin: 0;
-    padding: 0;
-  }
-  .chosen-drop .result-selected {
-    display: list-item;
-    color: #ccc;
-    cursor: default;
-  }
+}
+
+.chosen-container-multi .chosen-choices .search-choice .group-name {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  font-weight: 400;
+  @include opacity(0.8);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  margin-bottom: $line-height / 8;
+}
+
+.chosen-container-multi .chosen-choices .search-choice .search-choice-close {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  right: $line-height / 4;
+  top: 50%;
+  width: $line-height;
+  height: $line-height;
+  margin-top: -$line-height / 2;
+  border: none;
+  @extend .icon-cancel-circle;
+  @extend .icon-only;
+  color: $color-primary;
+  &:before { font-family: 'icomoon'; }
+}
+.chosen-container-multi .chosen-choices .search-choice .search-choice-close:hover {
+  //
 }
 /* @end */
 
@@ -263,8 +249,6 @@ $chosen-active-border-color: darken($chosen-border-color, 10%);
     }
   }
   .chosen-choices {
-    border: 1px solid $chosen-active-border-color;
-
     li.search-field input[type="text"] {
       color: #111 !important;
     }

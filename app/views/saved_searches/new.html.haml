@@ -5,6 +5,7 @@
     
     - @tags_by_category.each do |category, tags|
       = label_tag category
-      = collection_select 'saved_search[tag_ids]', nil, tags, :id, :name
+      
+      = collection_select 'saved_search[tag_ids]', nil, tags, :id, :name, {}, multiple: (if ['needs', 'symptoms'].include? category then true end)
 
     = nss.submit 'Save'

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :groups, join_table: :user_groups
   has_many :taggings, as: :taggable
+  has_many :addresses, as: :addressable
   has_many :tags, through: :taggings
   has_many :resources
   has_many :guardianships, dependent: :destroy
@@ -20,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :saved_searches
 
   def to_s
-    name.presence || email
+    name.presence || email.presence || "User#{id}"
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)

@@ -2,18 +2,27 @@ class Address < ActiveRecord::Base
   belongs_to :user
   belongs_to :addressable, polymorphic: true
 
+  geocoded_by :to_s
   validates :street1, :suburb, :state, :country, :addressable, presence: true
-
-  after_create :find_coordinates
+  after_validation :geocode, if: :location_changed?
 
   def to_s
     [street1, street2, suburb, state, country].compact.join(', ')
   end
 
-  private
+  def coordinates
+    [latitude, longitude]
+  end
 
-  def find_coordinates
-    longitude, latitude = Geocoder.coordinates(self.to_s).reverse
-    update_attributes(longitude: longitude, latitude: latitude)
+  def coordinates?
+    latitude.present? && longitude.present? 
+  end
+
+  def location_changed?
+    if persisted?
+      (changed & %w(street1 street2 suburb state country)).any?
+    else
+      latitude.blank? && longitude.blank?
+    end
   end
 end

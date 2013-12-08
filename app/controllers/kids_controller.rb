@@ -2,12 +2,15 @@ class KidsController < ApplicationController
   before_action :set_kid, only: [:show, :edit, :update, :destroy]
 
   def show
+    authorize! :read, @kid
   end
 
   def new
+    authorize! :create, Kid
   end
 
   def create
+    authorize! :create, @kid
     @kid = Kid.new(kid_params)
 
     respond_to do |format|
@@ -21,12 +24,13 @@ class KidsController < ApplicationController
 
       format.json do
         @kid.save
-        render json: @kid.to_json 
+        render json: @kid.to_json
       end
     end
   end
 
-  def create
+  def update
+    authorize! :update, @kid
     respond_to do |format|
       format.html do
         if @kid.update(kid_params)
@@ -38,7 +42,7 @@ class KidsController < ApplicationController
 
       format.json do
         @kid.update(kid_params)
-        render json: @kid.to_json 
+        render json: @kid.to_json
       end
     end
   end

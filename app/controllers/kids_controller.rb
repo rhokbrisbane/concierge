@@ -36,7 +36,7 @@ class KidsController < ApplicationController
   end
 
   def update
-    authorize! :update, @kid
+    authorize! :manage, @kid
     respond_to do |format|
       format.html do
         if @kid.update(kid_params)

@@ -35,10 +35,11 @@ describe SearchResults do
 
           before(:each) do
             user2.tags << c
+            user2.shared_users << user1
           end
 
           context "searching for tag a" do
-            let(:result) { SearchResults.for(tags: [a.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [a.id]) }
 
             it "returns a SearchResults object not including user1" do
               expect(result.people).to_not include(user1)
@@ -52,7 +53,7 @@ describe SearchResults do
           end
 
           context "searching for tag b" do
-            let(:result) { SearchResults.for(tags: [b.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [b.id]) }
 
             it "returns a SearchResults object including user1" do
               expect(result.people).to include(user1)
@@ -66,7 +67,7 @@ describe SearchResults do
           end
 
           context "searching for tag c" do
-            let(:result) { SearchResults.for(tags: [c.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [c.id]) }
 
             it "returns a SearchResults object not including user1" do
               expect(result.people).to_not include(user1)
@@ -80,7 +81,7 @@ describe SearchResults do
           end
 
           context "searching for tags a, b" do
-            let(:result) { SearchResults.for(tags: [a.id, b.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [a.id, b.id]) }
 
             it "returns a SearchResults object including user1" do
               expect(result.people).to include(user1)
@@ -94,7 +95,7 @@ describe SearchResults do
           end
 
           context "searching for tags a, c" do
-            let(:result) { SearchResults.for(tags: [a.id, c.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [a.id, c.id]) }
 
             it "returns a SearchResults object not including user1" do
               expect(result.people).to_not include(user1)
@@ -108,7 +109,7 @@ describe SearchResults do
           end
 
           context "searching for tags b, c" do
-            let(:result) { SearchResults.for(tags: [b.id, c.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [b.id, c.id]) }
 
             it "returns a SearchResults object including user1" do
               expect(result.people).to include(user1)
@@ -122,7 +123,7 @@ describe SearchResults do
           end
 
           context "searching for tags a, b, c" do
-            let(:result) { SearchResults.for(tags: [a.id, b.id, c.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [a.id, b.id, c.id]) }
 
             it "returns a SearchResults object including user1" do
               expect(result.people).to include(user1)

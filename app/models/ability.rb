@@ -12,6 +12,7 @@ class Ability
     can :create, Resource
     can :create, Note
     can :create, Kid
+    can :create, SavedSearch
 
     can :read, Group
     can :read, Address
@@ -40,12 +41,13 @@ class Ability
 
     can :read, User, id: user.id
     can :delete, User, id: user.id
-    can :update, User, id: user.id
+    can :manage, User, id: user.id
 
     can :manage, Note, user_id: user.id
     can :manage, Resource, user_id: user.id
     can :manage, Tagging, user_id: user.id
     can :manage, Address, user_id: user.id
+    can :manage, SavedSearch, user_id: user.id
     can :manage, Kid do |kid|
       kid.guardianships.where(user_id: user.id).any?
     end

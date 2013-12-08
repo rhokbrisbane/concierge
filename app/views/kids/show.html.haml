@@ -1,7 +1,6 @@
 %header
   = @kid.name
 
-
 %h1
   Search results
 
@@ -14,3 +13,6 @@
     = resource.content
 
 %h3 People
+- @results.people.each do |person|
+  %h4
+    = person.name

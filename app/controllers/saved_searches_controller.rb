@@ -1,13 +1,22 @@
-class SavedSearchesController < ApplicationController 
+class SavedSearchesController < ApplicationController
   before_action :set_saved_search, only: [:show, :edit, :update, :destroy]
 
   def show
+    authorize! :read, @saved_search
+    @results = SearchResults.for(tags: @saved_search.tags, ability: current_ability)
   end
 
   def new
+    authorize! :create, SavedSearch
+  end
+
+  def edit
+    authorize! :manage, @saved_search
   end
 
   def create
+    authorize! :create, SavedSearch
+
     @saved_search = current_user.saved_searches.new(saved_searches_params)
 
     respond_to do |format|
@@ -21,12 +30,14 @@ class SavedSearchesController < ApplicationController
 
       format.json do
         @saved_search.save
-        render json: @saved_search.to_json 
+        render json: @saved_search.to_json
       end
     end
   end
 
   def update
+    authorize! :manage, @saved_search
+
     respond_to do |format|
       format.html do
         if @saved_search.update(saved_searches_params)
@@ -38,7 +49,7 @@ class SavedSearchesController < ApplicationController
 
       format.json do
         @saved_search.update(saved_searches_params)
-        render json: @saved_search.to_json 
+        render json: @saved_search.to_json
       end
     end
   end

@@ -1,3 +1,3 @@
 class ResourceSerializer < ApplicationSerializer
-  attributes :name, :content
+  attributes :name, :category, :url, :phone, :facebook, :twitter
 end

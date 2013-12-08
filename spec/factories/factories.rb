@@ -35,7 +35,11 @@ FactoryGirl.define do
 
   factory :resource do
     name { Faker::Name.name }
-    content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+    category 'Advocacy'
+    url 'http://resource.com'
+    phone '+61 1234 567 890'
+    facebook 'resource_fb'
+    twitter 'resource_tw'
   end
 
   factory :tagging do

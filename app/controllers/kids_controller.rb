@@ -31,6 +31,10 @@ class KidsController < ApplicationController
     end
   end
 
+  def edit
+    authorize! :manage, @kid
+  end
+
   def update
     authorize! :update, @kid
     respond_to do |format|

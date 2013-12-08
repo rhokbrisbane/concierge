@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include HasApiToken
+  include Sharable
   include Taggable
 
   # Include default devise modules. Others available are:
@@ -8,8 +9,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
+  has_and_belongs_to_many :groups, join_table: :user_groups
+  has_many :taggings, as: :taggable
+  has_many :tags, through: :taggings
+  has_many :resources
   has_many :guardianships, dependent: :destroy
   has_many :kids, through: :guardianships
+  has_many :comments
 
   has_many :saved_searches
 

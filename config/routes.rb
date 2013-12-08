@@ -1,5 +1,8 @@
 RhokBrisbane2013::Application.routes.draw do
+  ActiveAdmin.routes(self)
+
   root to: 'dashboard#index'
+
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 

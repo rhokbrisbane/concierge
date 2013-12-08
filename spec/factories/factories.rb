@@ -14,10 +14,29 @@ FactoryGirl.define do
     addressable { create(:user) }
   end
 
-  categories = Tag::CATEGORIES
-
   factory :tag do
     name { Faker::Lorem.sentence(2) }
-    category { categories[rand(0..categories.length - 1)] }
+    category { Tag::CATEGORIES.sample }
+  end
+
+  factory :comment do
+    user
+    commentable { create(:tag) }
+    content 'Rhok'
+  end
+
+  factory :tagging do
+    tag
+    taggable factory: :user
+  end
+
+  factory :note do
+    title { Faker::Lorem.sentence(2) }
+    content { Faker::Lorem.sentence(2) }
+    user
+  end
+
+  factory :group do
+    name { Faker::Lorem.sentence(2) }
   end
 end

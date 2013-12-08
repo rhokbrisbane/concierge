@@ -3,10 +3,11 @@ require 'spec_helper'
 describe Tag do
   it { should have_many(:users) }
   it { should have_many(:resources) }
-end
+  it { should have_many(:comments) }
 
-describe Tag::CATEGORIES do
-  let!(:tag) { FactoryGirl.create :tag }
-  
-  it { should include(tag.category) }
+  describe 'categories' do
+    let(:tag) { create(:tag) }
+
+    it { expect(Tag::CATEGORIES).to include(tag.category) }
+  end
 end

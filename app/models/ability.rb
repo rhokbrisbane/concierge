@@ -3,7 +3,10 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-
-    can :manage, Resource
+    if user.admin?
+      can :manage, :all
+    else
+      can :manage, Resource
+    end
   end
 end

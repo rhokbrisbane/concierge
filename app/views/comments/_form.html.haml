@@ -2,6 +2,6 @@
   = f.hidden_field :commentable_type, value: commentable.class.to_s
   = f.hidden_field :commentable_id, value: commentable.id.to_s
 
-  = f.text_area :content
+  = f.text_area :content, placeholder: "Add comment"
 
   = f.submit 'Comment'

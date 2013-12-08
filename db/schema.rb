@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131208020906) do
+ActiveRecord::Schema.define(version: 20131208021004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: true do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "addresses", force: true do |t|
     t.string   "longitude"
@@ -29,6 +44,7 @@ ActiveRecord::Schema.define(version: 20131208020906) do
     t.string   "addressable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "addresses", ["addressable_id", "addressable_type"], name: "index_addresses_on_addressable_id_and_addressable_type", using: :btree
@@ -44,6 +60,20 @@ ActiveRecord::Schema.define(version: 20131208020906) do
 
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "group_shares", force: true do |t|
+    t.integer  "shared_group_id"
+    t.integer  "sharable_id"
+    t.string   "sharable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "guardianships", force: true do |t|
     t.integer  "kid_id"
@@ -79,6 +109,7 @@ ActiveRecord::Schema.define(version: 20131208020906) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "description"
+    t.integer  "user_id"
   end
 
   create_table "saved_searches", force: true do |t|
@@ -95,6 +126,7 @@ ActiveRecord::Schema.define(version: 20131208020906) do
     t.boolean  "required",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "tags", force: true do |t|
@@ -105,13 +137,26 @@ ActiveRecord::Schema.define(version: 20131208020906) do
     t.string   "description"
   end
 
+  create_table "user_groups", force: true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+  end
+
+  create_table "user_shares", force: true do |t|
+    t.integer  "shared_user_id"
+    t.integer  "sharable_id"
+    t.string   "sharable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -122,6 +167,7 @@ ActiveRecord::Schema.define(version: 20131208020906) do
     t.string   "uid"
     t.string   "name"
     t.string   "api_token"
+    t.boolean  "admin",                  default: false
     t.string   "description"
   end
 

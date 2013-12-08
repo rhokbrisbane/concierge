@@ -3,6 +3,14 @@ FactoryGirl.define do
     name { Faker::Name.name }
     email { Faker::Internet.email }
     password 'rhok2013'
+
+    factory :admin do
+      admin true
+    end
+  end
+
+  factory :kid do
+    name { Faker::Name.name }
   end
 
   factory :address do
@@ -28,5 +36,20 @@ FactoryGirl.define do
   factory :resource do
     name { Faker::Name.name }
     content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+  end
+
+  factory :tagging do
+    tag
+    taggable factory: :user
+  end
+
+  factory :note do
+    title { Faker::Lorem.sentence(2) }
+    content { Faker::Lorem.sentence(2) }
+    user
+  end
+
+  factory :group do
+    name { Faker::Lorem.sentence(2) }
   end
 end

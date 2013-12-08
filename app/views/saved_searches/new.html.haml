@@ -1,0 +1,10 @@
+.container
+  = form_for SavedSearch.new do |nss|
+    = nss.label :name
+    = nss.text_field :name
+    
+    - @tags_by_category.each do |category, tags|
+      = label_tag category
+      = collection_select 'saved_search[tag_ids]', nil, tags, :id, :name
+
+    = nss.submit 'Save'

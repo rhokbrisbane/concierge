@@ -1,5 +1,6 @@
 class Kid < ActiveRecord::Base
   include Taggable
+
   has_many :guardianships, dependent: :destroy
   has_many :guardians, through: :guardianships, class_name: 'User'
 

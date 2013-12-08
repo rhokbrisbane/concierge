@@ -1,1 +1,10 @@
-Application#index
+.container
+  = form_for @new_kid do |nk|
+    
+    = nk.text_field :name
+    
+    - @tags_by_category.each do |tag_category|
+      = label_tag tag_category[0]
+      = collection_select @new_kid, 'tags[]', tag_category[1], :id, :name
+
+    = nk.submit 'Save'

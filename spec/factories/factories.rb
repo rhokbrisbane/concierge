@@ -18,6 +18,6 @@ FactoryGirl.define do
 
   factory :tag do
     name { Faker::Lorem.sentence(2) }
-    category { categories[rand(0..categories.length)] }
+    category { categories[rand(0..categories.length - 1)] }
   end
 end

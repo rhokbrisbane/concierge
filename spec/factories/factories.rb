@@ -24,4 +24,9 @@ FactoryGirl.define do
     commentable { create(:tag) }
     content 'Rhok'
   end
+
+  factory :resource do
+    name { Faker::Name.name }
+    content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+  end
 end

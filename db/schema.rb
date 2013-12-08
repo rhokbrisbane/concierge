@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131208040440) do
+ActiveRecord::Schema.define(version: 20131208060016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,11 +105,14 @@ ActiveRecord::Schema.define(version: 20131208040440) do
 
   create_table "resources", force: true do |t|
     t.string   "name"
-    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "description"
+    t.string   "category"
+    t.string   "url"
+    t.string   "phone"
+    t.string   "facebook"
+    t.string   "twitter"
   end
 
   create_table "saved_searches", force: true do |t|
@@ -133,8 +136,8 @@ ActiveRecord::Schema.define(version: 20131208040440) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category"
     t.string   "description"
+    t.string   "category"
   end
 
   create_table "user_groups", force: true do |t|
@@ -166,8 +169,8 @@ ActiveRecord::Schema.define(version: 20131208040440) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
-    t.string   "api_token"
     t.string   "description"
+    t.string   "api_token"
     t.boolean  "admin",                  default: false
   end
 

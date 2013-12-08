@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :guardianships, dependent: :destroy
   has_many :kids, through: :guardianships
 
+  has_many :saved_searches
+
   def to_s
     name.presence || email
   end

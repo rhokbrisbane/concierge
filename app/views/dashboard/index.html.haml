@@ -1,10 +1,39 @@
 .container
-  = form_for @new_kid do |nk|
-    
-    = nk.text_field :name
-    
-    - @tags_by_category.each do |tag_category|
-      = label_tag tag_category[0]
-      = collection_select @new_kid, 'tags[]', tag_category[1], :id, :name
+  - if @kids and @kids.any?
+    = render partial: 'kids/kid', collection: @kids, as: :kid
 
-    = nk.submit 'Save'
+  - else
+    = form_for Kid.new, remote: true do |nk|
+      
+      = nk.label :name
+      = nk.text_field :name
+
+      - if current_user
+        = hidden_field_tag 'kid[guardian_ids]', current_user.id
+      
+      - @tags_by_category.each do |category, tags|
+        = label_tag category
+        = collection_select 'kid[tag_ids]', nil, tags, :id, :name
+
+      = nk.submit 'Save'
+
+.container
+  - if @saved_searches and @saved_searches.any?
+    = render partial: 'saved_searches/saved_search', collection: @saved_searches, as: :saved_search
+  
+  = form_for SavedSearch.new, remote: true do |nss|
+    
+    = nss.label :name
+    = nss.text_field :name
+    
+    - @tags_by_category.each do |category, tags|
+      - case category
+      - when "age"
+      - else
+        = label_tag category
+        = collection_select 'saved_search[tag_ids]', nil, tags, :id, :name
+      
+
+
+    = nss.submit 'Save'
+

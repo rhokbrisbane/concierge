@@ -1,0 +1,10 @@
+.box
+  %h3= kid.name
+  
+  %dl
+    - kid.tags.group_by(&:category).each do |tags, category|
+      %dt= category
+      - tags.each do |tag| 
+        %dt= tag
+
+

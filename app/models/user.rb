@@ -1,7 +1,6 @@
-# Omniauth tutorial used:
-# https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
 class User < ActiveRecord::Base
   include HasApiToken
+  include Taggable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
@@ -9,8 +8,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  has_many :taggings, as: :taggable
-  has_many :tags, through: :taggings
   has_many :guardianships, dependent: :destroy
   has_many :kids, through: :guardianships
 
@@ -36,3 +33,4 @@ class User < ActiveRecord::Base
     end
   end
 end
+

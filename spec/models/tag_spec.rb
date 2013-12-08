@@ -6,5 +6,7 @@ describe Tag do
 end
 
 describe Tag::CATEGORIES do
-  it { should equal(['needs', 'symtoms', 'age_group', 'weight_group']) }
+  let!(:tag) { FactoryGirl.create :tag }
+  
+  it { should include(tag.category) }
 end

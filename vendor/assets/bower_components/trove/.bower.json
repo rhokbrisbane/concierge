@@ -14,11 +14,11 @@
     "test",
     "tests"
   ],
-  "_release": "73e41ce09e",
+  "_release": "325d816267",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "73e41ce09e890a94eb5a1461edd57c3de4568cf1"
+    "commit": "325d81626726139b796cb9e96743cbd17d570a02"
   },
   "_source": "git://github.com/net-engine/trove.git",
   "_target": "*",

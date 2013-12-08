@@ -1,0 +1,30 @@
+@mixin rounded-box($display: block, $border: true) {
+  @include appearance(none);
+  @include box-sizing(border-box);
+  @include border-radius($radius);
+  
+  position: relative;
+  display: $display;
+  line-height: $line-height; 
+  font-size: $font-size; 
+  text-align: center;
+  outline: 0;
+  padding: $line-height / 4 $line-height / 2;
+
+  @if $border {
+    margin-top: -2px;
+    border-width: 1px;
+    border-style: solid;
+  } @else {
+    border: none;
+  }
+}
+
+.pill {
+  @include rounded-box(inline-block, false);
+  &.icon-only {
+    width: $line-height + $line-height / 2; 
+    height: $line-height + $line-height / 2;
+    line-height: $line-height + $line-height / 2;
+  }
+}

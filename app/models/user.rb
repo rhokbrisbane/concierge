@@ -1,6 +1,8 @@
 # Omniauth tutorial used:
 # https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
 class User < ActiveRecord::Base
+  include HasApiToken
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
@@ -9,7 +11,9 @@ class User < ActiveRecord::Base
 
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
-
+ 
+  # This line needed to pay attention for import to Titanium for
+  # later export to multi-platforms, iOS, Android, BlackBerry, Tizen, etc.
   before_save :set_default_name, if: -> (user) { user.name.blank? }
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)

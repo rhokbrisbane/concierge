@@ -7,6 +7,7 @@ class SearchResults
 
   def initialize(args = {})
     @tags = Array(args[:tags])
+    @location = args[:location].presence
   end
 
   def all
@@ -14,11 +15,11 @@ class SearchResults
   end
 
   def resources
-    results('Resource')
+    results(Resource)
   end
 
   def people
-    results('User')
+    results(User)
   end
 
   private
@@ -31,12 +32,30 @@ class SearchResults
   end
 
   def results(type = nil)
-    taggable_type(type).map(&:taggable).reject do |taggable,tags|
-      missing_required_tags(taggable)
+    # @results = tag_results(type) | 
+    location_results(type)
+    # @results.compact!
+    # @results.uniq!
+  end
+
+  def tag_results(type)
+    taggable_type(type).map(&:taggable).reject(&method(:missing_required_tags))
+  end
+
+  def location_results(type)
+    if coordinates
+      scope = Address.near(@coordinates, 10, units: :km).includes(:addressable)
+      scope = scope.where(addressabe_type: type) if type
+      scope.map &:addressable
     end
   end
 
   def missing_required_tags(taggable)
-    Tagging.where(taggable: taggable, required: true).where.not(tag_id: @tags).any?
+    Tagging.where(taggable: taggable, required: true)
+           .where.not(tag_id: @tags).any?
+  end
+
+  def coordinates
+    @coordinates ||= Geocoder.coordinates(@location) if @location
   end
 end

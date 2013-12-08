@@ -8,7 +8,7 @@ describe SearchResults do
       let!(:far_user) { create :far_user } 
       it "returns close results" do
         Geocoder.stub(:coordinates).and_return([-27.459365, 153.038403])
-        expect(SearchResults.for(location: "close location").all).to eq [close_user]
+        expect(SearchResults.for(location: "close location", location_range: 10_000).all).to eq [close_user]
       end
     end
 

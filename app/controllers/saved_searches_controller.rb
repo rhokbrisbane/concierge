@@ -3,11 +3,16 @@ class SavedSearchesController < ApplicationController
 
   def show
     authorize! :read, @saved_search
-    @results = SearchResults.for(tags: @saved_search.tags, ability: current_ability)
+    @results = SearchResults.for(tags: @saved_search.tags,
+      ability: current_ability,
+      location_range: @saved_search.location_range,
+      location: request.ip
+    )
   end
 
   def new
     authorize! :create, SavedSearch
+    @saved_search = SavedSearch.new(location_range: 10_000)
   end
 
   def edit
@@ -56,7 +61,7 @@ class SavedSearchesController < ApplicationController
 
   private
   def saved_searches_params
-    params.require(:saved_search).permit(:name, tag_ids: [])
+    params.require(:saved_search).permit(:name, :location_range, tag_ids: [])
   end
 
   def set_saved_search

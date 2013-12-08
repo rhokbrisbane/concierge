@@ -11,14 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131208010313) do
+ActiveRecord::Schema.define(version: 20131208040440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "addresses", force: true do |t|
-    t.string   "longitude"
-    t.string   "latitude"
     t.string   "suburb"
     t.string   "postcode"
     t.string   "street1"
@@ -29,6 +27,8 @@ ActiveRecord::Schema.define(version: 20131208010313) do
     t.string   "addressable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "addresses", ["addressable_id", "addressable_type"], name: "index_addresses_on_addressable_id_and_addressable_type", using: :btree

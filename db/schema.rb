@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(version: 20131208021004) do
 
   add_index "addresses", ["addressable_id", "addressable_type"], name: "index_addresses_on_addressable_id_and_addressable_type", using: :btree
 
+  create_table "comments", force: true do |t|
+    t.text     "content"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "group_shares", force: true do |t|
     t.integer  "shared_group_id"
     t.integer  "sharable_id"
@@ -59,6 +71,24 @@ ActiveRecord::Schema.define(version: 20131208021004) do
 
   create_table "groups", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "guardianships", force: true do |t|
+    t.integer  "kid_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "kids", force: true do |t|
+    t.string   "name"
+    t.date     "date_of_birth"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -79,6 +109,14 @@ ActiveRecord::Schema.define(version: 20131208021004) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "description"
+  end
+
+  create_table "saved_searches", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "taggings", force: true do |t|
@@ -96,6 +134,7 @@ ActiveRecord::Schema.define(version: 20131208021004) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "category"
+    t.string   "description"
   end
 
   create_table "user_groups", force: true do |t|
@@ -128,6 +167,7 @@ ActiveRecord::Schema.define(version: 20131208021004) do
     t.string   "uid"
     t.string   "name"
     t.string   "api_token"
+    t.string   "description"
     t.boolean  "admin",                  default: false
   end
 

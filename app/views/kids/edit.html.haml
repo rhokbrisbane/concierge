@@ -1,10 +1,10 @@
 .container
-  = form_for @kid do |nk|
-    = nk.label :name
-    = nk.text_field :name
-    
+  = form_for @kid do |nkotb|
+    = nkotb.label :name
+    = nkotb.text_field :name
+
     - @tags_by_category.each do |category, tags|
       = label_tag category
-      = collection_select 'kid[tag_ids]', nil, tags, :id, :name, selected: @kid.tags.map(&:id), {}, multiple: (if ['needs', 'symptoms'].include? category then true end)
+      = collection_select 'kid[tag_ids]', nil, tags, :id, :name,{ selected: @kid.tags.map(&:id) }, { multiple: (if ['needs', 'symptoms'].include? category then true end) }
 
-    = nk.submit 'Save'
+    = nkotb.submit 'Save'

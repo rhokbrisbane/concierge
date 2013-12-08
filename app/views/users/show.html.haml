@@ -17,9 +17,9 @@
         = select_tag :tag_id, options_for_select(@tags.map{|tag| [tag.name, tag.id]}), { prompt: 'Add tag' }
         %button.icon-plus.icon-only{type: 'submit'} Add
 
-.container
-  #comments
-    = render @user.comments
+-# .container
+-#   #comments
+-#     = render @user.comments
 
-  = render 'comments/form', commentable: commentable
+-#   = render 'comments/form', commentable: commentable
 

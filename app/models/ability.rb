@@ -11,6 +11,9 @@ class Ability
     can :create, Tagging
     can :create, Resource
     can :create, Note
+    can :create, Kid
+    can :create, SavedSearch
+
     can :read, Group
     can :read, Address
     can :read, Tag
@@ -31,13 +34,22 @@ class Ability
       other_user.user_shares.where(shared_user_id: user.id).any?
     end
 
+    can :read, Kid do |kid|
+      kid.group_shares.where(shared_group_id: user.group_ids).any? ||
+      kid.user_shares.where(shared_user_id: user.id).any?
+    end
+
     can :read, User, id: user.id
     can :delete, User, id: user.id
-    can :update, User, id: user.id
+    can :manage, User, id: user.id
 
     can :manage, Note, user_id: user.id
     can :manage, Resource, user_id: user.id
     can :manage, Tagging, user_id: user.id
     can :manage, Address, user_id: user.id
+    can :manage, SavedSearch, user_id: user.id
+    can :manage, Kid do |kid|
+      kid.guardianships.where(user_id: user.id).any?
+    end
   end
 end

@@ -3,6 +3,14 @@ FactoryGirl.define do
     name { Faker::Name.name }
     email { Faker::Internet.email }
     password 'rhok2013'
+
+    factory :admin do
+      admin true
+    end
+  end
+
+  factory :kid do
+    name { Faker::Name.name }
   end
 
   factory :address do
@@ -23,6 +31,11 @@ FactoryGirl.define do
     user
     commentable { create(:tag) }
     content 'Rhok'
+  end
+
+  factory :resource do
+    name { Faker::Name.name }
+    content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
   end
 
   factory :tagging do

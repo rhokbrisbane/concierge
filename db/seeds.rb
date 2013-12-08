@@ -1,3 +1,10 @@
+##### Users #####
+
+FactoryGirl.create(:admin, email: 'admin@example.com', password: 'rhok2013')
+FactoryGirl.create(:user, email: 'user@example.com', password: 'rhok2013')
+
+##### Tags #####
+
 # Tag.delete_all
 
 tag_attributes = File.open("#{Rails.root}/db/seeds/symtoms.txt").each_line.map do |tag_name|

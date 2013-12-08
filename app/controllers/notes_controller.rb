@@ -16,7 +16,7 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = Note.new(note_params)
+    @note = current_user.notes.new(note_params)
 
     if @note.save
       redirect_to @note, notice: 'Note was successfully created.'
@@ -41,10 +41,10 @@ class NotesController < ApplicationController
   private
 
   def set_note
-    @note = Note.find(params[:id])
+    @note = current_user.notes.find(params[:id])
   end
 
   def note_params
-    params.require(:note).permit(:title, :content).merge(user_id: current_user)
+    params.require(:note).permit(:title, :content)
   end
 end

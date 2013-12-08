@@ -2,17 +2,21 @@ class KidsController < ApplicationController
   before_action :set_kid, only: [:show, :edit, :update, :destroy]
 
   def show
+    authorize! :read, @kid
   end
 
   def new
+    authorize! :create, Kid
   end
 
   def create
+    authorize! :create, Kid
     @kid = Kid.new(kid_params)
 
     respond_to do |format|
       format.html do
         if @kid.save
+          @kid.guardians << current_user
           redirect_to @kid, notice: "#{ @kid.name }'s details have been saved."
         else
           render action: 'new'
@@ -26,7 +30,8 @@ class KidsController < ApplicationController
     end
   end
 
-  def create
+  def update
+    authorize! :update, @kid
     respond_to do |format|
       format.html do
         if @kid.update(kid_params)

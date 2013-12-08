@@ -1,0 +1,2 @@
+$ ->
+  # TextUtil.buildUrls('.content')

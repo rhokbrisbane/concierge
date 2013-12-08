@@ -1,18 +1,18 @@
-= content_for :title, @user
+= content_for :title, @resource
 
-%h1.title.icon-user= @user
+%h1.title.icon-resource= @resource
 
-- unless @user.description.blank?
+- unless @resource.description.blank?
   .description
-    .container= @user.description
+    .container= @resource.description
 
 .container
   .tags
-    - if @user.tags.any?
-      - @user.tags.each do |tag|
+    - if @resource.tags.any?
+      - @resource.tags.each do |tag|
         = link_to tag.name, tag_path(tag), class: 'tag'
 
--# - if @user.id === current_user.id
+-# - if @resource.id === current_resource.id
 -#   %form.new-tag
 -#     .container
 
@@ -21,6 +21,11 @@
 -#         - @tags.each do |tag|
 -#           %option{ value: tag.id }= tag.name
 -#       %button.icon-plus.icon-only{type: 'submit'} Add
+
+- unless @resource.content.blank?
+  .content
+    .container= @resource.content
+
 
 = render 'layouts/disqus'
 

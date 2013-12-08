@@ -8,10 +8,17 @@
 
 .tabs
   %ul
-    %li= link_to "Resources", "#resources"
+    %li= link_to "Related", "#related"
     %li= link_to "Discussion", "#discussion"
 
-  #resources.tab
-    .container= 'Tag resources'
+  #related.tab
+    .container
+      = @taggings
+
+      = @tag.taggings.map(&:taggable)
+
+      -# - @taggings.each do |tagging|
+      -#   = link_to tagging, tagging
+
   #discussion.tab
     = render 'layouts/disqus'

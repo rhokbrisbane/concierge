@@ -18,4 +18,10 @@ FactoryGirl.define do
     name { Faker::Lorem.sentence(2) }
     category { Tag::CATEGORIES.sample }
   end
+
+  factory :comment do
+    user
+    commentable { create(:tag) }
+    content 'Rhok'
+  end
 end

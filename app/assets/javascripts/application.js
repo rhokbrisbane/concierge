@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require jquery.turbolinks
 //= require jquery-ui/ui/jquery-ui
+//= require chosen.jquery
 //= require_tree .

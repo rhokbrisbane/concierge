@@ -1,5 +1,6 @@
-#comments
-  = render @resource.comments
+.container
+  #comments
+    = render @resource.comments
 
-= render 'comments/form', commentable: commentable
+  = render 'comments/form', commentable: commentable
 

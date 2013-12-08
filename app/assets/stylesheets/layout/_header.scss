@@ -2,6 +2,11 @@ body > header {
   background-color: $green;
   z-index: $second-top-layer;
 
+  a {
+    display: inline-block;
+    margin-left: .5em;
+  }
+
   a, a:visited {
     color: $white;
   }

@@ -1,0 +1,73 @@
+%icon {
+  font-family: inherit;
+
+  &:before {
+    font-family: $font-family-icons;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    margin-right: 0.5em;
+  }
+}
+
+[data-icon], [class*="icon-"] {
+  @extend %icon;
+}
+
+
+%icon-only {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  text-indent: 9999em;
+  width: $line-height; height: $line-height;
+  line-height: $line-height;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &:before {
+    position: absolute;
+    top: 50%; left: 50%;
+    text-indent: 0;
+    text-align: center;
+    margin: -#{$line-height / 2};
+    width: $line-height;
+    height: $line-height;
+    line-height: $line-height;
+  }
+}
+
+.icon-only {
+  @extend %icon-only;
+}
+
+
+.icon-position-left {
+  padding-left: $line-height * 1.5;
+  position: relative;
+
+  &:before {
+    display: block;
+    position: absolute;
+    left: 0;
+    line-height: $line-height;
+    width: $line-height;
+  }
+}
+
+.icon-position-right {
+  padding-right: $line-height * 1.5;
+  position: relative;
+
+  &:before {
+    display: block;
+    position: absolute;
+    right: 0;
+    line-height: $line-height;
+    width: $line-height;
+  }
+}

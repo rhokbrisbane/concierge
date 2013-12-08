@@ -1,0 +1,21 @@
+%clearfix {
+  zoom: 1;
+  display: block;
+  clear: both;
+
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+  }
+
+  &:after { clear: both; }
+}
+
+@mixin circle($size:$line-height) {
+  @include border-radius(50%);
+  width: $size;
+  line-height: $size;
+  height: $size;
+  text-align: center;
+}

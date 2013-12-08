@@ -1,0 +1,227 @@
+// # Settings
+
+// ## Typography
+
+$font-family:             'Open Sans', 'Helvetica Neue', sans-serif !default;
+$font-family-body:        $font-family !default;
+$font-family-headings:    $font-family !default;
+$font-family-input:       $font-family !default;
+$font-family-icons:       'trove-icons' !default;
+$font-family-mono:        'Menlo', 'Monaco', 'Courier New', monospace !default;
+
+$font-size:               100% !default;
+$font-size-level-one:     3em !default;
+$font-size-level-two:     1.75em !default;
+$font-size-level-three:   1.5em !default;
+$font-size-level-four:    1.25em !default;
+$font-size-level-five:    1em !default;
+$font-size-level-six:     0.8em !default;
+
+$line-height:             1.7em !default;
+
+$font-weight-normal:      400 !default;
+$font-weight-medium:      600 !default;
+$font-weight-bold:        700 !default;
+
+
+// ## Colours
+
+$color-primary:           hsl(204,44%,54%) !default;
+$color-primary-light:     lighten($color-primary, 30%) !default;
+$color-primary-dark:      darken($color-primary, 30%) !default;
+
+$black:                   hsl(0,0%,9%) !default;
+$white:                   lighten($black, 93.5%) !default;
+$gray-darker:             lighten($black, 13.5%) !default;
+$gray-dark:               lighten($black, 20%) !default;
+$gray:                    lighten($black, 33.5%) !default;
+$gray-light:              lighten($black, 75%) !default;
+$gray-lighter:            lighten($black, 87.5%) !default;
+
+$color-success:           hsl(85, 60%, 52%) !default;
+$color-success-light:     lighten($color-success, 35%) !default;
+$color-warning:           hsl(45, 83%, 73%) !default;
+$color-warning-light:     lighten($color-warning, 35%) !default;
+$color-danger:            hsl(357, 88%, 63%) !default;
+$color-danger-light:      lighten($color-danger, 35%) !default;
+$color-info:              $color-primary !default;
+$color-info-light:        lighten($color-info, 35%) !default;
+
+$palette: "white"         $white,
+          "black"         $black,
+          "primary"       $color-primary,
+          "primary-light" $color-primary-light,
+          "gray-darker"   $gray-darker,
+          "gray-dark"     $gray-dark,
+          "gray"          $gray,
+          "gray-light"    $gray-light,
+          "gray-lighter"  $gray-lighter,
+          "success"       $color-success,
+          "success-light" $color-success-light,
+          "warning"       $color-warning,
+          "warning-light" $color-warning-light,
+          "danger"        $color-danger,
+          "danger-light"  $color-danger-light,
+          "info"          $color-info,
+          "info-light"    $color-info-light !default;
+
+
+// Links
+
+$link-color:                    $color-primary !default;
+$link-color-hover:              $color-primary !default;
+$link-color-active:             $color-primary !default;
+$link-color-visited:            $color-primary !default;
+
+$main-link-color:               $link-color !default;
+$main-link-color-hover:         darken($link-color, 15%) !default;
+$main-link-color-active:        darken($link-color, 25%) !default;
+$main-link-color-visited:       lighten($link-color, 15%) !default;
+
+$footer-link-color:             $link-color !default;
+$footer-link-color-hover:       darken($link-color, 15%) !default;
+$footer-link-color-active:      darken($link-color, 25%) !default;
+$footer-link-color-visited:     lighten($link-color, 15%) !default;
+
+
+// Buttons
+
+$button-default-foreground-color:         $white !default;
+$button-default-background-color:         $gray-dark !default;
+$button-default-border-color:             $gray-darker !default;
+
+$button-default-hover-foreground-color:   $white !default;
+$button-default-hover-background-color:   $gray-dark !default;
+$button-default-hover-border-color:       $gray-darker !default;
+
+$button-default-active-foreground-color:  $white !default;
+$button-default-active-background-color:  $gray-dark !default;
+$button-default-active-border-color:      $gray-darker !default;
+
+$button-submit-foreground-color:          $white !default;
+$button-submit-background-color:          $color-primary !default;
+$button-submit-border-color:              $color-primary-dark !default;
+
+$button-danger-foreground-color:          $white !default;
+$button-danger-background-color:          $gray-dark !default;
+$button-danger-border-color:              $gray-darker !default;
+
+
+$button-submit-background-color:          $color-primary !default;
+$button-submit-foreground-color:          $white !default;
+$button-submit-border-color:              darken($color-primary, 5%) !default;
+
+$button-submit-hover-background-color:    darken($color-primary, 5%) !default;
+$button-submit-hover-foreground-color:    $white !default;
+$button-submit-hover-border-color:        darken($color-primary, 10%) !default;
+
+
+// Inputs
+
+$input-foreground-color:        $black !default;
+$input-background-color:        $white !default;
+$input-border-color:            $gray-light !default;
+
+$input-hover-foreground-color:  $color-info !default;
+$input-hover-background-color:  $color-info-light !default;
+$input-hover-border-color:      $color-info !default;
+
+$input-focus-foreground-color:  $black !default;
+$input-focus-background-color:  $white !default;
+$input-focus-border-color:      $color-success !default;
+
+
+// Selects
+
+$select-foreground-color:       $black !default;
+$select-background-color:       $gray-lighter !default;
+$select-border-color:           $gray-light !default;
+
+$select-hover-foreground-color: $color-info !default;
+$select-hover-background-color: $color-info-light !default;
+$select-hover-border-color:     $color-info !default;
+
+$select-focus-foreground-color: $color-success !default;
+$select-focus-background-color: $color-success-light !default;
+$select-focus-border-color:     $color-success !default;
+
+
+// Breakpoints
+
+$breakpoint-small:        32em !default;
+$breakpoint-medium:       50em !default;
+$breakpoint-large:        75em !default;
+
+
+// Layout
+
+$gutter:                  $line-height * 1.5 !default;
+$page-margin:             $line-height * 2 !default;
+$max-width:               $breakpoint-medium !default;
+$center-layout:           true !default;
+
+
+// Stroke widths
+
+$heavy-stroke:            $line-height / 4 !default;
+$medium-stroke:           $line-height / 8 !default;
+$light-stroke:            0.1em !default;
+
+$default-border-color:    $gray-light !default;
+$light-border-color:      $gray-lighter !default;
+
+
+// Structure options
+
+$fixed-nav-width:         18em !default;
+
+$fixed-left-nav:          true !default;
+$fixed-left-nav-width:    $fixed-nav-width !default;
+
+$fixed-right-nav:         false !default;
+$fixed-right-nav-width:   $fixed-nav-width !default;
+$fixed-right-nav-hideable: false !default;
+
+$fixed-top-nav:           false !default;
+$fixed-top-nav-height:    8em !default;
+
+$fixed-top-header:        true !default;
+$fixed-top-header-height: $line-height * 2 !default;
+$fixed-top-header-color:  $white !default;
+$fixed-top-header-background: transparent !default;
+
+
+$nav-background-color:    $black !default;
+$nav-item-color:          $color-primary !default;
+
+
+// Layers (z-indexes)
+
+$top-layer: 200 !default;
+$second-top-layer: 100 !default;
+
+
+// Debugging
+
+$baseline-grid: false !default;
+
+
+// Misc
+
+$radius: .15em !default;
+
+
+//
+// To Implement your own icons, update the below:
+//
+// @font-face {
+//   font-family: $font-family-icons !default;
+//   src: url('path/to/icons.eot') !default;
+//   src: url('path/to/icons.eot?#iefix') format('embedded-opentype'),
+//        url('path/to/icons.ttf') format('truetype'),
+//        url('path/to/icons.woff') format('woff'),
+//        url('path/to/icons.svg') format('svg') !default;
+//   font-weight: normal !default;
+//   font-style: normal !default;
+// }
+//

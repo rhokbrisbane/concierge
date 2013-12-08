@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :guardianships, dependent: :destroy
   has_many :kids, through: :guardianships
+  has_many :comments
 
   def to_s
     name.presence || email

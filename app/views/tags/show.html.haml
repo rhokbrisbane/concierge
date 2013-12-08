@@ -1,0 +1,24 @@
+= content_for :title, @tag
+
+%h1.title{class: "icon-#{@tag.category ? @tag.category : 'tag'}"}= @tag
+
+- unless @tag.description.blank?
+  .description
+    .container= @tag.description
+
+.tabs
+  %ul
+    %li= link_to "Related", "#related"
+    %li= link_to "Discussion", "#discussion"
+
+  #related.tab
+    .container
+      = @taggings
+
+      = @tag.taggings.map(&:taggable)
+
+      -# - @taggings.each do |tagging|
+      -#   = link_to tagging, tagging
+
+  #discussion.tab
+    = render 'layouts/disqus'

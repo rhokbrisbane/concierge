@@ -32,10 +32,9 @@ class SearchResults
   end
 
   def results(type = nil)
-    # @results = tag_results(type) | 
-    location_results(type)
-    # @results.compact!
-    # @results.uniq!
+    tag_results = tag_results(type)
+    location_results = location_results(type)
+    (tag_results.to_a.concat location_results.to_a).compact.uniq
   end
 
   def tag_results(type)

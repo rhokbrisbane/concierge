@@ -4,4 +4,13 @@ class ApplicationController < ActionController::Base
 
   # TODO: uncomment this when Facebook authentication is working!
   # before_filter :authenticate_user!
+
+  def authenticate_admin_user!
+    authenticate_user!
+    raise CanCan::Unauthorized unless current_user.admin
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
 end

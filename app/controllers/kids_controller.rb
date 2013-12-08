@@ -1,9 +1,9 @@
 class KidsController < ApplicationController
-  load_and_authorize_resource
-  # before_action :set_kid, only: [:show, :edit, :update, :destroy]
+  before_action :set_kid, only: [:show, :edit, :update, :destroy]
 
   def show
     authorize! :read, @kid
+    @results = SearchResults.for(tags: @kid.tags, ability: current_ability)
   end
 
   def new

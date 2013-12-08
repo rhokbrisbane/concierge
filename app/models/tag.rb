@@ -3,7 +3,7 @@ class Tag < ActiveRecord::Base
 
   CATEGORIES = [
     'needs',
-    'symtoms',
+    'symptoms',
     'age_group',
     'weight_group'
   ]

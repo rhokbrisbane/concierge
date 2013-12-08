@@ -62,8 +62,9 @@ FactoryGirl.define do
   end
 
   factory :resource do
-    name { Faker::Name.name }
-    content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+    user
+    name { Faker::Lorem.sentence(1) }
+    content { Faker::Lorem.sentence(10) }
   end
 
   factory :tagging do

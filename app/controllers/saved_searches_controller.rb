@@ -2,12 +2,20 @@ class SavedSearchesController < ApplicationController
   before_action :set_saved_search, only: [:show, :edit, :update, :destroy]
 
   def show
+    authorize! :read, @saved_search
   end
 
   def new
+    authorize! :create, SavedSearch
+  end
+
+  def edit
+    authorize! :manage, @saved_search
   end
 
   def create
+    authorize! :create, SavedSearch
+
     @saved_search = current_user.saved_searches.new(saved_searches_params)
 
     respond_to do |format|
@@ -27,6 +35,8 @@ class SavedSearchesController < ApplicationController
   end
 
   def update
+    authorize! :manage, @saved_search
+
     respond_to do |format|
       format.html do
         if @saved_search.update(saved_searches_params)

@@ -1,5 +1,5 @@
 - if user_signed_in?
-  %p Your are signed in as #{current_user.name}
+  = link_to current_user, edit_user_registration_path
   = link_to "Sign Out", destroy_user_session_path, method: :delete
 - else
   %p

@@ -18,6 +18,7 @@ class Ability
     can :read, Address
     can :read, Tag
     can :read, Tagging
+    can :read, Comment
 
     can :read, Note do |note|
       note.group_shares.where(shared_group_id: user.group_ids).any? ||
@@ -48,6 +49,7 @@ class Ability
     can :manage, Tagging, user_id: user.id
     can :manage, Address, user_id: user.id
     can :manage, SavedSearch, user_id: user.id
+    can :manage, Comment, user_id: user.id
     can :manage, Kid do |kid|
       kid.guardianships.where(user_id: user.id).any?
     end

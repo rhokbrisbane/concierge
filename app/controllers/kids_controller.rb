@@ -21,7 +21,7 @@ class KidsController < ApplicationController
 
       format.json do
         @kid.save
-        render json: @kid.to_json 
+        render json: @kid.to_json
       end
     end
   end
@@ -38,7 +38,7 @@ class KidsController < ApplicationController
 
       format.json do
         @kid.update(kid_params)
-        render json: @kid.to_json 
+        render json: @kid.to_json
       end
     end
   end

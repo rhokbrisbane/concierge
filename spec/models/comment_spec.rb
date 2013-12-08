@@ -7,6 +7,9 @@ describe Comment do
   it { should validate_presence_of(:commentable_id) }
   it { should validate_presence_of(:commentable_type) }
   it { should validate_presence_of(:content) }
+  it { should allow_value('Resource').for(:commentable_type) }
+  it { should allow_value('Tag').for(:commentable_type) }
+  it { should_not allow_value('User').for(:commentable_type) }
 
   describe 'default scope' do
     let!(:comment1) { create(:comment, created_at: Time.now) }

@@ -33,6 +33,11 @@ FactoryGirl.define do
     content 'Rhok'
   end
 
+  factory :resource do
+    name { Faker::Name.name }
+    content 'Lorem ipsum dolor sit amet, consectetur adipisicing elit'
+  end
+
   factory :tagging do
     tag
     taggable factory: :user

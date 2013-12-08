@@ -7,10 +7,12 @@ RhokBrisbane2013::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :dashboard, only: :index
+  resources :tags, only: :show
+  resources :users, only: :show
+  resources :resources, except: [:index]
+  resources :comments, only: [:create, :destroy]
   resources :kids
   resources :saved_searches
-  resources :resources, except: [:index]
-  resources :tags, only: :show
   resources :users, only: :show do
     patch 'add_tag', on: :member
   end

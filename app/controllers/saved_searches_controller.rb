@@ -3,6 +3,7 @@ class SavedSearchesController < ApplicationController
 
   def show
     authorize! :read, @saved_search
+    @results = SearchResults.for(tags: @saved_search.tags, ability: current_ability)
   end
 
   def new

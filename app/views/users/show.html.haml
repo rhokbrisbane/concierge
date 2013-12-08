@@ -13,11 +13,13 @@
         = link_to tag.name, tag_path(tag), class: 'tag'
 
     - if @user.id == current_user.id
-      = form_for @user, remote: true, url: add_tag_user_path(@user)  do |f|
-        .container
-          = select_tag :tag_id, options_for_select(@tags.map{|tag| [tag.name, tag.id]})
+      = form_for @user, remote: true, url: add_tag_user_path(@user), html: { autocomplete: false, class: 'add-tag' } do |f|
+        = select_tag :tag_id, options_for_select(@tags.map{|tag| [tag.name, tag.id]}), { prompt: 'Add tag' }
+        %button.icon-plus.icon-only{type: 'submit'} Add
 
-          = f.submit 'Add Tag'
+.container
+  #comments
+    = render @user.comments
 
-= render 'layouts/disqus'
+  = render 'comments/form', commentable: commentable
 

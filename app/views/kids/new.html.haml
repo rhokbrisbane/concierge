@@ -5,6 +5,10 @@
     
     - @tags_by_category.each do |category, tags|
       = label_tag category
-      = collection_select 'kid[tag_ids]', nil, tags, :id, :name
+      
+      - if ['needs', 'symptoms'].include? category
+        = collection_select 'kid[tag_ids]', nil, tags, :id, :name, {}, multiple: true
+      - else
+        = collection_select 'kid[tag_ids]', nil, tags, :id, :name  
 
     = nk.submit 'Save'

@@ -1,24 +1,28 @@
 
+$title-icon-size: $line-height;
+
 .title {
-  font-size: 2em;
+  font-size: $title-icon-size;
+  padding: 0 ($title-icon-size / 2);
   text-align: center;
+  @include ellipsis;
 
   &[class*="icon-"] {
-    padding-top: 2em;
+    padding-top: $title-icon-size * 1.5;
     position: relative;
 
     &:before {
-      font-size: .75em;
+      font-size: $title-icon-size / 2;
       position: absolute;
-      top: .5em;
+      top: $title-icon-size / 2;
       left: 50%;
-      width: 1.5em;
-      line-height: 1.5em;
-      height: 1.5em;
-      margin-left: -.75em;
-      color: #aaa;
+      width: $title-icon-size;
+      line-height: $title-icon-size;
+      height: $title-icon-size;
+      margin-left: -#{$title-icon-size / 2};
+      color: $gray-light;
+      background: $gray-lighter;
       border-radius: 50%;
-      border: .125em solid;
     }
   }
 }

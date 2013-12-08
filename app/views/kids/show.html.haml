@@ -1,2 +1,20 @@
 %header
   = @kid.name
+
+%h1
+  Search results
+
+%h3 Resources
+
+- @results.resources.each do |resource|
+  %h4
+    = resource.name
+  %p
+    = resource.content
+
+%h3 People
+- @results.people.each do |person|
+  %h4
+    = person.name
+
+= link_to 'Edit', edit_kid_path(@kid)

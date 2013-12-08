@@ -1,8 +1,10 @@
 class KidsController < ApplicationController
-  before_action :set_kid, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  # before_action :set_kid, only: [:show, :edit, :update, :destroy]
 
   def show
     authorize! :read, @kid
+    @results = SearchResults.for(tags: @kid.tags, ability: current_ability)
   end
 
   def new
@@ -28,6 +30,10 @@ class KidsController < ApplicationController
         render json: @kid.to_json
       end
     end
+  end
+
+  def edit
+    authorize! :manage, @kid
   end
 
   def update

@@ -1,7 +1,10 @@
 = content_for :title, @tag
 
-.description
-  = @tag.description
+%h1.title{class: "icon-#{@tag.category ? @tag.category : 'tag'}"}= @tag
+
+- unless @tag.description.blank?
+  .description
+    .container= @tag.description
 
 .tabs
   %ul
@@ -9,6 +12,6 @@
     %li= link_to "Discussion", "#discussion"
 
   #resources.tab
-    = Tag resources
+    .container= 'Tag resources'
   #discussion.tab
     = render 'layouts/disqus'

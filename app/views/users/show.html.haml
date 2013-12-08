@@ -1,19 +1,25 @@
 = content_for :title, @user
 
-.tags
-  - if @user.tags.any?
-    - @user.tags.each do |tag|
-      .tag= tag.name
-
-  %form.new-tag
-
-    %select
-      %option New Tag
-      - @tags.each do |tag|
-        %option{ value: tag.id }= tag.name
-    %button.icon-plus.icon-only{type: 'submit'} Add
+%h1.title.icon-user= @user
 
 .description
-  = @user.description
+  .container= @user.description
+
+.container
+  .tags
+    - if @user.tags.any?
+      - @user.tags.each do |tag|
+        = link_to tag.name, tag_path(tag), class: 'tag'
+
+-# - if @user.id === current_user.id
+-#   %form.new-tag
+-#     .container
+
+-#       %select
+-#         %option New Tag
+-#         - @tags.each do |tag|
+-#           %option{ value: tag.id }= tag.name
+-#       %button.icon-plus.icon-only{type: 'submit'} Add
 
 = render 'layouts/disqus'
+

@@ -35,5 +35,4 @@
       = login_options
 
   %main{ role: 'main' }
-    %h1.title{ class: "icon-#{params[:controller].singularize}" }= yield :title if content_for :title
     = yield

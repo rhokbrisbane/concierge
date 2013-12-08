@@ -1,0 +1,20 @@
+
+.tags {
+  text-align: center;
+}
+
+.tag {
+  @extend .button;
+  background: $tag-color;
+  color: $black;
+}
+
+
+
+
+// Icons
+
+.icon-needs { @extend .icon-asterisk2; }
+.icon-symtoms { @extend .icon-virus; }
+.icon-age_group { @extend .icon-birthday; }
+.icon-weight_group { @extend .icon-cales; }

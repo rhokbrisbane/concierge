@@ -20,6 +20,23 @@ describe Ability do
         let(:resource) { create(:resource, user: user) }
         let(:tagging) { create(:tagging, user: user) }
         let(:address) { create(:address, user: user) }
+        let(:kid) { create(:kid) }
+
+        before(:each) do
+          kid.guardians << user
+        end
+
+        it "should be_able_to(:read, kid)" do
+          should be_able_to(:read, kid)
+        end
+
+        it "should be_able_to(:update, kid)" do
+          should be_able_to(:update, kid)
+        end
+
+        it "should be_able_to(:delete, kid)" do
+          should be_able_to(:delete, kid)
+        end
 
         it "should be_able_to(:read, tagging)" do
           should be_able_to(:read, tagging)
@@ -32,7 +49,6 @@ describe Ability do
         it "should be_able_to(:delete, tagging)" do
           should be_able_to(:delete, tagging)
         end
-
 
         it "should be_able_to(:read, note)" do
           should be_able_to(:read, note)
@@ -88,11 +104,25 @@ describe Ability do
         let(:note) { create(:note) }
         let(:resource) { create(:resource) }
         let(:other_user) { create(:user) }
+        let(:kid) { create(:kid) }
 
         before(:each) do
           note.shared_users << user
           other_user.shared_users << user
           resource.shared_users << user
+          kid.shared_users << user
+        end
+
+        it "should be_able_to(:read, kid)" do
+          should be_able_to(:read, kid)
+        end
+
+        it "should_not be_able_to(:update, kid)" do
+          should_not be_able_to(:update, kid)
+        end
+
+        it "should_not be_able_to(:delete, kid)" do
+          should_not be_able_to(:delete, kid)
         end
 
         it "should be_able_to(:read, note)" do
@@ -106,7 +136,6 @@ describe Ability do
         it "should_not be_able_to(:delete, note)" do
           should_not be_able_to(:delete, note)
         end
-
 
         it "should be_able_to(:read, other_user)" do
           should be_able_to(:read, other_user)
@@ -137,11 +166,25 @@ describe Ability do
         let(:note) { create(:note) }
         let(:resource) { create(:resource) }
         let(:other_user) { create(:user) }
+        let(:kid) { create(:kid) }
 
         before(:each) do
           note.shared_groups << group_a
           other_user.shared_groups << group_a
           resource.shared_groups << group_a
+          kid.shared_groups << group_a
+        end
+
+        it "should be_able_to(:read, kid)" do
+          should be_able_to(:read, kid)
+        end
+
+        it "should_not be_able_to(:update, kid)" do
+          should_not be_able_to(:update, kid)
+        end
+
+        it "should_not be_able_to(:delete, kid)" do
+          should_not be_able_to(:delete, kid)
         end
 
         it "should be_able_to(:read, note)" do
@@ -189,6 +232,19 @@ describe Ability do
         let(:tagging) { create(:tagging) }
         let(:resource) { create(:resource) }
         let(:address) { create(:address) }
+        let(:kid) { create(:kid) }
+
+        it "should_not be_able_to(:read, kid)" do
+          should_not be_able_to(:read, kid)
+        end
+
+        it "should_not be_able_to(:update, kid)" do
+          should_not be_able_to(:update, kid)
+        end
+
+        it "should_not be_able_to(:delete, kid)" do
+          should_not be_able_to(:delete, kid)
+        end
 
         it "should be_able_to(:read, group)" do
           should be_able_to(:read, group)
@@ -302,6 +358,10 @@ describe Ability do
 
         it "should be_able_to(:create, Address)" do
           should be_able_to(:create, Address)
+        end
+
+        it "should be_able_to(:create, Kid)" do
+          should be_able_to(:create, Kid)
         end
       end
     end

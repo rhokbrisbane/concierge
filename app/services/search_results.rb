@@ -32,9 +32,9 @@ class SearchResults
   end
 
   def results(type = nil)
-    taggable_type(type).map(&:taggable).reject do |taggable,tags|
+    taggable_type(type).group_by(&:taggable).reject do |taggable,tags|
       missing_required_tags(taggable) || ability.cannot?(:read, taggable)
-    end
+    end.keys
   end
 
   def missing_required_tags(taggable)

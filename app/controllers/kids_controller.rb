@@ -3,6 +3,7 @@ class KidsController < ApplicationController
 
   def show
     authorize! :read, @kid
+    @results = SearchResults.for(tags: @kid.tags, ability: current_ability)
   end
 
   def new
@@ -10,12 +11,13 @@ class KidsController < ApplicationController
   end
 
   def create
-    authorize! :create, @kid
+    authorize! :create, Kid
     @kid = Kid.new(kid_params)
 
     respond_to do |format|
       format.html do
         if @kid.save
+          @kid.guardians << current_user
           redirect_to @kid, notice: "#{ @kid.name }'s details have been saved."
         else
           render action: 'new'

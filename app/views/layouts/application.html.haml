@@ -31,10 +31,6 @@
     %hgroup.home-link
       = link_to 'Home', root_path, class: 'icon-home icon-only'
 
-    %hgroup.user-actions
-      - if current_user
-        = link_to 'Profile', edit_user_registration_path
-      - else
-        = link_to 'Sign in', new_user_session_path
+    %hgroup.user-actions= render 'layouts/authentication_links'
 
   %main{ role: 'main' }= yield

@@ -10,12 +10,13 @@ class User < ActiveRecord::Base
          :omniauthable, omniauth_providers: [:facebook]
 
   has_many :taggings, as: :taggable
+  has_many :addresses, as: :addressable
   has_many :tags, through: :taggings
   has_many :guardianships, dependent: :destroy
   has_many :kids, through: :guardianships
 
   def to_s
-    name.presence || email
+    name.presence || email.presence || "User#{id}"
   end
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)

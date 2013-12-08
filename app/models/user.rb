@@ -12,8 +12,10 @@ class User < ActiveRecord::Base
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
-  delegate :to_s, to: :display_name
- 
+  def to_s
+    name.presence || email
+  end
+
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     User.where(provider:  auth.provider, uid: auth.uid).first ||
     User.create(name:     auth.extra.raw_info.name,
@@ -30,9 +32,5 @@ class User < ActiveRecord::Base
         user.email = data["email"] if user.email.blank?
       end
     end
-  end
-
-  def display_name
-    name.presence || email
   end
 end

@@ -105,11 +105,14 @@ ActiveRecord::Schema.define(version: 20131208073141) do
 
   create_table "resources", force: true do |t|
     t.string   "name"
-    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "description"
+    t.string   "category"
+    t.string   "url"
+    t.string   "phone"
+    t.string   "facebook"
+    t.string   "twitter"
   end
 
   create_table "saved_searches", force: true do |t|

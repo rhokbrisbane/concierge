@@ -1,4 +1,5 @@
 .container
+
   - if @kids and @kids.any?
     = render partial: 'kids/kid', collection: @kids, as: :kid
 
@@ -7,8 +8,7 @@
 
 .container
   - if @saved_searches and @saved_searches.any?
+    %label Saved searches
     = render partial: 'saved_searches/saved_search', collection: @saved_searches, as: :saved_search
 
-  - else
-    = link_to 'Search', new_saved_search_path, class: "big-button"
-
+  = link_to 'Search', new_saved_search_path, class: "big-button"

@@ -7,8 +7,8 @@
       = label_tag category
       
       - if ['needs', 'symptoms'].include? category
-        = collection_select 'kid[tag_ids]', nil, tags, :id, :name, {}, multiple: true
+        = collection_select 'kid', 'tag_ids', tags, :id, :name, {}, { multiple: true }
       - else
-        = collection_select 'kid[tag_ids]', nil, tags, :id, :name  
+        = collection_select 'kid[tag_ids]', nil, tags, :id, :name
 
     = nk.submit 'Save'

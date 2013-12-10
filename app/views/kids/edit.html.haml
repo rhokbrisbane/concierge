@@ -5,6 +5,10 @@
 
     - @tags_by_category.each do |category, tags|
       = label_tag category
-      = collection_select 'kid[tag_ids]', nil, tags, :id, :name,{ selected: @kid.tags.map(&:id) }, { multiple: (if ['needs', 'symptoms'].include? category then true end) }
+      
+      - if ['needs', 'symptoms'].include? category
+        = collection_select 'kid', 'tag_ids', tags, :id, :name, { selected: @kid.tags.map(&:id) }, { multiple: true }
+      - else
+        = collection_select 'kid[tag_ids]', nil, tags, :id, :name, { selected: @kid.tags.map(&:id) }
 
     = nkotb.submit 'Save'

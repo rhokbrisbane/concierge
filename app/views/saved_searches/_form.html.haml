@@ -1,12 +1,16 @@
 .container
-  = form_for saved_search do |nss|
+  = form_for SavedSearch.new do |nss|
     = nss.label :name
     = nss.text_field :name
     = nss.label :location_range, "Filter Results Range (in meters), '0' to skip"
     = nss.number_field :location_range, step: 500
-
+    
     - @tags_by_category.each do |category, tags|
       = label_tag category
-      = collection_select 'saved_search[tag_ids]', nil, tags, :id, :name, selected: @saved_search.tags.map(&:id)
+      
+      - if ['needs', 'symptoms'].include? category
+        = collection_select 'saved_search', 'tag_ids', tags, :id, :name, {}, multiple: true
+      - else
+        = collection_select 'saved_search[tag_ids]', nil, tags, :id, :name, {}
 
     = nss.submit 'Save'

@@ -14,7 +14,8 @@ RhokBrisbane2013::Application.routes.draw do
   resources :kids
   resources :saved_searches
   resources :users, only: :show do
-    patch 'add_tag', on: :member
+    patch 'add_tag',    on: :member
+    patch 'remove_tag', on: :member
   end
 
   namespace :api, constraints: { format: /json/ } do

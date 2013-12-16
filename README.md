@@ -1,6 +1,4 @@
-# [Queensland Kids](http://www.queenslandkids.org)
-
-**Concierge**
+# [Queensland Kids](http://www.queenslandkids.org) - Concierge
 
 ## What is this project?
 

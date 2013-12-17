@@ -3,8 +3,8 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.2'
 
-gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'active_model_serializers'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'compass-rails', '~> 1.1.2'
@@ -30,8 +30,8 @@ group :development do
 end
 
 group :development, :test do
-  gem 'faker'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem 'pry-meta'
 end
 

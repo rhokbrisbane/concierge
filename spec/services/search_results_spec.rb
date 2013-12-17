@@ -5,7 +5,7 @@ describe SearchResults do
 
     context "given a close location" do
       let!(:close_user) { create :close_user }
-      let!(:far_user) { create :far_user } 
+      let!(:far_user) { create :far_user }
       it "returns close results" do
         Geocoder.stub(:coordinates).and_return([-27.459365, 153.038403])
         expect(SearchResults.for(location: "close location", location_range: 10_000).all).to eq [close_user]
@@ -35,7 +35,7 @@ describe SearchResults do
       context "when user1 is tagged 'a' - not required, and 'b' - required" do
         let(:user1) { create(:user) }
 
-        before(:each) do
+        before do
           user1.taggings.create(tag: a)
           user1.taggings.create(tag: b, required: true)
         end
@@ -43,7 +43,7 @@ describe SearchResults do
         context "and user2 is tagged 'c'" do
           let(:user2) { create(:user) }
 
-          before(:each) do
+          before do
             user2.tags << c
             user2.shared_users << user1
           end

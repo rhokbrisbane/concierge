@@ -77,6 +77,11 @@ FactoryGirl.define do
     twitter  'resource_tw'
   end
 
+  factory :saved_search do
+    user
+    name { Faker::Lorem.sentence(1) }
+  end
+
   factory :tagging do
     tag
     taggable factory: :user

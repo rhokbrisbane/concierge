@@ -74,7 +74,7 @@ To get our [sass](http://sass-lang.com/) framework you need [node](http://nodejs
 
     bower install
 
-Access it through `http://lvh.me`, site url is a requirement for Facebook Authentication
+Access it through `http://lvh.me:3000`, site url is a requirement for Facebook Authentication
 
 Start the server passing the Facebook credentials (the length below is correct, the values are not):
 

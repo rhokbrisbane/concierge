@@ -5,7 +5,7 @@
 
     - @tags_by_category.each do |category, tags|
       = label_tag category
-      
+
       - if ['needs', 'symptoms'].include? category
         = collection_select 'kid', 'tag_ids', tags, :id, :name, { selected: @kid.tags.map(&:id) }, { multiple: true }
       - else

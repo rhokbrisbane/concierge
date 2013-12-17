@@ -5,4 +5,3 @@ module Commentable
     has_many :comments, as: :commentable
   end
 end
-

@@ -6,6 +6,7 @@ module HasApiToken
   end
 
   private
+
   def generate_api_token
     self.api_token ||= Digest::SHA1.hexdigest(Time.now.to_s + attributes.inspect)
   end

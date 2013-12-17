@@ -1,5 +1,9 @@
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start 'rails' do
+  add_group 'Admin',       'app/admin'
+  add_group 'Serializers', 'app/serializers'
+  add_group 'Services',    'app/services'
+end
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)

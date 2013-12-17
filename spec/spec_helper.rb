@@ -9,6 +9,7 @@ require 'capybara/poltergeist'
 
 Rails.logger.level = 4 # Reduce the IO during tests
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/features/macros/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
@@ -20,6 +21,7 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.expect_with(:rspec) { |c| c.syntax = :expect }
 
+  config.include AcceptanceMacros, type: :feature
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
 

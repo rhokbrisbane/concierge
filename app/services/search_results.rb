@@ -1,5 +1,5 @@
 class SearchResults
-  attr_reader :tags, :ability
+  attr_reader :tags, :ability, :location, :location_range
 
   def self.for(args = {})
     new(args)
@@ -8,6 +8,7 @@ class SearchResults
   def initialize(args = {})
     @tags = Array(args[:tags])
     @location = args[:location].presence
+    @location_range = args[:location_range].presence
     @ability = args[:ability] || Ability.new(User.new)
   end
 
@@ -46,18 +47,24 @@ class SearchResults
 
   def location_results(type)
     if coordinates
-      scope = Address.near(@coordinates, 10, units: :km).includes(:addressable)
+      scope = Address.near(coordinates, location_range_in_km, units: :km).includes(:addressable)
       scope = scope.where(addressabe_type: type) if type
-      scope.map &:addressable
+      scope.map(&:addressable)
     end
   end
 
   def missing_required_tags(taggable)
     Tagging.where(taggable: taggable, required: true)
-           .where.not(tag_id: @tags).any?
+           .where.not(tag_id: tags).any?
   end
 
   def coordinates
-    @coordinates ||= Geocoder.coordinates(@location) if @location
+    if location && location_range.to_i.nonzero?
+      @coordinates ||= Geocoder.coordinates(location)
+    end
+  end
+
+  def location_range_in_km
+    location_range / 1_000.0
   end
 end

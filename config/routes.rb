@@ -1,4 +1,4 @@
-RhokBrisbane2013::Application.routes.draw do
+Concierge::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   root to: 'dashboard#index'

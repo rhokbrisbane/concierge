@@ -8,7 +8,7 @@ require 'sprockets/railtie'
 
 Bundler.require(:default, Rails.env)
 
-module RhokBrisbane2013
+module Concierge
   class Application < Rails::Application
     config.autoload_paths += %W(#{config.root}/lib)
     config.time_zone = 'Brisbane'

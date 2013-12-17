@@ -54,6 +54,7 @@ class KidsController < ApplicationController
   end
 
   private
+
   def kid_params
     params.require(:kid).permit(:name, :guardian_ids, tag_ids: [])
   end

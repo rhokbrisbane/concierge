@@ -196,9 +196,9 @@ $chosen-active-border-color: darken($chosen-border-color, 10%);
   background-color: $color-primary-light;
   color: $color-primary;
 
-  span { 
+  span {
     display: block;
-    @include ellipsis; 
+    @include ellipsis;
   }
 }
 
@@ -326,4 +326,3 @@ $chosen-active-border-color: darken($chosen-border-color, 10%);
     direction: rtl;
   }
 }
-

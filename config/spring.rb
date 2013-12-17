@@ -1,1 +1,1 @@
-require "spring/commands/rspec"
+require 'spring/commands/rspec'

@@ -7,14 +7,12 @@ class TagListHandler
     @setupCurrentTags()
     @bindPlusButton()
 
-
   setupSelect : ->
     $("#tag_id").empty()
     html = ""
     for tag in @getCurrentTagList()
       html += "<option value=\"#{tag[0]}\">#{tag[1]}</option>"
     $("#tag_id").html(html)
-
 
   setupCurrentTags : ->
     $(".current_tags").empty()
@@ -23,16 +21,12 @@ class TagListHandler
       html += "<a class=\"tag\" data-id=\"#{tag[0]}\" href=\"#\">#{tag[1]}</a>&nbsp;"
     $(".current_tags").html(html)
 
-
-
   getCurrentTagList : ->
     return _.difference(@tagsList, @entityTagsList)
-
 
   getChosenTag : (tagId)->
     for tag in @tagsList
       return tag if tag[0] == tagId
-
 
   bindPlusButton : ->
     $("#submit_new_tag").off('click')
@@ -44,7 +38,6 @@ class TagListHandler
       @setupCurrentTags()
       @addTag(tagId)
 
-
   addTag : (tagId) ->
     _this = @
     $.ajax
@@ -53,8 +46,6 @@ class TagListHandler
       data: { tag_id: tagId}
       dataType: "json"
       success: (data) ->
-
-
 
 $ ->
   if ($("#entity_tags_list").length && $("#tags_list").length && $("#add_tag_url").length)

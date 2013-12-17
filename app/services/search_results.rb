@@ -25,6 +25,7 @@ class SearchResults
   end
 
   private
+
   def taggings
     Tagging.where(tag_id: tags)
   end

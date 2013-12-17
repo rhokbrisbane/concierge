@@ -60,6 +60,7 @@ class SavedSearchesController < ApplicationController
   end
 
   private
+
   def saved_searches_params
     params.require(:saved_search).permit(:name, :location_range, tag_ids: [])
   end

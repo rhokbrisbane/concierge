@@ -41,9 +41,7 @@
     @extend .fadeOutWithOpacity;
     @include transition(all .5s linear);
   }
-
 }
-
 
 .no-data {
   position: absolute;

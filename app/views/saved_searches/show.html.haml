@@ -2,18 +2,14 @@
   = @saved_search.name
   = link_to 'Edit', edit_saved_search_path(@saved_search)
 
-%h1
-  Search results
+%h1 Search results
 
 %h3 Resources
 
 - @results.resources.each do |resource|
-  %h4
-    = resource.name
-  %p
-    = resource.content
+  %h4= resource.name
+  %p= resource.content
 
 %h3 People
 - @results.people.each do |person|
-  %h4
-    = person.name
+  %h4= person.name

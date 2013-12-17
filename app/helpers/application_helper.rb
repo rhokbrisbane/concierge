@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def login_options
     if user_signed_in?
       link_to('Profile', user_path(current_user), title: current_user.name) +
@@ -11,6 +10,3 @@ module ApplicationHelper
     end
   end
 end
-
-
-

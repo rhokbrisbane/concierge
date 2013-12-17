@@ -1,5 +1,4 @@
 class @Message
-
   @flash : (class_name, message) ->
     msg = $("<div class='flash #{class_name}'><span class='wrap'>#{message}<div class='close-button'><a href='#' class='close-button-link' data-no-turbolink='true'></a></div></span></div>")
 

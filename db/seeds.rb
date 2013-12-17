@@ -21,8 +21,6 @@ Tag.create(tag_attributes)
 
 ##### Resources #####
 
-# Resource.delete_all
-
 resource_attributes = []
 CSV.foreach("#{Rails.root}/db/seeds/organisations.csv") do |category, name, url, phone, facebook, twitter|
   resource_attributes << { category: category, name: name, url: url, phone: phone, facebook: facebook, twitter: twitter }

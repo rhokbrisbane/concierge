@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Dashboard', type: :feature do
+describe 'Dashboard' do
   context 'without authentication' do
     it 'redirects to sign in page' do
       visit admin_root_path

@@ -40,16 +40,17 @@ class Ability
       kid.user_shares.where(shared_user_id: user.id).any?
     end
 
-    can :read, User, id: user.id
+    can :read,   User, id: user.id
     can :delete, User, id: user.id
     can :update, User, id: user.id
 
-    can :manage, Note, user_id: user.id
-    can :manage, Resource, user_id: user.id
-    can :manage, Tagging, user_id: user.id
-    can :manage, Address, user_id: user.id
+    can :manage, Note,        user_id: user.id
+    can :manage, Resource,    user_id: user.id
+    can :manage, Tagging,     user_id: user.id
+    can :manage, Address,     user_id: user.id
     can :manage, SavedSearch, user_id: user.id
-    can :manage, Comment, user_id: user.id
+    can :manage, Comment,     user_id: user.id
+
     can :manage, Kid do |kid|
       kid.guardianships.where(user_id: user.id).any?
     end

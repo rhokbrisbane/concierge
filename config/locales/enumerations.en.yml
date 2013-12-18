@@ -1,0 +1,11 @@
+en:
+  enumerations:
+    resources_category:
+      advocacy: 'Advocacy'
+      community_centre: 'Community Centre'
+      counselling: 'Counselling'
+      info: 'Info'
+      disability_and_chronic_illness: 'Disability & Chronic Illness'
+      education: 'Education'
+      equipment: 'Equipment'
+      funding: 'Funding'

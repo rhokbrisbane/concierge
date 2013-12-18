@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Sign Up', focus: true do
+describe 'Sign Up' do
   context 'as an user' do
     it 'can sign up' do
       visit new_user_registration_path

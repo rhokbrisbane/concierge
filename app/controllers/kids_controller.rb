@@ -18,7 +18,7 @@ class KidsController < ApplicationController
       format.html do
         if @kid.save
           @kid.guardians << current_user
-          redirect_to @kid, notice: "#{ @kid.name }'s details have been saved."
+          redirect_to @kid, notice: "#{@kid.name}'s details have been saved."
         else
           render action: 'new'
         end
@@ -40,7 +40,7 @@ class KidsController < ApplicationController
     respond_to do |format|
       format.html do
         if @kid.update(kid_params)
-          redirect_to @kid, notice: "#{ @kid.name }'s details have been saved."
+          redirect_to @kid, notice: "#{@kid.name}'s details have been saved."
         else
           render action: 'new'
         end

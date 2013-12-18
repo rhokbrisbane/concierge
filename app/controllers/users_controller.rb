@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
 
   def show
-    @tags      = Tag.all.reject{|tag| @user.tags.include? tag}
+    @tags = Tag.all.reject{ |tag| @user.tags.include?(tag) }
     @user_tags = @user.tags
   end
 

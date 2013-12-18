@@ -1,28 +1,17 @@
 require 'spec_helper'
 
-describe 'User' do
-  let!(:user) { create(:user) }
+describe 'Users' do
+  let!(:user) { find_or_create_user }
 
-  context 'as an admin' do
-    before do
-      find_or_create_user(admin: true)
-      authenticate
-    end
+  before { authenticate }
 
-    it 'index' do
-      visit admin_users_path
-    end
-
-    it 'show' do
-      visit admin_user_path(user)
-    end
-
-    it 'new' do
-      visit new_admin_user_path
-    end
-
-    it 'edit' do
-      visit edit_admin_user_path(user)
+  context 'as an user' do
+    context 'showing my profile' do
+      it 'shows the user name' do
+        click_link 'Profile'
+        expect(page).to have_content(user.name)
+        expect(page.current_path).to eql("/users/#{user.id}")
+      end
     end
   end
 end

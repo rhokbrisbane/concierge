@@ -7,21 +7,22 @@ FactoryGirl.define do
     country     { Faker::Address.country }
     addressable { build_stubbed(:user) }
 
-    factory :ne_address do
-      street1     { "7 Prospect St" }
-      suburb      { "Fortitude Valley" }
-      postcode    { "4006" }
-      state       { "Queensland" }
-      country     { "Australia" }
-    end
+  end
 
-    factory :alaska_library_address do
-      street1     { "1 Main st" }
-      suburb      { "Akiachak" }
-      postcode    { "99551" }
-      state       { "Alaska" }
-      country     { "USA" }
-    end
+  factory :ne_address, parent: :address do
+    street1     { "7 Prospect St" }
+    suburb      { "Fortitude Valley" }
+    postcode    { "4006" }
+    state       { "Queensland" }
+    country     { "Australia" }
+  end
+
+  factory :alaska_library_address, parent: :address do
+    street1     { "1 Main st" }
+    suburb      { "Akiachak" }
+    postcode    { "99551" }
+    state       { "Alaska" }
+    country     { "USA" }
   end
 
   factory :user do
@@ -70,6 +71,7 @@ FactoryGirl.define do
     phone    '+61 1234 567 890'
     facebook 'resource_fb'
     twitter  'resource_tw'
+
   end
 
   factory :saved_search do

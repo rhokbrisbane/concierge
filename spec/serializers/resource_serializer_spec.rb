@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ResourceSerializer do
-  let(:resource) { create :resource }
+  let(:resource) { build :resource }
 
   subject { described_class.new(resource) }
 
@@ -12,7 +12,9 @@ describe ResourceSerializer do
       'url'      => resource.url,
       'phone'    => resource.phone,
       'facebook' => resource.facebook,
-      'twitter'  => resource.twitter
+      'twitter'  => resource.twitter,
+      'address_ids' => [],
+      'addresses' => []
     })
   end
 end

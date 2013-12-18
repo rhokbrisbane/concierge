@@ -36,5 +36,19 @@ describe 'Kids' do
         expect(page).to have_content("Kid 1's details have been saved.")
       end
     end
+
+    context 'updating a kid profile' do
+      let!(:kid) { create :kid, guardians: [user] }
+
+      it 'updates a kid' do
+        visit kid_path(kid)
+        click_link 'Edit'
+
+        fill_in 'Name', with: 'New name'
+
+        click_button 'Save'
+        expect(page).to have_content("New name's details have been saved.")
+      end
+    end
   end
 end

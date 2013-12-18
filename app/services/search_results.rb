@@ -6,10 +6,10 @@ class SearchResults
   end
 
   def initialize(args = {})
-    @tags = Array(args[:tags])
-    @location = args[:location].presence
+    @tags           = Array(args[:tags])
+    @location       = args[:location].presence
     @location_range = args[:location_range].presence
-    @ability = args[:ability] || Ability.new(User.new)
+    @ability        = args[:ability] || Ability.new(User.new)
   end
 
   def all

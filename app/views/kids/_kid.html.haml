@@ -4,7 +4,6 @@
 
     %dl
       - kid.tags.group_by(&:category).each do |category, tags|
-        %dt
-          = category.humanize
-        -  tags.each do |tag|
+        %dt= category.humanize
+        - tags.each do |tag|
           %dd= tag.name

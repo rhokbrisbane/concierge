@@ -1,8 +1,6 @@
 .container
-  - if @kids and @kids.any?
-    = render partial: 'kids/kid', collection: @kids, as: :kid
-  - else
-    = link_to 'Create a new kid profile', new_kid_path, class: "big-button"
+  = render @kids
+  = link_to 'Create a new kid profile', new_kid_path, class: "big-button"
 
 .container
   - if @saved_searches and @saved_searches.any?

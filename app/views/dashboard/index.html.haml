@@ -1,5 +1,6 @@
 .container
-  = render @kids
+  - if @kids
+    = render @kids
   = link_to 'Create a new kid profile', new_kid_path, class: "big-button"
 
 .container

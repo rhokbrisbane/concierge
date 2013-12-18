@@ -15,7 +15,7 @@ class Address < ActiveRecord::Base
   end
 
   def coordinates?
-    latitude.present? && longitude.present? 
+    latitude.present? && longitude.present?
   end
 
   def location_changed?

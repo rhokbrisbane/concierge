@@ -1,0 +1,26 @@
+"New York, NY":
+  latitude     : 40.7143528
+  longitude    : -74.0059731
+  address      : "New York, NY, USA"
+  state        : "New York"
+  state_code   : "NY"
+  country      : "United States"
+  country_code : "US"
+
+"7 Prospect St, Fortitude Valley, QLD, Australia":
+  latitude     : 40.7143528
+  longitude    : -74.0059731
+  address      : "7 Prospect St"
+  state        : "Queensland"
+  state_code   : "QLD"
+  country      : "Australia"
+  country_code : "Au"
+
+"1 Main st, Akiachak, Alaska, USA":
+  latitude     : 60.8944999999999
+  longitude    : -161.413426
+  address      : "1 Main st"
+  state        : "Alaska"
+  state_code   : "AL"
+  postcode     : "99551"
+  country      : "USA"

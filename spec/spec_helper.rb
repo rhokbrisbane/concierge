@@ -11,6 +11,11 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'capybara/poltergeist'
 
+Geocoder.configure(lookup: :test)
+YAML.load_file("#{Rails.root}/spec/fixtures/geo_coder.yml").each do |address, attributes|
+  Geocoder::Lookup::Test.add_stub(address, attributes)
+end
+
 Rails.logger.level = 4 # Reduce the IO during tests
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 Dir[Rails.root.join('spec/features/macros/**/*.rb')].each { |f| require f }

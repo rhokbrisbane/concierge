@@ -6,10 +6,10 @@ class SearchResults
   end
 
   def initialize(args = {})
-    @tags = Array(args[:tags])
-    @location = args[:location].presence
+    @tags           = Array(args[:tags])
+    @location       = args[:location].presence
     @location_range = args[:location_range].presence
-    @ability = args[:ability] || Ability.new(User.new)
+    @ability        = args[:ability] || Ability.new(User.new)
   end
 
   def all
@@ -49,7 +49,7 @@ class SearchResults
   def location_results(type)
     if coordinates
       scope = Address.near(coordinates, location_range_in_km, units: :km).includes(:addressable)
-      scope = scope.where(addressabe_type: type) if type
+      scope = scope.where(addressable_type: type) if type
       scope.map(&:addressable)
     end
   end

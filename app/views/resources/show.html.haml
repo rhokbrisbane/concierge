@@ -5,7 +5,7 @@
 .description
   .container= @resource.name
 
-  %p= @resource.category
+  %p= @resource.category_humanize
   %p= @resource.url
   %p= @resource.phone
   %p= "<strong>facebook.com/</strong>#{@resource.facebook}".html_safe

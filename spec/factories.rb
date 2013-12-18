@@ -70,7 +70,7 @@ FactoryGirl.define do
   factory :resource do
     user
     name     { Faker::Lorem.sentence(1) }
-    category 'Advocacy'
+    category ResourcesCategory::ADVOCACY
     url      'http://resource.com'
     phone    '+61 1234 567 890'
     facebook 'resource_fb'

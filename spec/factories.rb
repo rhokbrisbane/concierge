@@ -15,7 +15,7 @@ FactoryGirl.define do
       country     { "Australia" }
     end
 
-    factory :alaska_library do
+    factory :alaska_library_address do
       street1     { "1 Main st" }
       suburb      { "Akiachak" }
       postcode    { "99551" }
@@ -40,7 +40,7 @@ FactoryGirl.define do
       sequence(:name) { |n| "Far User #{n}" }
 
       after :build do |u|
-        u.addresses.build attributes_for(:alaska_library).merge(addressable: u)
+        u.addresses.build attributes_for(:alaska_library_address).merge(addressable: u)
       end
     end
 

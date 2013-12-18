@@ -3,14 +3,6 @@ require 'spec_helper'
 describe SearchResults do
   describe ".for" do
 
-    context "given a close location" do
-      let!(:close_user) { create :close_user }
-      let!(:far_user) { create :far_user }
-      it "returns close results" do
-        expect(SearchResults.for(location: "close location", location_range: 10_000).all).to eq [close_user]
-      end
-    end
-
     context "when supplying no tags" do
       it "does not throw an error" do
         expect { SearchResults.for }.to_not raise_error

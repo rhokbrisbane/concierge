@@ -7,6 +7,7 @@ class ResourcesCategory < EnumerateIt::Base
     :disability_and_chronic_illness,
     :education,
     :equipment,
-    :funding
+    :funding,
+    :other
   )
 end

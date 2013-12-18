@@ -10,10 +10,19 @@ describe 'Kids' do
       let!(:kid_1) { create :kid, guardians: [user] }
       let!(:kid_2) { create :kid, guardians: [user] }
 
-      it 'shows all kids' do
+      it 'shows the kids names' do
         visit root_path
         expect(page).to have_content(kid_1.name)
         expect(page).to have_content(kid_2.name)
+      end
+    end
+
+    context 'showing kid details' do
+      let!(:kid) { create :kid, guardians: [user] }
+
+      it 'shows the kid name' do
+        visit kid_path(kid)
+        expect(page).to have_content(kid.name)
       end
     end
 

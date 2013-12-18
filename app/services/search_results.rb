@@ -49,7 +49,7 @@ class SearchResults
   def location_results(type)
     if coordinates
       scope = Address.near(coordinates, location_range_in_km, units: :km).includes(:addressable)
-      scope = scope.where(addressabe_type: type) if type
+      scope = scope.where(addressable_type: type) if type
       scope.map(&:addressable)
     end
   end

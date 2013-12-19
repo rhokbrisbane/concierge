@@ -22,4 +22,3 @@ describe Address do
     end
   end
 end
-

@@ -17,12 +17,11 @@ class Api::V1::SearchController < Api::V1::BaseController
 
   def results
     SearchResults.for(tags: search_params[:tag_ids],
-      ability: current_ability,
-      location_range: search_params[:location_range]
+      ability: current_ability
     )
   end
 
   def search_params
-    params.permit(:location_range, :tag_ids => [])
+    params.permit(:tag_ids => [])
   end
 end

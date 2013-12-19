@@ -33,7 +33,9 @@ describe "Search API" do
                 "search": [
                   {
                     "name": "#{user2.name}",
-                    "email": "#{user2.email}"
+                    "email": "#{user2.email}",
+                    "addresses": [],
+                    "address_ids": []
                   }
                 ]
               }

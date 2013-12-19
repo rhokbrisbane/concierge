@@ -15,14 +15,14 @@ class Address < ActiveRecord::Base
   end
 
   def coordinates?
-    latitude.present? && longitude.present?
+    coordinates.join.present?
   end
 
   def location_changed?
     if persisted?
       (changed & %w(street1 street2 suburb state country)).any?
     else
-      latitude.blank? && longitude.blank?
+      !coordinates?
     end
   end
 end

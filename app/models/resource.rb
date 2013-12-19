@@ -7,9 +7,11 @@ class Resource < ActiveRecord::Base
 
   belongs_to :user
 
-  has_one :address, as: :addressable
+  has_one :address, as: :addressable, dependent: :destroy
 
   has_enumeration_for :category, with: ResourcesCategory
+
+  accepts_nested_attributes_for :address
 
   def to_s
     name

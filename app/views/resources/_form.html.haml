@@ -18,4 +18,17 @@
     = f.label :twitter
     = f.text_field :twitter
 
+    = fields_for :address do |a|
+      = a.label :street1, 'Street'
+      = a.text_field :street1
+
+      = a.label :suburb
+      = a.text_field :suburb
+
+      = a.label :state
+      = a.text_field :state
+
+      = a.label :country
+      = a.text_field :country
+
     = f.submit 'Save'

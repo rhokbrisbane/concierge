@@ -21,8 +21,10 @@ class ResourcesController < ApplicationController
     @resource = Resource.new resource_params.merge(user: current_user)
 
     if @resource.save
+      Address.create address_params.merge(addressable: @resource)
       redirect_to @resource, notice: 'Resource was successfully created.'
     else
+      flash.now[:error] = @resource.errors.full_messages.join(', ')
       render action: 'new'
     end
   end
@@ -31,6 +33,7 @@ class ResourcesController < ApplicationController
     if @resource.update(resource_params)
       redirect_to @resource, notice: 'Resource was successfully updated.'
     else
+      flash.now[:error] = @resource.errors.full_messages.join(', ')
       render action: 'edit'
     end
   end
@@ -54,6 +57,10 @@ class ResourcesController < ApplicationController
 
   def resource_params
     params.require(:resource).permit(:name, :category, :url, :phone, :facebook, :twitter)
+  end
+
+  def address_params
+    params.require(:address).permit(:street1, :suburb, :state, :country)
   end
 
   def set_resource

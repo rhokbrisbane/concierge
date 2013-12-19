@@ -9,8 +9,10 @@ class User < ActiveRecord::Base
     :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   has_and_belongs_to_many :groups, join_table: :user_groups
+
+  has_one :address, as: :addressable
+
   has_many :taggings, as: :taggable
-  has_many :addresses, as: :addressable
   has_many :tags, through: :taggings
   has_many :resources
   has_many :guardianships, dependent: :destroy

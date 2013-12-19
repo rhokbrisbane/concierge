@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :groups, join_table: :user_groups
 
-  has_one :address, as: :addressable
+  has_one :address, as: :addressable, dependent: :destroy
 
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings

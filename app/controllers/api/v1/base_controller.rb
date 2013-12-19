@@ -1,6 +1,6 @@
 class Api::V1::BaseController < ActionController::Base
-  before_action :restrict_access
-  check_authorization
+  # before_action :restrict_access
+  # check_authorization
 
   private
 

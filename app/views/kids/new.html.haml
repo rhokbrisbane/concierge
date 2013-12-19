@@ -1,7 +1,7 @@
 .container
-  = form_for Kid.new do |nk|
-    = nk.label :name
-    = nk.text_field :name
+  = form_for @kid do |f|
+    = f.label :name
+    = f.text_field :name
 
     - @tags_by_category.each do |category, tags|
       = label_tag category
@@ -11,4 +11,4 @@
       - else
         = collection_select 'kid[tag_ids]', nil, tags, :id, :name
 
-    = nk.submit 'Save'
+    = f.submit 'Save'

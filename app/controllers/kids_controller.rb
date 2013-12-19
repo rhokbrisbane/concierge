@@ -7,6 +7,7 @@ class KidsController < ApplicationController
   end
 
   def new
+    @kid = Kid.new
     authorize! :create, Kid
   end
 

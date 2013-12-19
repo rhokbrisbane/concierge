@@ -1,8 +1,9 @@
 require 'simplecov'
 SimpleCov.start 'rails' do
-  add_group 'Admin',       'app/admin'
-  add_group 'Serializers', 'app/serializers'
-  add_group 'Services',    'app/services'
+  add_group 'Admin',        'app/admin'
+  add_group 'Enumerations', 'app/enumerations'
+  add_group 'Serializers',  'app/serializers'
+  add_group 'Services',     'app/services'
 end
 
 ENV['RAILS_ENV'] ||= 'test'

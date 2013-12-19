@@ -1,6 +1,6 @@
 .tags {
   text-align: center;
-  margin: 0 0 1em;
+  margin: 0 0 $line-height;
 
   .tag-list li {
     display: inline-block;
@@ -12,6 +12,10 @@
   }
 }
 
+.current_tags {
+  margin-bottom: $line-height;
+}
+
 .tag {
   @extend .button;
   background: $tag-color;
@@ -21,7 +25,7 @@
 // Icons
 
 .icon-needs { @extend .icon-asterisk2; }
-.icon-symtoms { @extend .icon-virus; }
+.icon-symptoms { @extend .icon-virus; }
 .icon-age_group { @extend .icon-birthday; }
 .icon-weight_group { @extend .icon-scales; }
 

@@ -1,0 +1,17 @@
+= content_for :title, 'Previous searches'
+
+%table
+  %tr
+    %th Name
+    %th Range
+    %th
+
+  - @saved_searches.each do |saved_search|
+    %tr
+      %td
+        = link_to saved_search.name.blank? ? 'Show' : saved_search.name, saved_search
+      %td= saved_search.location_range
+
+      %td
+        = link_to 'Edit', edit_saved_search_path(saved_search), class: 'icon-pencil'
+        = link_to 'Delete', saved_search, class: 'icon-remove', :method => :delete, :data => { :confirm => 'Are you sure?' }

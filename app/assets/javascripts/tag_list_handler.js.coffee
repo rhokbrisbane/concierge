@@ -18,7 +18,8 @@ class TagListHandler
     $(".current_tags").empty()
     html = ""
     for tag in @entityTagsList
-      html += "<a class=\"tag\" data-id=\"#{tag[0]}\" href=\"#\">#{tag[1]}</a>&nbsp;"
+      console.log tag
+      html += "<a class=\"tag\" data-id=\"#{tag[0]}\" href=\"/tags/#{tag[0]}\">#{tag[1]}</a>&nbsp;"
     $(".current_tags").html(html)
 
   getCurrentTagList : ->

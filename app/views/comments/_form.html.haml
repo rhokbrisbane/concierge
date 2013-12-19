@@ -3,4 +3,4 @@
   = f.hidden_field :commentable_id, value: commentable.id.to_s
   = f.text_area :content, placeholder: "Add comment"
 
-  = f.submit 'Comment'
+  = f.submit 'Comment', class: "comment-submit"

@@ -1,10 +1,9 @@
 = content_for :title, @tag
-
-%h1.title{class: "icon-#{@tag.category ? @tag.category : 'tag'}"}= @tag
+= content_for :title_icon, "icon-#{@tag.category ? @tag.category : 'tag'}"
 
 - unless @tag.description.blank?
   .description
-    .container= @tag.description
+    = @tag.description
 
 .tabs
   %ul
@@ -12,9 +11,8 @@
     %li= link_to "Discussion", "#discussion"
 
   #related.tab
-    .container
-      - @taggings.each do |tagging|
-        = link_to tagging, tagging
+    - @taggings.each do |tagging|
+      = link_to tagging, tagging
 
   #discussion.tab
     = render 'shared/comments', commentable: @tag

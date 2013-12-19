@@ -1,8 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,400,700,400italic);
 
 $font-family:             'Lato', sans-serif;
-
 $font-family-icons:       'icomoon';
+$line-height:             1.5em;
 
 $color-primary:           #8358A4;
 $color-primary-light:     lighten($color-primary, 30%);
@@ -61,3 +61,19 @@ $fixed-left-nav: false;
 $fixed-top-header: true;
 
 $tag-color: $gray-light;
+
+
+
+// Breakpoints
+
+$breakpoint-small:        32em !default;
+$breakpoint-medium:       54em !default;
+$breakpoint-large:        75em !default;
+
+
+// Layout
+
+$gutter:                  $line-height * 1.5 !default;
+$page-margin:             $line-height * 2 !default;
+$max-width:               $breakpoint-medium !default;
+$center-layout:           true !default;

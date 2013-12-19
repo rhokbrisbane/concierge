@@ -1,0 +1,12 @@
+
+
+input.comment-submit {
+  display: block;
+  width: 100%;
+}
+
+
+.comment {
+  header { @extend %clearfix; }
+  .delete { float: right; }
+}

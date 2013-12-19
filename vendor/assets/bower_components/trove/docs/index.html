@@ -1,37 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
-<title>Example Elements</title>
-<link rel="stylesheet" href="dist/stylesheets/style.css" />
+  <title>Trove</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width = device-width, initial-scale = 1">
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <header>
-    <hgroup>
-      <h1>Trove</h1>
-    </hgroup>
-    <hgroup class="absolute-top-right inset-one">
-      <a href="github.com" class="pill white-foreground primary-background icon-github icon-only">Fork / find on Github</a>
-    </hgroup>
+  <header class="hero">
+    <div class="container">
+
+      <h1>
+        <span class="logo">Trove</span>
+        by <a href="https://triggerapp.com">Trigger</a>
+      </h1>
+
+      <p>A collection of structural sass &amp; coffeescript.</p>
+
+      <a target="_blank" href="https://github.com/net-engine/trove" class="pill white-foreground primary-background icon-github">Source</a>
+
+      <a rel="external" href="https://github.com/net-engine/trove/archive/master.zip" class="pill white-foreground primary-background icon-download2">Download</a>
+
+    </div>
   </header>
+
   <nav>
     <div class="container">
       <ul>
         <li><a href="#typography">Typography</a></li>
         <li><a href="#color">Color</a></li>
+        <li><a href="#blocks">Blocks</a></li>
+        <li><a href="#media">Media</a></li>
         <li><a href="#tables">Tables</a></li>
         <li><a href="#interactive">Interactive Elements</a></li>
+
+
         <li>
+          <a href="#components">Components</a>
+          <ul>
+            <li><a href="#heroes">Heroes</a></li>
+            <!-- <li><a href="#tabs">Tabs</a></li> -->
+          </ul>
+        </li>
+
+        <li><em>More to follow&hellip;</em></li>
+
+        <!-- <li>
           <a href="#">Layout</a>
           <ul>
             <li><a href="#grid">Grid</a></li>
             <li><a href="#positioning">Positioning</a></li>
             <li><a href="#structure">Structure</a></li>
           </ul>
-        </li>
+        </li> -->
     </div>
   </nav>
   <main>
-    <article>
+
+    <article id="typography">
       <header>
         <hgroup class="container">
           <h1>Typography</h1>
@@ -44,11 +72,11 @@
           <p>Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed molestie augue sit amet leo consequat posuere. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin vel ante a orci tempus eleifend ut et magna. Lorem.</p>
 
           <hr />
-          
+
           <p>Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor posuere. Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim congue. Donec congue lacinia.</p>
 
           <p>In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus.</p>
-          
+
         </div>
       </section>
 
@@ -66,7 +94,7 @@
             <h6>Sxith level</h6>
           </div>
         </div>
-      
+
       </section>
 
       <section>
@@ -104,12 +132,12 @@
             <li>Vestibulum ante ipsum primis in faucibus.</li>
             <li>In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in.</li>
           </ol>
-          
+
           <ul>
             <li>Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget.</li>
             <li>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus.</li>
           </ul>
-          
+
           <dl>
             <dt>Duis Aliquet Egestas</dt>
             <dd>Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor.</dd>
@@ -123,7 +151,7 @@
             <li class="success-border">Vestibulum ante ipsum primis in faucibus.</li>
             <li class="info-border">In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in.</li>
           </ul>
-          
+
           <ul class="circle-list one-half last">
             <li class="icon-user">Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci. Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum. Nulla at nulla justo, eget.</li>
             <li>Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus.</li>
@@ -131,6 +159,7 @@
         </div>
       </section>
     </article>
+
     <article id="color">
       <header>
         <hgroup class="container">
@@ -153,23 +182,24 @@
         </div>
       </section>
     </article>
-    <article>
+
+    <article id="blocks">
       <header>
         <hgroup class="container">
           <h1>Specially Formatted Blocks</h1>
         </hgroup>
       </header>
-      
+
       <section>
         <div class="container">
           <h2>Block level special elements</h2>
-          
+
           <blockquote>
             In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla, orci ac euismod semper, magna diam porttitor mauris, quis sollicitudin sapien justo in libero. Vestibulum mollis mauris enim. Morbi euismod magna.
           </blockquote>
-          
+
           <pre><span class="primary-light-foreground">document</span>.write(<span class="success-light-foreground">'Hello world'</span>);</pre>
- 
+
           <details>
             <summary>Summary</summary>
 
@@ -178,20 +208,22 @@
         </div>
       </section>
     </article>
-    
-    <article>
+
+    <article id="media">
       <header>
         <hgroup class="container">
           <h1>Media</h1>
         </hgroup>
       </header>
-      
+
       <section>
         <div class="container">
           <img title="A bear" src="http://inserbia.info/news/wp-content/uploads/2013/05/grizzly.jpg">
         </div>
       </section>
     </article>
+
+
     <article id="tables">
       <header>
         <hgroup class="container">
@@ -316,19 +348,19 @@
             </header>
             <fieldset>
               <legend>Radios</legend>
-              
+
               <input type="radio" value="1" id="radioButton1" name="radioButton" />
-              <label for="radioButton1">Radio Button 1</label>  
-              
+              <label for="radioButton1">Radio Button 1</label>
+
               <input type="radio" value="2" id="radioButton2" name="radioButton" />
-              <label for="radioButton2">Radio Button 1</label>  
+              <label for="radioButton2">Radio Button 1</label>
             </fieldset>
 
             <fieldset>
               <legend>Checkboxes</legend>
-              
+
               <input type="checkbox" value="1" id="checkbox1" name="checkbox1" />
-              <label for="checkbox1">Checkbox 1</label>  
+              <label for="checkbox1">Checkbox 1</label>
 
               <input type="checkbox" value="2" id="checkbox2" name="checkbox2" />
               <label for="checkbox2">Checkbox 2</label>
@@ -337,19 +369,19 @@
             <fieldset>
               <legend>Or alternatively</legend>
               <ul class="radio-list one-half first">
-               <li> 
+               <li>
                  <input type="radio" value="1" id="radioButton3" name="radioButton">
-                 <label for="radioButton3">Radio Button 1</label>  
+                 <label for="radioButton3">Radio Button 1</label>
                </li>
                <li>
                  <input type="radio" value="2" id="radioButton4" name="radioButton">
-                 <label for="radioButton4">Radio Button 1</label>  
+                 <label for="radioButton4">Radio Button 1</label>
                </li>
              </ul>
              <ul class="checkbox-list one-half last">
                <li>
                  <input type="checkbox" value="1" id="checkbox3" name="checkbox1">
-                 <label for="checkbox3">Checkbox 1</label>  
+                 <label for="checkbox3">Checkbox 1</label>
                </li>
                <li>
                  <input type="checkbox" value="2" id="checkbox4" name="checkbox2">
@@ -400,7 +432,7 @@
                 </datalist>
               </div>
 
-              
+
 
             </fieldset>
 
@@ -418,20 +450,20 @@
 
               <div class="one-half last">
                 <label for="textArea">Text Area</label>
-                <textarea name="textArea"></textarea> 
+                <textarea name="textArea"></textarea>
               </div>
 
               <hr>
 
               <div class="one-half first">
                 <label>Telephone</label>
-                <input type="tel" /> 
+                <input type="tel" />
               </div>
 
               <div class="one-half last">
                 <label>Email</label>
                 <input type="email" />
-              </div> 
+              </div>
 
               <div class="one-half first">
                 <label>Password</label>
@@ -489,19 +521,71 @@
           <button type="reset">Reset</button>
           <button type="reset" disabled="disabled">Reset</button>
           <button type="button">Button</button>
-          <button type="button" disabled="disabled">Button</button>            
+          <button type="button" disabled="disabled">Button</button>
         </div>
       </section>
     </article>
 
-    <aside>
-      
-    </aside>
+
+    <section id="components">
+
+      <header>
+        <div class="container">
+          <h1>Components</h1>
+        </div>
+      </header>
+
+      <section>
+        <div class="container">
+
+          <p>
+            Extend Trove with components.
+          </p>
+
+        </div>
+      </section>
+
+      <article id="heroes">
+
+        <header>
+          <hgroup class="container">
+            <h1>Heroes</h1>
+          </hgroup>
+        </header>
+
+        <div class="hero">
+          <div class="container">
+            <h2>I'm a life-changing message.</h2>
+          </div>
+        </div>
+
+      </article>
+
+    </section>
+
+
   </main>
-  
+
+
+
+
   <footer>
-    <address></address>
+    <div class="container">
+      Made by <a href="https://triggerapp.com">Trigger</a>.
+    </div>
   </footer>
+
+  <style type="text/css">
+  @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700|Pacifico);
+
+    .logo {
+      font-family: 'Pacifico';
+      text-transform: lowercase;
+      font-size: 2em;
+      line-height: 2em;
+      margin-right: .25em;
+    }
+  </style>
 
 </body>
 </html>

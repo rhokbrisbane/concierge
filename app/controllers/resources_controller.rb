@@ -1,7 +1,13 @@
 class ResourcesController < ApplicationController
   load_and_authorize_resource
 
+  def index
+    @resources = Resource.all
+  end
+
   def show
+    @tags = Tag.all.reject{ |tag| @resource.tags.include?(tag) }
+    @resource_tags = @resource.tags
   end
 
   def new
@@ -32,6 +38,16 @@ class ResourcesController < ApplicationController
   def destroy
     @resource.destroy
     redirect_to resources_url, notice: 'Resource was successfully destroyed.'
+  end
+
+  def add_tag
+    tag = Tag.find params[:tag_id]
+    @resource.tags << tag
+    head :no_content
+  end
+
+  def remove_tag
+    @resource.tags.find(params[:tag_id]).destroy
   end
 
   private

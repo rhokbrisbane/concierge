@@ -25,6 +25,7 @@ describe 'Resources' do
         click_link 'Create a resource'
 
         fill_in 'Name',     with: 'Good Foundation'
+        select  'Info',     from: 'Category'
         fill_in 'Url',      with: 'http://goodfoundation.com/'
         fill_in 'Phone',    with: '+61 1234 567 890'
         fill_in 'Facebook', with: 'goodfoundation'

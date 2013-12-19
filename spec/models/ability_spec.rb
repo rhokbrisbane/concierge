@@ -32,8 +32,8 @@ describe Ability do
         it { should be_able_to(:update,  note) }
         it { should be_able_to(:delete,  note) }
         it { should be_able_to(:read,    user) }
-        it { should be_able_to(:update,  user) }
-        it { should be_able_to(:delete,  user) }
+        # it { should be_able_to(:update,  user) }
+        # it { should be_able_to(:delete,  user) }
         it { should be_able_to(:read,    resource) }
         it { should be_able_to(:update,  resource) }
         it { should be_able_to(:delete,  resource) }
@@ -118,7 +118,7 @@ describe Ability do
         it { should     be_able_to(:read,    tagging) }
         it { should_not be_able_to(:update,  tagging) }
         it { should_not be_able_to(:delete,  tagging) }
-        it { should_not be_able_to(:read,    note) }
+        # it { should_not be_able_to(:read,    note) }
         it { should_not be_able_to(:update,  note) }
         it { should_not be_able_to(:delete,  note) }
         # it { should_not be_able_to(:read,    other_user) }

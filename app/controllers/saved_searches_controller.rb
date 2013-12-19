@@ -1,5 +1,5 @@
 class SavedSearchesController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:create, :update]
 
   def index
     @saved_searches = current_user.saved_searches
@@ -44,6 +44,7 @@ class SavedSearchesController < ApplicationController
   end
 
   def update
+    @saved_search = SavedSearch.find(params[:id])
     authorize! :manage, @saved_search
 
     respond_to do |format|
@@ -63,9 +64,7 @@ class SavedSearchesController < ApplicationController
   end
 
   private
-
   def saved_searches_params
-    params.require(:saved_search).permit(:name, tag_ids: [])
+    params.require(:saved_search).permit(tag_ids: [])
   end
-
 end

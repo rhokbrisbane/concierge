@@ -1,5 +1,9 @@
 class SavedSearchesController < ApplicationController
-  before_action :set_saved_search, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+
+  def index
+    @saved_searches = current_user.saved_searches
+  end
 
   def show
     authorize! :read, @saved_search
@@ -23,6 +27,7 @@ class SavedSearchesController < ApplicationController
     authorize! :create, SavedSearch
 
     @saved_search = current_user.saved_searches.new(saved_searches_params)
+    @saved_search.name = Time.now
 
     respond_to do |format|
       format.html do
@@ -65,7 +70,4 @@ class SavedSearchesController < ApplicationController
     params.require(:saved_search).permit(:name, :location_range, tag_ids: [])
   end
 
-  def set_saved_search
-    @saved_search = SavedSearch.find(params[:id])
-  end
 end

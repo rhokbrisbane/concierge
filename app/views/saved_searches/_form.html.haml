@@ -1,7 +1,5 @@
 .container
   = form_for @saved_search do |f|
-    = f.label :name
-    = f.text_field :name
     = f.label :location_range, "Filter Results Range (in meters), '0' to skip"
     = f.number_field :location_range, step: 500
 

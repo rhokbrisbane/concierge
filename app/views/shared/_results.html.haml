@@ -1,0 +1,16 @@
+%h3 Resources
+
+- if @results.resources.any?
+  - @results.resources.each do |resource|
+    = link_to resource.name, resource
+
+- else
+  No resources found.
+
+%h3 People
+
+- if @results.people.any?
+  - @results.people.each do |person|
+    = link_to person.name, person
+- else
+  No people found.

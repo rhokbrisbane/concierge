@@ -1,5 +1,7 @@
-.container
-  #comments
-    = render commentable.comments
+%header
+  %h3 Comments
 
-  = render 'comments/form', commentable: commentable
+%ol#comments
+  = render commentable.comments
+
+= render 'comments/form', commentable: commentable

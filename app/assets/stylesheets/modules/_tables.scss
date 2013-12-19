@@ -1,0 +1,15 @@
+
+
+.tablesorter-header {
+  cursor: pointer;
+
+  &:hover {
+    background: #ddd;
+  }
+
+  &.tablesorter-headerAsc, &.tablesorter-headerDesc {
+    background: #666;
+    color: white;
+  }
+}
+

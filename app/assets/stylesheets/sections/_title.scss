@@ -1,26 +1,41 @@
-$title-icon-size: $line-height;
+$title-icon-size: 2em;
+
+.main-header {
+  @extend %clearfix;
+  text-align: center;
+  margin-bottom: $line-height * 2;
+
+  .title {
+    line-height: $line-height * .75;
+  }
+
+  .actions {
+    display: block;
+    margin-top: $line-height;
+
+    a, button { display: inline-block; }
+  }
+}
+
 
 .title {
   font-size: $title-icon-size;
-  padding: 0 ($title-icon-size / 2);
-  text-align: center;
-  @include ellipsis;
 
   &[class*="icon-"] {
-    padding-top: $title-icon-size * 1.5;
+    padding-top: $title-icon-size * 1.25;
     position: relative;
 
     &:before {
       font-size: $title-icon-size / 2;
       position: absolute;
-      top: $title-icon-size / 2;
+      top: 0;
       left: 50%;
-      width: $title-icon-size;
-      line-height: $title-icon-size;
-      height: $title-icon-size;
+      width: $title-icon-size ;
+      line-height: $title-icon-size ;
+      height: $title-icon-size ;
       margin-left: -#{$title-icon-size / 2};
-      color: $gray-light;
-      background: $gray-lighter;
+      color: $white;
+      background: $color-primary;
       border-radius: 50%;
     }
   }

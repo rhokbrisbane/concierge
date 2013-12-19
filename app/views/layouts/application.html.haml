@@ -29,11 +29,22 @@
         %p.alert= alert
 
     %header
-      %hgroup.home-link
-        = link_to image_tag('icon.png'), root_path, class: 'logo'
+      .container
+        %hgroup.home-link
+          = link_to root_path, class: 'logo' do
+            = image_tag 'icon.png'
+            Concierge
 
-      %hgroup.user-actions
-        = login_options
+        %hgroup.user-actions
+          = login_options
 
     %main{ role: 'main' }
-      = yield
+      - if !content_for :full_width
+        .container
+          = render 'layouts/title' if content_for :title
+          = yield
+
+      - else
+        = render 'layouts/title' if content_for :title
+        = yield
+

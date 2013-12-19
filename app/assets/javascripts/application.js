@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery-tablesorter
 //= require jquery.turbolinks
 //= require jquery-ui/ui/jquery-ui
 //= require chosen.jquery

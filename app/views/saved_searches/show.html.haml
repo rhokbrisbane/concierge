@@ -1,15 +1,6 @@
-%header
-  = @saved_search.name
-  = link_to 'Edit', edit_saved_search_path(@saved_search)
+= content_for :title, 'Search results'
+= content_for :actions do
+  = link_to 'Edit search', edit_saved_search_path(@saved_search)
 
-%h1 Search results
 
-%h3 Resources
-
-- @results.resources.each do |resource|
-  %h4= resource.name
-  %p= resource.content
-
-%h3 People
-- @results.people.each do |person|
-  %h4= person.name
+= render 'shared/results', results: @results

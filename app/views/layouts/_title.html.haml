@@ -1,0 +1,6 @@
+%header.main-header
+  %h1.title{ class: (yield :title_icon if content_for :title_icon) }
+    = yield :title
+
+  - if content_for :actions
+    .actions= yield :actions

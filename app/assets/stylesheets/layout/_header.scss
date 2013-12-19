@@ -11,6 +11,11 @@ body > header {
     color: $white;
   }
 
+  .container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
   .logo {
     display: inline-block;
     height: $line-height * 2;
@@ -24,8 +29,5 @@ body > header {
   }
 }
 
-.user-actions {
-  position: absolute;
-  right: $page-margin / 4;
-  top: 0;
-}
+.home-link { float: left; }
+.user-actions { float: right; }

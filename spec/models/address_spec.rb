@@ -1,5 +1,4 @@
 require 'spec_helper'
-FactoryGirl.reload
 
 describe Address do
   it { should belong_to(:addressable) }

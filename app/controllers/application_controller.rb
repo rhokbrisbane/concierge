@@ -19,7 +19,9 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin_user!
     authenticate_user!
-    redirect_to root_url, alert: 'You cannot access that resource' unless current_user.admin
+    unless current_user.admin?
+      redirect_to root_url, alert: 'You cannot access that resource'
+    end
   end
 
   rescue_from CanCan::AccessDenied do |exception|

@@ -1,4 +1,4 @@
 class UserSerializer < ApplicationSerializer
-  attributes :name, :email, :addresses
-  has_many :addresses, serializer: AddressSerializer
+  attributes :name, :email, :address
+  has_one :address, serializer: AddressSerializer
 end

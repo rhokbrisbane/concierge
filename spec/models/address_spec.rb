@@ -16,10 +16,9 @@ describe Address do
   end
 
   describe '#save' do
-    it "calculates geolocation" do
+    it 'calculates geolocation' do
       address = Address.create(attributes_for :ne_address)
       expect(address.reload.coordinates).to eql([40.7143528, -74.0059731])
     end
   end
 end
-

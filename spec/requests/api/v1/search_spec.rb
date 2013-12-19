@@ -25,8 +25,7 @@ describe "Search API" do
             expect(response).to be_success
           end
 
-          it "responds with valid JSON"
-          #  do
+          # it "responds with valid JSON" do
           #   post "api/v1/search/people", { tag_ids: [tag.id] }, headers
 
           #   response_body = %{
@@ -35,8 +34,8 @@ describe "Search API" do
           #         {
           #           "name": "#{user2.name}",
           #           "email": "#{user2.email}",
-          #           "addresses": [],
-          #           "address_ids": []
+          #           "address": null,
+          #           "address_id": null
           #         }
           #       ]
           #     }

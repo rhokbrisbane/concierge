@@ -4,7 +4,6 @@
 = content_for :actions do
   = link_to 'Edit', edit_resource_path(@resource), class: "button icon-pencil"
 
-
 %dl.description
   %dt Category
   %dd= @resource.category_humanize
@@ -25,14 +24,12 @@
         = link_to tag.name, tag_path(tag), class: 'tag'
 
   = hidden_field_tag :entity_tags_list, @resource_tags.map { |tag| [tag.id, tag.name] }.to_json
-  = hidden_field_tag :tags_list,        @tags.map      { |tag| [tag.id, tag.name] }.to_json
+  = hidden_field_tag :tags_list,        @tags.map          { |tag| [tag.id, tag.name] }.to_json
   = hidden_field_tag :add_tag_url,      add_tag_resource_path(@resource)
 
   = form_for @resource, remote: true, url: add_tag_resource_path(@resource) do |f|
     .container
       = select_tag :tag_id, options_for_select(@tags.map { |tag| [tag.name, tag.id] })
       = f.submit 'Add Tag', id: :submit_new_tag
-
-
 
 = render 'shared/comments', commentable: @resource

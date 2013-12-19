@@ -1,0 +1,18 @@
+.container
+  = link_to image_tag('logo-header.png'), root_path, class: 'logo', title: 'Concierge'
+
+  %hgroup.user-actions
+    .label
+      - if current_user.image_url
+        = image_tag current_user.image_url, class: "avatar", alt: current_user
+      - else
+        = gravatar_image_tag current_user.email.downcase, alt: current_user, class: "avatar"
+      = content_tag(:span, current_user)
+
+      .dropdown
+        = link_to "My Profile", user_path(current_user), title: current_user.name
+        = link_to "My Searches", saved_searches_path
+        = link_to "Sign Out", destroy_user_session_path, method: :delete
+
+
+

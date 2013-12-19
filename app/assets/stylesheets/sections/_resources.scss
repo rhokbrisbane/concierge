@@ -1,0 +1,21 @@
+
+.icon-resource { @extend .icon-document; }
+
+.field-with-text {
+  position: relative;
+
+  em {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    line-height: $line-height;
+    padding: $line-height / 6;
+    background: $gray-light;
+    color: $gray-dark;
+    @include border-radius($radius 0 0 $radius);
+  }
+
+  &.facebook { padding-left: 6.4em; }
+  &.twitter { padding-left: 5.3em; }
+}

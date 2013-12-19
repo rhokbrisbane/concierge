@@ -5,7 +5,7 @@
     = link_to resource.name, resource
 
 - else
-  No resources found.
+  .empty No resources found.
 
 %h3 People
 
@@ -13,4 +13,4 @@
   - @results.people.each do |person|
     = link_to person.name, person
 - else
-  No people found.
+  .empty No people found.

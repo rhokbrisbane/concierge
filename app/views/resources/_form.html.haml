@@ -1,21 +1,33 @@
-.container
-  = form_for @resource do |f|
+= form_for @resource do |f|
+  .field
     = f.label :name
     = f.text_field :name
 
+  .field
     = f.label :category
     = f.select :category, ResourcesCategory.to_a
 
-    = f.label :url
-    = f.text_field :url
+  .half-width-fields
+    .field.one-half
+      = f.label :url
+      = f.text_field :url
 
-    = f.label :phone
-    = f.text_field :phone
+    .field.one-half
+      = f.label :phone
+      = f.text_field :phone
 
-    = f.label :facebook
-    = f.text_field :facebook
+    .field.one-half
+      = f.label :facebook
+      .field-with-text.facebook
+        %em facebook.com/
+        = f.text_field :facebook
 
-    = f.label :twitter
-    = f.text_field :twitter
+    .field.one-half
+      = f.label :twitter
 
+      .field-with-text.twitter
+        %em twitter.com/
+        = f.text_field :twitter
+
+  .submit
     = f.submit 'Save'

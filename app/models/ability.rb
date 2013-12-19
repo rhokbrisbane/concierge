@@ -9,10 +9,12 @@ class Ability
     can :manage, :all if user.admin?
 
     can :create, Tagging
-    can :create, Resource
+    can :manage, Resource
     can :create, Note
     can :create, Kid
     can :create, SavedSearch
+
+    can :manage, User, id: user.id
 
     can :read, :all
 
@@ -47,7 +49,7 @@ class Ability
     # can :update, User, id: user.id
 
     can :manage, Note,        user_id: user.id
-    can :manage, Resource,    user_id: user.id
+    # can :manage, Resource,    user_id: user.id
     can :manage, Tagging,     user_id: user.id
     can :manage, Address,     addressable: user
     can :manage, SavedSearch, user_id: user.id

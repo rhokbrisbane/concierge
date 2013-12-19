@@ -16,9 +16,10 @@ class Api::V1::SearchController < Api::V1::BaseController
   private
 
   def results
-    SearchResults.for(tags: search_params[:tag_ids],
+    SearchResults.for({
+      tags:    search_params[:tag_ids],
       ability: current_ability
-    )
+    })
   end
 
   def search_params

@@ -7,7 +7,7 @@ class Resource < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :addresses, as: :addressable
+  has_one :address, as: :addressable
 
   has_enumeration_for :category, with: ResourcesCategory
 

@@ -1,6 +1,6 @@
 = content_for :title, 'Search results'
 = content_for :actions do
-  = link_to 'Edit search', edit_saved_search_path(@saved_search)
+  = link_to 'Refine search', edit_saved_search_path(@saved_search), class: "button icon-search3"
 
 
 = render 'shared/results', results: @results

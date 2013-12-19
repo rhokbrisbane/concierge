@@ -1,0 +1,10 @@
+
+.submit {
+  display: block;
+
+  input[type="submit"],
+  button[type='submit'] {
+    display: block;
+    width: 100%;
+  }
+}

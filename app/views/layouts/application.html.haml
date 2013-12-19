@@ -23,20 +23,10 @@
     = csrf_meta_tag
 
   %body
-    - if notice or alert
-      %div.flash
-        %p.notice= notice
-        %p.alert= alert
+    = render 'shared/flash'
 
-    %header
-      .container
-        %hgroup.home-link
-          = link_to root_path, class: 'logo' do
-            = image_tag 'icon.png'
-            Concierge
-
-        %hgroup.user-actions
-          = login_options
+    - if user_signed_in?
+      %header.global-header= render 'layouts/header'
 
     %main{ role: 'main' }
       - if !content_for :full_width

@@ -1,0 +1,22 @@
+
+.ui-tabs {
+  .ui-tabs-nav {
+    li {
+      &:first-child a { @include border-radius($radius 0 0 $radius); }
+      &:last-child a  { @include border-radius(0 $radius $radius 0); }
+
+    }
+  }
+
+  .ui-tabs-panel {
+    padding: $line-height 0;
+  }
+
+  @media screen and (max-width: $breakpoint-small) {
+    .ui-tabs-nav {
+      margin: 0 -#{$line-height};
+
+      li a { @include border-radius(0); }
+    }
+  }
+}

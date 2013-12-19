@@ -130,6 +130,7 @@ GEM
       actionpack (>= 3.0)
     fssm (0.2.10)
     geocoder (1.1.9)
+    gravatar_image_tag (1.2.0)
     guard (2.2.5)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -341,6 +342,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   geocoder
+  gravatar_image_tag
   guard-rspec!
   haml-rails
   jquery-rails

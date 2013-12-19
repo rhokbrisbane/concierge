@@ -30,7 +30,7 @@ class SavedSearchesController < ApplicationController
     respond_to do |format|
       format.html do
         if @saved_search.save
-          redirect_to @saved_search, notice: "Your search has been saved."
+          redirect_to @saved_search
         else
           render action: 'new'
         end

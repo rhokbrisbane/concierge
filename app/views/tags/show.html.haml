@@ -13,7 +13,7 @@
 
   - if @taggings.any?
     #related.tab
-      = render 'shared/taggings', taggings: @taggings
+      = render 'taggings', taggings: @taggings
 
   #discussion.tab
-    = render 'shared/comments', commentable: @tag
+    = render 'comments', commentable: @tag

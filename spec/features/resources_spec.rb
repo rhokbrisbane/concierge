@@ -47,7 +47,12 @@ describe 'Resources' do
     end
 
     context 'updating a resource' do
-      let(:resource) { create :resource, user: user }
+      let :resource do
+        create(:resource, user: user).tap do |r|
+          r.address = create(:address, addressable: r)
+        end
+      end
+
 
       it 'updates the resource and the address' do
         visit resource_path(resource)

@@ -64,8 +64,4 @@ class ResourcesController < ApplicationController
   def address_params
     params.require(:address).permit(:street1, :suburb, :state, :country)
   end
-
-  def set_resource
-    @resource = Resource.find(params[:id])
-  end
 end

@@ -20,7 +20,7 @@ Concierge::Application.routes.draw do
     end
   end
 
-  resources :users, only: :show do
+  resources :users, only: [:show, :edit, :update] do
     member do
       patch 'add_tag'
       patch 'remove_tag'

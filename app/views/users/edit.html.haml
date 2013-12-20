@@ -1,0 +1,26 @@
+= content_for :title, 'Editing profile'
+
+= form_for @user do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+
+    = fields_for :address, @address do |a|
+      .field
+        = a.label :street1, 'Street'
+        = a.text_field :street1
+
+      .field
+        = a.label :suburb
+        = a.text_field :suburb
+
+      .field
+        = a.label :state
+        = a.text_field :state
+
+      .field
+        = a.label :country
+        = a.text_field :country
+
+  .submit
+    = f.submit 'Save'

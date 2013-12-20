@@ -21,7 +21,7 @@ class ResourcesController < ApplicationController
       @resource.create_address address_params
       redirect_to @resource, notice: 'Resource was successfully created.'
     else
-      flash.now[:error] = @resource.errors.full_messages.join(', ')
+      flash.now[:alert] = @resource.errors.full_messages.join(', ')
       render action: 'new'
     end
   end
@@ -35,7 +35,7 @@ class ResourcesController < ApplicationController
       @resource.address.update address_params
       redirect_to @resource, notice: 'Resource was successfully updated.'
     else
-      flash.now[:error] = @resource.errors.full_messages.join(', ')
+      flash.now[:alert] = @resource.errors.full_messages.join(', ')
       render action: 'edit'
     end
   end

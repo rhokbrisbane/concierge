@@ -1,10 +1,16 @@
-= link_to 'Search', new_saved_search_path, class: 'big-button'
-= link_to 'Create a resource', new_resource_path, class: 'big-button'
 
-- if @saved_searches && @saved_searches.any?
-  %label Saved searches
-  = render @saved_searches
+- if user_signed_in?
+  = link_to 'Search', new_saved_search_path, class: 'big-button icon-search2'
+  = link_to 'Create a resource', new_resource_path, class: 'big-button'
 
-- if @kids
-  = render @kids
-= link_to 'Create a new kid profile', new_kid_path, class: 'big-button'
+
+  - if @saved_searches && @saved_searches.any?
+    %label Saved searches
+    = render @saved_searches
+
+  - if @kids
+    = render @kids
+  = link_to 'Create a new kid profile', new_kid_path, class: 'big-button'
+
+- else
+  = render "layouts/public"

@@ -19,7 +19,11 @@
 .tag {
   @extend .button;
   background: $tag-color;
-  color: $black;
+  color: $black !important;
+
+  &:hover, &:active {
+    background: darken($tag-color, 5%);
+  }
 }
 
 // Icons

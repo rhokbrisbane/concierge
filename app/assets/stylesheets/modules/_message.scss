@@ -3,16 +3,22 @@
 .flash {
   position: fixed;
   z-index: $top-layer;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 0 $line-height;
+  top: 50%;
+  left: 50%;
+  padding: $line-height;
+  font-size: 1.25em;
   text-align: center;
-  @include box-sizing(border-box);
-  @extend .fadeInDown;
-  @include transition(all .5s linear);
-  background-color: $gray-light;
+  line-height: $line-height;
+  width: 50%;
+  min-height: $line-height * 3;
+  margin-top: -#{$line-height * 3};
+  margin-left: -25%;
+  background-color: $gray-darker;
+  background-color: rgba($gray-darker, .75);
   color: $white;
+  @include border-radius($radius);
+  @include box-sizing(border-box);
+  // @include transition(all .5s linear);
 
   &:hover {
     cursor: pointer;
@@ -23,12 +29,22 @@
     @include transition(all .5s linear);
   }
 
-  .alert {
-    color: $color-danger;
+  &.alert {
+    background-color: $color-danger;
+    background-color: rgba(darken($color-danger, 25%), .75);
   }
 
-  .notice {
-    color: $color-info;
+  &.notice {
+    background-color: $color-info;
+    background-color: rgba(darken($color-info, 25%), .75);
+  }
+
+  @media screen and (max-width: $breakpoint-small) {
+    margin: 0;
+    width: auto;
+    top: $line-height;
+    left: $line-height;
+    right: $line-height;
   }
 }
 

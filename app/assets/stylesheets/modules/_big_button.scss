@@ -2,7 +2,8 @@
   @extend .button;
   display: block;
   text-align: center;
-  color: ivory !important;
+  color: $white !important;
   font-size: 2em;
   font-weight: 400;
+  margin: 0 0 ($line-height / 2);
 }

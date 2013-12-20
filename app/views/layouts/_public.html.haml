@@ -1,0 +1,12 @@
+= content_for :full_width, true
+.public
+  .container
+
+    = link_to image_tag('logo.png'), root_path
+
+    %h2= t('sign_up')
+    %p
+
+    %labee Sign in with&hellip;
+    = link_to "Facebook", user_omniauth_authorize_path(:facebook)
+    = link_to "Email", new_user_session_path

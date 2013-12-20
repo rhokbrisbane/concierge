@@ -7,12 +7,13 @@
 
 .tabs
   %ul
-    %li= link_to "Related", "#related"
-    %li= link_to "Discussion", "#discussion"
+    - if @taggings.any?
+      %li= link_to "Related", "#related"
+      %li= link_to "Discussion", "#discussion"
 
-  #related.tab
-    - @taggings.each do |tagging|
-      = link_to tagging, tagging
+  - if @taggings.any?
+    #related.tab
+      = render 'shared/taggings', taggings: @taggings
 
   #discussion.tab
     = render 'shared/comments', commentable: @tag

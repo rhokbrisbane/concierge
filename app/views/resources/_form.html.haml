@@ -29,17 +29,21 @@
         = f.text_field :twitter
 
     = fields_for :address, @address do |a|
-      = a.label :street1, 'Street'
-      = a.text_field :street1
+      .field
+        = a.label :street1, 'Street'
+        = a.text_field :street1
 
-      = a.label :suburb
-      = a.text_field :suburb
+      .field
+        = a.label :suburb
+        = a.text_field :suburb
 
-      = a.label :state
-      = a.text_field :state
+      .field
+        = a.label :state
+        = a.text_field :state
 
-      = a.label :country
-      = a.text_field :country
+      .field
+        = a.label :country
+        = a.text_field :country
 
   .submit
     = f.submit 'Save'

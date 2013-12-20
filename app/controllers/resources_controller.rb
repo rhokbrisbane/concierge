@@ -14,10 +14,6 @@ class ResourcesController < ApplicationController
     @resource = Resource.new
   end
 
-  def edit
-    @address = @resource.address
-  end
-
   def create
     @resource = Resource.new resource_params.merge(user: current_user)
 
@@ -28,6 +24,10 @@ class ResourcesController < ApplicationController
       flash.now[:error] = @resource.errors.full_messages.join(', ')
       render action: 'new'
     end
+  end
+
+  def edit
+    @address = @resource.address
   end
 
   def update
@@ -63,9 +63,5 @@ class ResourcesController < ApplicationController
 
   def address_params
     params.require(:address).permit(:street1, :suburb, :state, :country)
-  end
-
-  def set_resource
-    @resource = Resource.find(params[:id])
   end
 end

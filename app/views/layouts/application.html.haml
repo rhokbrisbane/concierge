@@ -23,7 +23,7 @@
     = csrf_meta_tag
 
   %body
-    = render 'shared/flash'
+    = render 'flash'
 
     - if user_signed_in?
       %header.global-header= render 'layouts/header'

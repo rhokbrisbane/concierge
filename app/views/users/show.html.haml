@@ -20,4 +20,4 @@
       = select_tag :tag_id, options_for_select(@tags.map { |tag| [tag.name, tag.id] })
       = f.submit 'Add Tag', id: :submit_new_tag
 
-= render 'shared/comments', commentable: @user
+= render 'comments', commentable: @user

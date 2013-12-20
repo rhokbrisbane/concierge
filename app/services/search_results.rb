@@ -32,13 +32,13 @@ class SearchResults
   end
 
   def results(type = nil)
-    taggable_type(type).map(&:taggable).reject do |taggable, tags|
+    taggable_type(type).map(&:taggable).reject do |taggable|
       missing_required_tags(taggable) || ability.cannot?(:read, taggable)
     end
   end
 
   def missing_required_tags(taggable)
     Tagging.where(taggable: taggable, required: true)
-           .where.not(tag_id: @tag_ids).any?
+           .where.not(tag_id: tag_ids).any?
   end
 end

@@ -52,7 +52,8 @@ class ResourcesController < ApplicationController
   end
 
   def remove_tag
-    @resource.tags.find(params[:tag_id]).destroy
+    @resource.taggings.find_by_tag_id(params[:tag_id]).destroy
+    head :no_content
   end
 
   private

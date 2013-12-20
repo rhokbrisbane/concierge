@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
 
   has_many :saved_searches
 
+  accepts_nested_attributes_for :address
+
   def to_s
     name.presence || email.presence || "User#{id}"
   end

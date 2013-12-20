@@ -5,6 +5,8 @@
   .description
     = @user.description
 
+= link_to 'Edit profile', edit_user_path
+
 .tags
   .current_tags
     - if @user.tags.any?

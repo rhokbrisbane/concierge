@@ -3,7 +3,7 @@ class KidsController < ApplicationController
 
   def show
     authorize! :read, @kid
-    @results = SearchResults.for(tags: @kid.tags, ability: current_ability)
+    @results = SearchResults.for(tag_ids: @kid.tag_ids, ability: current_ability)
   end
 
   def new

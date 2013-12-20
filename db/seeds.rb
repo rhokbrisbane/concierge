@@ -5,9 +5,9 @@ user  = FactoryGirl.create(:user,  email: 'user@example.com',  password: 'rhok20
 
 ##### Groups ####
 
-public = FactoryGirl.create(:group, name: 'Public')
-public.users << admin
-public.users << user
+public_group = FactoryGirl.create(:group, name: 'Public')
+public_group.users << admin
+public_group.users << user
 
 ##### Tags ######
 
@@ -33,5 +33,5 @@ Resource.create(resource_attributes)
 ##### Public resource #####
 
 resource = FactoryGirl.create(:resource, name: "I'm a public resource, with all tags")
-resource.shared_groups << public
+resource.shared_groups << public_group
 resource.tags << Tag.first

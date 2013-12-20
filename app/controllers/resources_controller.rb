@@ -18,7 +18,7 @@ class ResourcesController < ApplicationController
     @resource = Resource.new resource_params.merge(user: current_user)
 
     if @resource.save
-      Address.create address_params.merge(addressable: @resource)
+      @resource.create_address address_params
       redirect_to @resource, notice: 'Resource was successfully created.'
     else
       flash.now[:error] = @resource.errors.full_messages.join(', ')

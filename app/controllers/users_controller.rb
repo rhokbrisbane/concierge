@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def remove_tag
-    @user.tags.find(params[:tag_id]).destroy
+    @user.taggings.find_by_tag_id(params[:tag_id]).destroy
+    head :no_content
   end
 end

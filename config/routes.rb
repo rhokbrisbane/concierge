@@ -7,7 +7,6 @@ Concierge::Application.routes.draw do
 
   resources :dashboard, only: :index
   resources :tags,      only: :show
-  resources :users,     only: :show
   resources :comments,  only: [:create, :destroy]
   resources :kids
   resources :saved_searches

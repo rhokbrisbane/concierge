@@ -24,10 +24,26 @@
 
     .field.one-half
       = f.label :twitter
-
       .field-with-text.twitter
         %em twitter.com/
         = f.text_field :twitter
+
+    = fields_for :address, @address do |a|
+      .field
+        = a.label :street1, 'Street'
+        = a.text_field :street1
+
+      .field
+        = a.label :suburb
+        = a.text_field :suburb
+
+      .field
+        = a.label :state
+        = a.text_field :state
+
+      .field
+        = a.label :country
+        = a.text_field :country
 
   .submit
     = f.submit 'Save'

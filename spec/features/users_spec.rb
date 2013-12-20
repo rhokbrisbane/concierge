@@ -45,6 +45,19 @@ describe 'Users' do
         let(:_user) { user.address = create :address; user }
         it_should_behave_like 'user profile'
       end
+
+      context 'when address fields is blank' do
+        it 'returns a error message' do
+          visit user_path(user)
+          click_link 'Edit profile'
+          click_button 'Save'
+
+          expect(page).to have_content("Street1 can't be blank")
+          expect(page).to have_content("Suburb can't be blank")
+          expect(page).to have_content("State can't be blank")
+          expect(page).to have_content("Country can't be blank")
+        end
+      end
     end
   end
 end

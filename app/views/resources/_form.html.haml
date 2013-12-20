@@ -18,7 +18,7 @@
     = f.label :twitter
     = f.text_field :twitter
 
-    = fields_for :address do |a|
+    = fields_for :address, @address do |a|
       = a.label :street1, 'Street'
       = a.text_field :street1
 

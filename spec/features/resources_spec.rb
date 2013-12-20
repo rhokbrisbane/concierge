@@ -33,7 +33,7 @@ describe 'Resources' do
         fill_in 'Street',   with: 'Some Street'
         fill_in 'Suburb',   with: 'Some Suburb'
         fill_in 'State',    with: 'Some State'
-        fill_in 'Country',    with: 'Some Country'
+        fill_in 'Country',  with: 'Some Country'
       end
 
       it 'creates a resource' do
@@ -43,6 +43,23 @@ describe 'Resources' do
 
       it 'creates an address' do
         expect { click_button 'Save' }.to change { Address.count }.by(1)
+      end
+    end
+
+    context 'updating a resource' do
+      let(:resource) { create :resource, user: user }
+
+      it 'updates the resource and the address' do
+        visit resource_path(resource)
+        click_link 'Edit'
+
+        fill_in 'Name',   with: 'New Name'
+        fill_in 'Street', with: 'New Street'
+        click_button 'Save'
+
+        expect(page).to have_content('Resource was successfully updated.')
+        expect(resource.reload.name).to eql('New Name')
+        expect(resource.address.street1).to eql('New Street')
       end
     end
   end

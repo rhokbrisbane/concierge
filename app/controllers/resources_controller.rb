@@ -15,6 +15,7 @@ class ResourcesController < ApplicationController
   end
 
   def edit
+    @address = @resource.address
   end
 
   def create
@@ -31,6 +32,7 @@ class ResourcesController < ApplicationController
 
   def update
     if @resource.update(resource_params)
+      @resource.address.update address_params
       redirect_to @resource, notice: 'Resource was successfully updated.'
     else
       flash.now[:error] = @resource.errors.full_messages.join(', ')

@@ -170,8 +170,8 @@ ActiveRecord::Schema.define(version: 20131219012917) do
     t.string   "uid"
     t.string   "name"
     t.string   "api_token"
-    t.boolean  "admin",                  default: false
     t.string   "description"
+    t.boolean  "admin",                  default: false
     t.string   "image_url"
   end
 

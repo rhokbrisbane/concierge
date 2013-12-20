@@ -71,6 +71,9 @@ FactoryGirl.define do
     facebook 'resource_fb'
     twitter  'resource_tw'
 
+    after :create do |resource|
+      resource.address = create(:address)
+    end
   end
 
   factory :saved_search do

@@ -1,8 +1,9 @@
 class TagListHandler
-  constructor : ($entityTagsList, $tagsList, $addTagUrl) ->
+  constructor : ($entityTagsList, $tagsList, $addTagUrl, $removeTagUrl) ->
     @entityTagsList = JSON.parse($entityTagsList.val())
     @tagsList       = JSON.parse($tagsList.val())
     @addTagUrl      = $addTagUrl.val()
+    @removeTagUrl   = $removeTagUrl.val()
     @setupSelect()
     @setupCurrentTags()
     @bindPlusButton()
@@ -18,8 +19,12 @@ class TagListHandler
     $(".current_tags").empty()
     html = ""
     for tag in @entityTagsList
-      console.log tag
-      html += "<a class=\"tag\" data-id=\"#{tag[0]}\" href=\"/tags/#{tag[0]}\">#{tag[1]}</a>&nbsp;"
+      html += "
+        <div class='tag' data-id=#{tag[0]}>
+          <a class='name' href='/tags/#{tag[0]}'>#{tag[1]}</a>&nbsp;
+          <a class='remove' href='#' rel='nofollow' data-turbolinks-track=false>x</a>
+        </div>&nbsp;
+      "
     $(".current_tags").html(html)
 
   getCurrentTagList : ->
@@ -44,10 +49,27 @@ class TagListHandler
     $.ajax
       url: _this.addTagUrl
       type: "PATCH"
-      data: { tag_id: tagId}
+      data: { tag_id: tagId }
       dataType: "json"
-      success: (data) ->
+      success: () ->
+
+  @removeTag : (e) ->
+    e.preventDefault()
+    tagId = $(this).parent().data('id')
+    removeTagUrl = $('#remove_tag_url').val()
+    _this = @
+    $.ajax
+      url: removeTagUrl
+      type: "PATCH"
+      data: { tag_id: tagId }
+      dataType: "json"
+      success: () ->
+        tagId = this.data.split('=')[1]
+        name = $(".tag[data-id=#{tagId}] .name").html()
+        $("select#tag_id").append("<option value=#{tagId}>#{name}</option>")
+        $(".tag[data-id=#{tagId}]").remove()
 
 $ ->
-  if ($("#entity_tags_list").length && $("#tags_list").length && $("#add_tag_url").length)
-    tlh = new TagListHandler($("#entity_tags_list"), $("#tags_list"), $("#add_tag_url"))
+  if ($("#entity_tags_list").length && $("#tags_list").length && $("#add_tag_url").length && $("#remove_tag_url").length)
+    tlh = new TagListHandler($("#entity_tags_list"), $("#tags_list"), $("#add_tag_url"), $("#remove_tag_url"))
+  $('.tag a.remove').on 'click', TagListHandler.removeTag

@@ -7,13 +7,11 @@ Concierge::Application.routes.draw do
 
   resources :dashboard, only: :index
   resources :tags,      only: :show
-  resources :users,     only: :show
-  resources :resources
   resources :comments,  only: [:create, :destroy]
   resources :kids
   resources :saved_searches
 
-  resources :resources, only: :show do
+  resources :resources do
     member do
       patch 'add_tag'
       patch 'remove_tag'

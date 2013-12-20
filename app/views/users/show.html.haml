@@ -10,14 +10,13 @@
 
 .tags
   .current_tags
-    - if @user.tags.any?
-      - @user.tags.each do |tag|
-        = link_to tag.name, tag_path(tag), class: 'tag'
+    -# see tag_list_handler.js.coffee
 
   - if @user.id == current_user.id
     = hidden_field_tag :entity_tags_list, @user_tags.map { |tag| [tag.id, tag.name] }.to_json
     = hidden_field_tag :tags_list,        @tags.map      { |tag| [tag.id, tag.name] }.to_json
     = hidden_field_tag :add_tag_url,      add_tag_user_path(@user)
+    = hidden_field_tag :remove_tag_url,   "/users/#{@user.id}/remove_tag"
 
     = form_for @user, remote: true, url: add_tag_user_path(@user) do |f|
       = select_tag :tag_id, options_for_select(@tags.map { |tag| [tag.name, tag.id] })

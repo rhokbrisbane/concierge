@@ -1,12 +1,7 @@
 class Tag < ActiveRecord::Base
   include Commentable
 
-  CATEGORIES = [
-    'needs',
-    'symptoms',
-    'age_group',
-    'weight_group'
-  ]
+  CATEGORIES = %w(needs symptoms age_group weight_group)
 
   def to_s
     name

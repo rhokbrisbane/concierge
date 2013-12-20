@@ -21,13 +21,12 @@
 
 .tags
   .current_tags
-    - if @resource.tags.any?
-      - @resource.tags.each do |tag|
-        = link_to tag.name, tag_path(tag), class: 'tag'
+    -# see tag_list_handler.js.coffee
 
   = hidden_field_tag :entity_tags_list, @resource_tags.map { |tag| [tag.id, tag.name] }.to_json
   = hidden_field_tag :tags_list,        @tags.map          { |tag| [tag.id, tag.name] }.to_json
   = hidden_field_tag :add_tag_url,      add_tag_resource_path(@resource)
+  = hidden_field_tag :remove_tag_url,   "/resources/#{@resource.id}/remove_tag"
 
   .add-tag
     = form_for @resource, remote: true, url: add_tag_resource_path(@resource) do |f|

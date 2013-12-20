@@ -20,6 +20,6 @@
 
     = form_for @user, remote: true, url: add_tag_user_path(@user) do |f|
       = select_tag :tag_id, options_for_select(@tags.map { |tag| [tag.name, tag.id] })
-      = f.submit 'Add Tag', id: :submit_new_tag
+      %button.icon-plus{type: 'submit'} Add Tag
 
 = render 'comments', commentable: @user

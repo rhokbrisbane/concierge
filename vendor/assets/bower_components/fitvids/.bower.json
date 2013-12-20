@@ -1,0 +1,24 @@
+{
+  "name": "jquery.fitvids",
+  "version": "1.0.3",
+  "main": "./jquery.fitvids.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.7.0"
+  },
+  "homepage": "https://github.com/davatron5000/FitVids.js",
+  "_release": "1.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.3",
+    "commit": "b6d2a097962910b0ec669fe14b9597655abe1684"
+  },
+  "_source": "git://github.com/davatron5000/FitVids.js.git",
+  "_target": "~1.0.3",
+  "_originalSource": "fitvids",
+  "_direct": true
+}

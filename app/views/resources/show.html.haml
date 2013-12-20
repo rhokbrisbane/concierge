@@ -8,10 +8,13 @@
   %dt Category
   %dd= @resource.category
 
-  %dt URL
-  %dd= link_to @resource.url, @resource.url, target: "_blank"
-  %dt Phone
-  %dd= @resource.phone
+  - unless @resource.url.blank?
+    %dt URL
+    %dd= link_to @resource.url, @resource.url, target: "_blank"
+
+  - unless @resource.phone.blank?
+    %dt Phone
+    %dd= @resource.phone
 
   - if !@resource.facebook.blank? || !@resource.twitter.blank?
     %dt Social
@@ -31,6 +34,6 @@
   .add-tag
     = form_for @resource, remote: true, url: add_tag_resource_path(@resource) do |f|
       = select_tag :tag_id, options_for_select(@tags.map { |tag| [tag.name, tag.id] })
-      = f.submit 'Add Tag', id: :submit_new_tag
+      %button.icon-plus{type: 'submit'} Add Tag
 
 = render 'comments', commentable: @resource

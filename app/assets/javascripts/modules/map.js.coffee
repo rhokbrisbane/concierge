@@ -1,20 +1,20 @@
 
 getResults = (tagIds) ->
 
-  $.ajaxSetup
-    async: false
-
-  window.layer = new L.MarkerClusterGroup()
-
   handleRequest = (data, type) ->
+    layer = new L.featureGroup()
+
     _.each data, (result, i) ->
-      if result.address
-        console.log result
+
+      if result.address and result.address.latitude
         address = result.address
         icon = L.divIcon({className: "marker icon-#{type}"})
         marker = L.marker([address.latitude, address.longitude], icon: icon)
         marker.bindPopup(HandlebarsTemplates["#{type}_popup"](result))
         marker.addTo(layer)
+
+    map.addLayer layer
+    # map.fitBounds layer.getBounds()
 
   resourcesRequest = $.ajax
     type: "POST"
@@ -34,8 +34,7 @@ getResults = (tagIds) ->
   peopleRequest.done (data) ->
     handleRequest(data.search, 'user')
 
-  map.addLayer layer
-  map.fitBounds layer.getBounds()
+
 
 $ ->
 
@@ -45,4 +44,5 @@ $ ->
     # new L.TileLayer.Stamen({style: 'watercolor'}).addTo(map)
     new L.TileLayer.MapBox({user: 'concierge', map: 'gjdmmp09'}).addTo(map)
 
-    getResults( $('#result-tag-ids').val().split(',') ) if $('#results-map').length
+    if $('#result-tag-ids').val().length
+      getResults( $('#result-tag-ids').val().split(',') )

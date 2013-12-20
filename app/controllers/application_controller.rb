@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_user!
   before_filter :fetch_tags_by_category
+  before_filter :fetch_pages
 
   before_filter do
     resource = controller_name.singularize.to_sym
@@ -12,6 +13,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def fetch_pages
+    @pages = Page.all
+  end
 
   def fetch_tags_by_category
     @tags_by_category = Tag.all.group_by(&:category)

@@ -4,7 +4,7 @@
 <!--[if IE 7]>    <html lang="en" class="no-js ie7"> <![endif]-->
 <!--[if IE 8]>    <html lang="en" class="no-js ie8"> <![endif]-->
 <!--[if gt IE 8]><!-->
-%html.no-js{ :lang => "en" }
+%html.no-js{ :lang => "en", class: ("public" unless user_signed_in?) }
   <!--<![endif]-->
 
   %head
@@ -26,10 +26,16 @@
     = render 'flash'
 
     - if user_signed_in?
+      - if current_user.admin?
+        %header.admin-header
+          .container
+            = link_to 'Resources', resources_path
+
       %header.global-header= render 'layouts/header'
 
     %main{ role: 'main' }
       - if !content_for :full_width
+
         .container
           = render 'layouts/title' if content_for :title
           = yield
@@ -37,3 +43,9 @@
       - else
         = render 'layouts/title' if content_for :title
         = yield
+
+    %footer.main-footer
+      .container
+        - if @pages.any?
+          - @pages.each do |page|
+            = link_to page.title, page

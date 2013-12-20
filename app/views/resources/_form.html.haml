@@ -10,7 +10,7 @@
   .half-width-fields
     .field.one-half
       = f.label :url
-      = f.text_field :url
+      = f.text_field :url, placeholder: "http://example.com"
 
     .field.one-half
       = f.label :phone
@@ -33,17 +33,18 @@
         = a.label :street1, 'Street'
         = a.text_field :street1
 
-      .field
-        = a.label :suburb
-        = a.text_field :suburb
+      .fields
+        .field.one-third
+          = a.label :suburb
+          = a.text_field :suburb
 
-      .field
-        = a.label :state
-        = a.text_field :state
+        .field.one-third
+          = a.label :state
+          = a.text_field :state
 
-      .field
-        = a.label :country
-        = a.text_field :country
+        .field.one-third
+          = a.label :country
+          = a.text_field :country
 
   .submit
     = f.submit 'Save'

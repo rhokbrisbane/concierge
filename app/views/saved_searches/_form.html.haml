@@ -7,4 +7,5 @@
     - else
       = collection_select 'saved_search[tag_ids]', nil, tags, :id, :name, {}
 
-  = f.submit 'Search'
+  .submit
+    %button.icon-search3{ type: 'submit' } Search

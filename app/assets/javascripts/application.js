@@ -22,5 +22,6 @@
 //= require leaflet-providers
 //= require leaflet-markercluster
 //= require handlebars
+//= require fitvids/jquery.fitvids
 //= require_tree ./templates
 //= require_tree .

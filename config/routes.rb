@@ -1,4 +1,5 @@
 Concierge::Application.routes.draw do
+
   ActiveAdmin.routes(self)
 
   root to: 'dashboard#index'
@@ -7,9 +8,12 @@ Concierge::Application.routes.draw do
 
   resources :dashboard, only: :index
   resources :tags,      only: :show
+  resources :users,     only: :show
+  resources :resources
   resources :comments,  only: [:create, :destroy]
   resources :kids
   resources :saved_searches
+  resources :pages
 
   resources :resources do
     member do

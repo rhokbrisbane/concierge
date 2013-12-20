@@ -1,5 +1,6 @@
 html {
   background: ivory;
+  min-height: 100%;
 }
 
 .avatar {
@@ -27,5 +28,42 @@ html {
   }
 }
 
-
 .icon-savedsearch { @extend .icon-search3; }
+
+
+.devise-extras, .main-footer {
+  text-align: center;
+  margin-top: $line-height;
+
+  a {
+    display: inline-block;
+    margin: .25em;
+    color: $black;
+
+    &:hover, &:visited, &:active { color: $black; }
+
+    &.button {
+      &:hover, &:visited, &:active { color: $white; }
+    }
+  }
+}
+
+
+main header {
+  text-align: center;
+}
+
+
+main dl {
+  dt, dd {
+    margin: 0 0 .25em;
+    padding: 0;
+  }
+}
+
+
+
+#comments {
+  max-width: 400px;
+  margin: $line-height auto;
+}

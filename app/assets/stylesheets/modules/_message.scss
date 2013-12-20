@@ -36,7 +36,7 @@
 
   &.notice {
     background-color: $color-info;
-    background-color: rgba(darken($color-info, 25%), .75);
+    background-color: rgba(black, .75);
   }
 
   @media screen and (max-width: $breakpoint-small) {

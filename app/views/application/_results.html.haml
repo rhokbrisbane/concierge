@@ -1,16 +1,24 @@
-%h3 Resources
+.one-half
+  %h4 Resources
 
-- if @results.resources.any?
-  - @results.resources.each do |resource|
-    = link_to resource.name, resource
+  - if @results.resources.any?
 
-- else
-  .empty No resources found.
+    %ul.related-items.no-dot
+      - @results.resources.each do |resource|
+        %li{class: "icon-resource"}
+          = link_to resource.name, resource
 
-%h3 People
+  - else
+    .empty No resources found.
 
-- if @results.people.any?
-  - @results.people.each do |person|
-    = link_to person.name, person
-- else
-  .empty No people found.
+.one-half
+  %h4 People
+
+  - if @results.people.any?
+    %ul.related-items.no-dot
+      - @results.people.each do |user|
+        %li{class: "icon-user"}
+          = link_to user.name, user
+
+  - else
+    .empty No people found.

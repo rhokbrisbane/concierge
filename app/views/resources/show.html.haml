@@ -6,16 +6,18 @@
 
 %dl.description
   %dt Category
-  %dd= @resource.category_humanize
+  %dd= @resource.category
+
   %dt URL
   %dd= link_to @resource.url, @resource.url, target: "_blank"
   %dt Phone
   %dd= @resource.phone
 
-  %dt Social
-  %dd= "<strong>facebook.com/</strong>#{@resource.facebook}".html_safe
-  %dt
-  %dd= "<strong>twitter.com/</strong>#{@resource.twitter}".html_safe
+  - if !@resource.facebook.blank? || !@resource.twitter.blank?
+    %dt Social
+    %dd.social-links
+      = link_to "<strong>facebook.com/</strong>#{@resource.facebook}".html_safe, "http://facebook.com/#{@resource.facebook}" unless @resource.facebook.blank?
+      = link_to"<strong>twitter.com/</strong>#{@resource.twitter}".html_safe, "http://twitter.com/#{@resource.twitter}" unless @resource.twitter.blank?
 
 .tags
   .current_tags
@@ -27,8 +29,8 @@
   = hidden_field_tag :tags_list,        @tags.map          { |tag| [tag.id, tag.name] }.to_json
   = hidden_field_tag :add_tag_url,      add_tag_resource_path(@resource)
 
-  = form_for @resource, remote: true, url: add_tag_resource_path(@resource) do |f|
-    .container
+  .add-tag
+    = form_for @resource, remote: true, url: add_tag_resource_path(@resource) do |f|
       = select_tag :tag_id, options_for_select(@tags.map { |tag| [tag.name, tag.id] })
       = f.submit 'Add Tag', id: :submit_new_tag
 

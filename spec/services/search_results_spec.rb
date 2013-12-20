@@ -6,15 +6,15 @@ describe SearchResults do
     context "when supplying no tags" do
       it "does not throw an error" do
         expect { SearchResults.for }.to_not raise_error
-        expect { SearchResults.for(tags: []) }.to_not raise_error
+        expect { SearchResults.for(tag_ids: []) }.to_not raise_error
       end
 
       it "returns a SearchResults object with empty people" do
-        expect(SearchResults.for(tags: []).people).to be_empty
+        expect(SearchResults.for(tag_ids: []).people).to be_empty
       end
 
       it "returns a SearchResults object with empty resources" do
-        expect(SearchResults.for(tags: []).resources).to be_empty
+        expect(SearchResults.for(tag_ids: []).resources).to be_empty
       end
     end
 
@@ -40,7 +40,7 @@ describe SearchResults do
           end
 
           context "searching for tag a" do
-            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [a.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tag_ids: [a.id]) }
 
             it "returns a SearchResults object not including user1" do
               expect(result.people).to_not include(user1)
@@ -54,7 +54,7 @@ describe SearchResults do
           end
 
           context "searching for tag b" do
-            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [b.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tag_ids: [b.id]) }
 
             it "returns a SearchResults object including user1" do
               expect(result.people).to include(user1)
@@ -68,7 +68,7 @@ describe SearchResults do
           end
 
           context "searching for tag c" do
-            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [c.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tag_ids: [c.id]) }
 
             it "returns a SearchResults object not including user1" do
               expect(result.people).to_not include(user1)
@@ -82,7 +82,7 @@ describe SearchResults do
           end
 
           context "searching for tags a, b" do
-            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [a.id, b.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tag_ids: [a.id, b.id]) }
 
             it "returns a SearchResults object including user1" do
               expect(result.people).to include(user1)
@@ -96,7 +96,7 @@ describe SearchResults do
           end
 
           context "searching for tags a, c" do
-            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [a.id, c.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tag_ids: [a.id, c.id]) }
 
             it "returns a SearchResults object not including user1" do
               expect(result.people).to_not include(user1)
@@ -110,7 +110,7 @@ describe SearchResults do
           end
 
           context "searching for tags b, c" do
-            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [b.id, c.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tag_ids: [b.id, c.id]) }
 
             it "returns a SearchResults object including user1" do
               expect(result.people).to include(user1)
@@ -124,7 +124,7 @@ describe SearchResults do
           end
 
           context "searching for tags a, b, c" do
-            let(:result) { SearchResults.for(ability: Ability.new(user1), tags: [a.id, b.id, c.id]) }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tag_ids: [a.id, b.id, c.id]) }
 
             it "returns a SearchResults object including user1" do
               expect(result.people).to include(user1)
@@ -140,7 +140,7 @@ describe SearchResults do
       end
 
       it "returns a SearchResults object with empty resources" do
-        expect(SearchResults.for(tags: []).resources).to be_empty
+        expect(SearchResults.for(tag_ids: []).resources).to be_empty
       end
     end
   end

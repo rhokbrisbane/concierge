@@ -17,7 +17,7 @@ class Api::V1::SearchController < Api::V1::BaseController
 
   def results
     SearchResults.for({
-      tags:    search_params[:tag_ids],
+      tag_ids: search_params[:tag_ids],
       ability: current_ability
     })
   end

@@ -18,18 +18,18 @@
 }
 
 .button {
+  @extend %button;
   @include button;
 }
 
 a.button {
-  &:visited {
-    color: $button-default-foreground-color;
-  }
+  &:hover, &:active, &:visited { color: $button-default-foreground-color; }
 }
 
 button,
 input[type="submit"],
 input[type="button"] {
+  @extend %button;
   @include appearance(none);
   @extend .button;
 }

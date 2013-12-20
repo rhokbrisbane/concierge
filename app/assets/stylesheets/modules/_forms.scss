@@ -1,4 +1,9 @@
 
+form {
+  max-width: $breakpoint-small;
+  margin: 1.5em auto;
+}
+
 .submit {
   display: block;
 

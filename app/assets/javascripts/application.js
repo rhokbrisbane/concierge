@@ -18,4 +18,9 @@
 //= require jquery-ui/ui/jquery-ui
 //= require chosen.jquery
 //= require underscore
+//= require leaflet
+//= require leaflet-providers
+//= require leaflet-markercluster
+//= require handlebars
+//= require_tree ./templates
 //= require_tree .

@@ -17,3 +17,15 @@ html {
   border-top: thin dashed #eee;
   border-bottom: thin dashed #eee;
 }
+
+
+.primary-button {
+  background-color: $color-primary;
+
+  &:hover {
+    background-color: $color-primary;
+  }
+}
+
+
+.icon-savedsearch { @extend .icon-search3; }

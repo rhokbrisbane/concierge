@@ -1,0 +1,30 @@
+<h1 class="title icon-resource">
+  <a href="/resources/{{id}}">{{name}}</a>
+</h1>
+
+<dl>
+  {{#if url}}
+    <dt>URL</dt>
+    <dd><a href="{{url}}" target="_blank">{{url}}</a></dd>
+  {{/if}}
+
+  {{#if category}}
+    <dt>Category</dt>
+    <dd>{{category}}</dd>
+  {{/if}}
+
+  {{#if phone}}
+    <dt>Phone</dt>
+    <dd>{{phone}}</dd>
+  {{/if}}
+
+  <dt>Social</dt>
+  <dd class='social-links'>
+    {{#if facebook}}
+      <a href="http://facebook.com/{{facebook}}" target="_blank"><strong>facebook.com/</strong>{{facebook}}</a>
+    {{/if}}
+    {{#if twitter}}
+      <a href="http://twitter.com/{{twitter}}" target="_blank"><strong>twitter.com/</strong>{{twitter}}</a>
+    {{/if}}
+  </dd>
+</dl>

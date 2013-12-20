@@ -2,16 +2,13 @@
 
 - if @saved_searches.any?
   %table
-    %tr
-      %th Date
-      %th
-
-    - @saved_searches.each do |saved_search|
+    %thead
       %tr
-        %td= link_to saved_search.name.blank? ? 'Show' : saved_search.name, saved_search
-        %td
-          = link_to 'Edit', edit_saved_search_path(saved_search), class: 'icon-pencil'
-          = link_to 'Delete', saved_search, class: 'icon-remove', :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %th Date
+        %th Tags / Related
+        %th
+    %tbody
+      = render @saved_searches
 
 - else
   .empty

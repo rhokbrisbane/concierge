@@ -2,16 +2,28 @@
 
 .hero
   .container
-    -# .one-half
-    = link_to image_tag('logo.png'), root_path, class: "public-logo"
+    .one-half
+      %br
+      %br
+      = link_to image_tag('logo.png'), root_path, class: "public-logo"
+
+    .one-half
+      -# %iframe{ height: "280", src: "//www.youtube.com/embed/O20qM5PbYdg?autohide=1&iv_load_policy=3&modestbranding=1&rel=0&showinfo=0", frameborder: 0, allowfullscreen: true }
+      %label Sign in with&hellip;
+      = link_to "Facebook", user_omniauth_authorize_path(:facebook), class: 'big-button primary-button'
+      = link_to "Email", new_user_session_path, class: "big-button"
+
     %h3= t('sign_up')
 
-    -# .one-half
-    -#   %iframe{ height: "280", src: "//www.youtube.com/embed/O20qM5PbYdg?autohide=1&iv_load_policy=3&modestbranding=1&rel=0&showinfo=0", frameborder: 0, allowfullscreen: true }
-
-
 .container
+  %h4 Hummingbird Connect helps families living with complex medical conditions to:
 
-  %label Sign in with&hellip;
-  = link_to "Facebook", user_omniauth_authorize_path(:facebook), class: 'big-button primary-button'
-  = link_to "Email", new_user_session_path, class: "big-button"
+  \- Connect with accurate and up to date information
+  %br
+  \- Connect with care services relevant to their condition and location
+  %br
+  \- Connect with other families with shared experiences
+  %br
+  %br
+
+  Hummingbird Connect is made possible, in part, due to the immense wealth of collective knowledge and experience that resides in the parents and families of children with complex medical needs. We work to empower families with information, to help them to take charge, and reach out to care providers most appropriate to their needs, with knowledge and dignity. As a community, Hummingbird Connect works to support, and empower parents, as the greatest advocates their child will ever have. We are the support crew, who work to ensure that families will never feel alone.

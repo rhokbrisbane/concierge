@@ -31,6 +31,8 @@ class ResourcesController < ApplicationController
   end
 
   def update
+    @resource = Resource.find params[:id]
+
     if @resource.update(resource_params)
       @resource.address.update address_params
       redirect_to @resource, notice: 'Resource was successfully updated.'

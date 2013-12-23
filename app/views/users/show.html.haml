@@ -1,8 +1,9 @@
 = content_for :title, @user
 = content_for :title_icon, 'icon-user'
-= content_for :actions do
-  = link_to 'Edit profile', edit_user_path, class: "button icon-pencil"
 
+- if can? :update, @user
+  = content_for :actions do
+    = link_to 'Edit profile', edit_user_path, class: 'button icon-pencil'
 
 - if @user.description.present?
   .description

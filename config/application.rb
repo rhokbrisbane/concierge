@@ -10,6 +10,7 @@ Bundler.require(:default, Rails.env)
 
 module Concierge
   class Application < Rails::Application
+    I18n.config.enforce_available_locales = true
     config.autoload_paths += %W(#{config.root}/lib)
     config.time_zone = 'Brisbane'
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')

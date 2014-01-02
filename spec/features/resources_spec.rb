@@ -91,7 +91,7 @@ describe 'Resources' do
         it 'creates an address' do
           expect { click_button 'Save' }.to change { Address.count }.by(1)
 
-          address_attributes = Address.last.attributes.select{ |k, _| %w(street1 suburb state country).include?(k) }
+          address_attributes = Address.last.attributes.select { |k, _| %w(street1 suburb state country).include?(k) }
 
           expect(address_attributes).to eql({
              'suburb' => 'Some Suburb',
@@ -115,7 +115,7 @@ describe 'Resources' do
         it 'creates an address' do
           expect { click_button 'Save' }.to change { Address.count }.by(1)
 
-          address_attributes = Address.last.attributes.select{ |k, _| %w(street1 suburb state country).include?(k) }
+          address_attributes = Address.last.attributes.select { |k, _| %w(street1 suburb state country).include?(k) }
 
           expect(address_attributes).to eql({
              'suburb' => '',
@@ -135,7 +135,7 @@ describe 'Resources' do
         it 'creates an empty address' do
           expect { click_button 'Save' }.to change { Address.count }.by(1)
 
-          address_attributes = Address.last.attributes.select{ |k, _| %w(street1 suburb state country).include?(k) }
+          address_attributes = Address.last.attributes.select { |k, _| %w(street1 suburb state country).include?(k) }
 
           expect(address_attributes).to eql({
              'suburb' => '',
@@ -143,6 +143,15 @@ describe 'Resources' do
               'state' => '',
             'country' => ''
           })
+        end
+      end
+
+      context 'with invalid attributes' do
+        it 'shows an error message' do
+          fill_in 'Name', with: ''
+          expect { click_button 'Save' }.to change { Address.count }.by(0)
+
+          expect(page).to have_content("Name can't be blank")
         end
       end
     end
@@ -154,17 +163,59 @@ describe 'Resources' do
         end
       end
 
-      it 'updates the resource and the address' do
+      before do
         visit resource_path(resource)
         click_link 'Edit'
+      end
 
-        fill_in 'Name',   with: 'New Name'
-        fill_in 'Street', with: 'New Street'
-        click_button 'Save'
+      context 'changing the resource attributes' do
+        it 'updates the resource' do
+          fill_in 'Name', with: 'New Name'
+          click_button 'Save'
 
-        expect(page).to have_content('Resource was successfully updated.')
-        expect(resource.reload.name).to eql('New Name')
-        expect(resource.address.street1).to eql('New Street')
+          expect(page).to have_content('Resource was successfully updated.')
+          expect(resource.reload.name).to eql('New Name')
+        end
+      end
+
+      context 'changing the address attributes' do
+        it 'updates the address' do
+          fill_in 'Street', with: 'New Street'
+          click_button 'Save'
+
+          expect(page).to have_content('Resource was successfully updated.')
+          expect(resource.reload.address.street1).to eql('New Street')
+        end
+      end
+
+      context 'removing all address attributes' do
+        it 'updates the address' do
+          fill_in 'Street',   with: ''
+          fill_in 'Suburb',   with: ''
+          fill_in 'State',    with: ''
+          fill_in 'Country',  with: ''
+          click_button 'Save'
+
+          expect(page).to have_content('Resource was successfully updated.')
+
+          address_attributes = resource.reload.address.attributes.select { |k, _| %w(street1 suburb state country).include?(k) }
+
+          expect(address_attributes).to eql({
+             'suburb' => '',
+            'street1' => '',
+              'state' => '',
+            'country' => ''
+          })
+        end
+      end
+
+      context 'with invalid attributes' do
+        it 'shows an error message' do
+          fill_in 'Name', with: ''
+          click_button 'Save'
+
+          expect(page).to have_content("Name can't be blank")
+        end
       end
     end
   end

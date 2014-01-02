@@ -7,6 +7,7 @@ describe ResourceSerializer do
 
   it 'returns the correct JSON' do
     expect(JSON.parse(subject.to_json)).to eql({
+      'id'         => resource.id,
       'name'       => resource.name,
       'category'   => resource.category,
       'url'        => resource.url,

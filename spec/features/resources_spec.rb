@@ -73,19 +73,77 @@ describe 'Resources' do
         fill_in 'Phone',    with: '+61 1234 567 890'
         fill_in 'Facebook', with: 'goodfoundation'
         fill_in 'Twitter',  with: 'goodfoundation'
-        fill_in 'Street',   with: 'Some Street'
-        fill_in 'Suburb',   with: 'Some Suburb'
-        fill_in 'State',    with: 'Some State'
-        fill_in 'Country',  with: 'Some Country'
       end
 
-      it 'creates a resource' do
-        expect { click_button 'Save' }.to change { Resource.count }.by(1)
-        expect(page).to have_content('Resource was successfully created.')
+      context 'with address attributes' do
+        before do
+          fill_in 'Street',   with: 'Some Street'
+          fill_in 'Suburb',   with: 'Some Suburb'
+          fill_in 'State',    with: 'Some State'
+          fill_in 'Country',  with: 'Some Country'
+        end
+
+        it 'creates a resource' do
+          expect { click_button 'Save' }.to change { Resource.count }.by(1)
+          expect(page).to have_content('Resource was successfully created.')
+        end
+
+        it 'creates an address' do
+          expect { click_button 'Save' }.to change { Address.count }.by(1)
+
+          address_attributes = Address.last.attributes.select{ |k, _| %w(street1 suburb state country).include?(k) }
+
+          expect(address_attributes).to eql({
+             'suburb' => 'Some Suburb',
+            'street1' => 'Some Street',
+              'state' => 'Some State',
+            'country' => 'Some Country'
+          })
+        end
       end
 
-      it 'creates an address' do
-        expect { click_button 'Save' }.to change { Address.count }.by(1)
+      context 'with street attribute' do
+        before do
+          fill_in 'Street', with: 'Some Street'
+        end
+
+        it 'creates a resource' do
+          expect { click_button 'Save' }.to change { Resource.count }.by(1)
+          expect(page).to have_content('Resource was successfully created.')
+        end
+
+        it 'creates an address' do
+          expect { click_button 'Save' }.to change { Address.count }.by(1)
+
+          address_attributes = Address.last.attributes.select{ |k, _| %w(street1 suburb state country).include?(k) }
+
+          expect(address_attributes).to eql({
+             'suburb' => '',
+            'street1' => 'Some Street',
+              'state' => '',
+            'country' => ''
+          })
+        end
+      end
+
+      context 'without address attributes' do
+        it 'creates a resource' do
+          expect { click_button 'Save' }.to change { Resource.count }.by(1)
+          expect(page).to have_content('Resource was successfully created.')
+        end
+
+        it 'creates an empty address' do
+          expect { click_button 'Save' }.to change { Address.count }.by(1)
+
+          address_attributes = Address.last.attributes.select{ |k, _| %w(street1 suburb state country).include?(k) }
+
+          expect(address_attributes).to eql({
+             'suburb' => '',
+            'street1' => '',
+              'state' => '',
+            'country' => ''
+          })
+        end
       end
     end
 
@@ -95,7 +153,6 @@ describe 'Resources' do
           r.address = create(:address, addressable: r)
         end
       end
-
 
       it 'updates the resource and the address' do
         visit resource_path(resource)

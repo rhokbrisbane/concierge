@@ -45,7 +45,7 @@ describe 'Resources' do
 
       let!(:tag) { create :tag }
 
-      it 'removes a tag', js: true, focus: true do
+      it 'removes a tag', js: true do
         resource.tags << tag
 
         visit resource_path(resource)

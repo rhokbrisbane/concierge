@@ -40,6 +40,29 @@ describe 'Resources' do
       end
     end
 
+    context 'removing tag' do
+      before { pending }
+
+      let!(:tag) { create :tag }
+
+      it 'removes a tag', js: true, focus: true do
+        resource.tags << tag
+
+        visit resource_path(resource)
+
+        within '.current_tags' do
+          expect(page).to have_content(tag.name)
+
+          expect do
+            find('.tag .remove').click
+            wait_ajax
+          end.to change { Tagging.count }.by(-1)
+
+          expect(page).to have_no_content(tag.name)
+        end
+      end
+    end
+
     context 'creating a resource' do
       before do
         click_link 'Create a resource'

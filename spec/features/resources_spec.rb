@@ -23,7 +23,7 @@ describe 'Resources' do
     context 'including tag' do
       let!(:tag) { create :tag }
 
-      it 'creates a new tag', js: true do
+      it 'creates a tag', js: true do
         visit resource_path(resource)
 
         page.execute_script("$('#tag_id').show()")

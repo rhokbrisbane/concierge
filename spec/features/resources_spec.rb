@@ -6,9 +6,9 @@ describe 'Resources' do
   before { authenticate }
 
   context 'as an user' do
-    context 'showing resource details' do
-      let!(:resource) { create :resource, user: user }
+    let!(:resource) { create :resource, user: user }
 
+    context 'showing resource details' do
       it 'shows the resource details' do
         visit resource_path(resource)
         expect(page).to have_content(resource.name)
@@ -21,18 +21,20 @@ describe 'Resources' do
     end
 
     context 'including tag' do
-      pending 'RSpec is not working...'
-
       let!(:tag) { create :tag }
 
-      it 'creates a new tag' do
+      it 'creates a new tag', js: true do
         visit resource_path(resource)
-        save_and_open_page
+
+        page.execute_script("$('#tag_id').show()")
         select tag.name, from: 'tag_id'
 
-        expect { click_button('Add tag') }.to change(Tagging.count).by(1)
+        expect do
+          click_button('Add Tag')
+          wait_ajax
+        end.to change { Tagging.count }.by(1)
 
-        whithin '#current_tags' do
+        within '.current_tags' do
           expect(page).to have_content(tag.name)
         end
       end

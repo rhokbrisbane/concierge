@@ -6,9 +6,9 @@ describe 'Resources' do
   before { authenticate }
 
   context 'as an user' do
-    context 'showing resource details' do
-      let!(:resource) { create :resource, user: user }
+    let!(:resource) { create :resource, user: user }
 
+    context 'showing resource details' do
       it 'shows the resource details' do
         visit resource_path(resource)
         expect(page).to have_content(resource.name)
@@ -17,6 +17,49 @@ describe 'Resources' do
         expect(page).to have_content(resource.phone)
         expect(page).to have_content("facebook.com/#{resource.facebook}")
         expect(page).to have_content("twitter.com/#{resource.twitter}")
+      end
+    end
+
+    context 'including tag' do
+      let!(:tag) { create :tag }
+
+      it 'creates a tag', js: true do
+        visit resource_path(resource)
+
+        page.execute_script("$('#tag_id').show()")
+        select tag.name, from: 'tag_id'
+
+        expect do
+          click_button('Add Tag')
+          wait_ajax
+        end.to change { Tagging.count }.by(1)
+
+        within '.current_tags' do
+          expect(page).to have_content(tag.name)
+        end
+      end
+    end
+
+    context 'removing tag' do
+      before { pending }
+
+      let!(:tag) { create :tag }
+
+      it 'removes a tag', js: true do
+        resource.tags << tag
+
+        visit resource_path(resource)
+
+        within '.current_tags' do
+          expect(page).to have_content(tag.name)
+
+          expect do
+            find('.tag .remove').click
+            wait_ajax
+          end.to change { Tagging.count }.by(-1)
+
+          expect(page).to have_no_content(tag.name)
+        end
       end
     end
 

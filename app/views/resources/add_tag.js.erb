@@ -1,0 +1,9 @@
+<% if @flash %>
+  Message.flash('<%= @flash[:class_name] %>', '<%= @flash[:message] %>');
+<% end %>
+
+<% tags_list = @resource.tags.map { |tag| [tag.id, tag.name] }.to_json.html_safe %>
+
+$('#entity_tags_list').val('<%= j tags_list %>')
+
+new TagListHandler($('#entity_tags_list'), $('#tags_list'), $('#add_tag_url'), $('#remove_tag_url'))

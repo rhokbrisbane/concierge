@@ -20,6 +20,24 @@ describe 'Resources' do
       end
     end
 
+    context 'including tag' do
+      pending 'RSpec is not working...'
+
+      let!(:tag) { create :tag }
+
+      it 'creates a new tag' do
+        visit resource_path(resource)
+        save_and_open_page
+        select tag.name, from: 'tag_id'
+
+        expect { click_button('Add tag') }.to change(Tagging.count).by(1)
+
+        whithin '#current_tags' do
+          expect(page).to have_content(tag.name)
+        end
+      end
+    end
+
     context 'creating a resource' do
       before do
         click_link 'Create a resource'

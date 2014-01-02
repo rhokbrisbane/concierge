@@ -1,4 +1,4 @@
-class TagListHandler
+class @TagListHandler
   constructor : ($entityTagsList, $tagsList, $addTagUrl, $removeTagUrl) ->
     @entityTagsList = JSON.parse($entityTagsList.val())
     @tagsList       = JSON.parse($tagsList.val())

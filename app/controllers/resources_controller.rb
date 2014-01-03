@@ -32,13 +32,12 @@ class ResourcesController < ApplicationController
 
   def update
     @resource = Resource.find params[:id]
-    @resource.address ||= @resource.build_address
+    @address = @resource.build_address || @resource.address
 
-    if @resource.update(resource_params) && @resource.address.update(address_params)
+    if @resource.update(resource_params) && @address.update(address_params)
       redirect_to @resource, notice: 'Resource was successfully updated.'
     else
       flash.now[:alert] = @resource.errors.full_messages.join(', ')
-      @address = @resource.address
       render action: 'edit'
     end
   end

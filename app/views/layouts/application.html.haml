@@ -22,7 +22,7 @@
     = javascript_include_tag "application", data: { turbolinks_track: true }
     = csrf_meta_tag
 
-  %body{ class: ("admin" if current_user.admin?) }
+  %body{ class: ("admin" if current_user && current_user.admin?) }
     = render 'flash'
 
     - if user_signed_in?

@@ -1,7 +1,7 @@
 = content_for :title, 'All Tags'
 = content_for :title_icon, 'icon-tag'
 
-- if can? :create, Tagging
+- if can? :create, Tag
   = content_for :actions do
     = link_to 'New tag', new_tag_path, class: 'button icon-plus'
 

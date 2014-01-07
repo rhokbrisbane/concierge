@@ -1,5 +1,6 @@
+
 html {
-  background: ivory;
+  background: $bg-color;
   min-height: 100%;
 }
 
@@ -50,7 +51,23 @@ html {
 
 
 main header {
-  text-align: center;
+  @extend %clearfix;
+
+  %heading { float: left; }
+  .actions { float: right; }
+
+  @media screen and (max-width: $breakpoint-small) {
+    text-align: center;
+    font-size: 80%;
+    margin: 0 0 1em;
+
+    %heading, .actions {
+      float: none;
+      display: block;
+      margin: 0;
+    }
+
+  }
 }
 
 
@@ -64,6 +81,29 @@ main dl {
 
 
 #comments {
-  max-width: 400px;
   margin: $line-height auto;
+}
+
+
+@media screen and (max-width: $breakpoint-small) {
+
+  %heading {
+    font-size: 110%;
+  }
+
+  .related-items li {
+    font-size: 100%;
+  }
+}
+
+
+.admin {
+  .admin-header {
+    background: #444;
+    a, .label {
+      border-color: #333;
+    }
+  }
+  > .global-header { top: $fixed-top-header-height; }
+  > main { margin-top: 2 * $fixed-top-header-height; }
 }

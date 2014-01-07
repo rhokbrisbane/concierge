@@ -1,0 +1,15 @@
+= form_for @tag do |f|
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .field
+    = f.label :category
+    = f.select :category, Tag::CATEGORIES
+
+  .field
+    = f.label :description
+    = f.text_area :description
+
+  .submit
+    = f.submit 'Save'

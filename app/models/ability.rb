@@ -10,7 +10,6 @@ class Ability
 
     can :create, Tagging
     can :manage, Resource, user_id: user.id
-    can :create, Note
     can :create, Kid
     can :create, SavedSearch
 
@@ -49,7 +48,6 @@ class Ability
     # can :update, User, id: user.id
 
     can :manage, Note,        user_id: user.id
-    # can :manage, Resource,    user_id: user.id
     can :manage, Tagging,     user_id: user.id
     can :manage, Address,     addressable: user
     can :manage, SavedSearch, user_id: user.id

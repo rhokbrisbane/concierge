@@ -7,7 +7,7 @@ Concierge::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :dashboard, only: :index
-  resources :tags,      only: :show
+  resources :tags
   resources :users,     only: :show
   resources :resources
   resources :comments,  only: [:create, :destroy]

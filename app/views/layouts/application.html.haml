@@ -10,7 +10,7 @@
   %head
     %title
       = "#{yield :title} | " if content_for :title
-      Concierge
+      HummingbirdConnect
 
     %meta{ :charset => "utf-8" }
     %meta{ "http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1" }
@@ -22,7 +22,7 @@
     = javascript_include_tag "application", data: { turbolinks_track: true }
     = csrf_meta_tag
 
-  %body
+  %body{ class: ("admin" if current_user.admin?) }
     = render 'flash'
 
     - if user_signed_in?
@@ -30,6 +30,8 @@
         %header.admin-header
           .container
             = link_to 'Resources', resources_path
+            = link_to 'Tags', tags_path
+            = link_to 'Pages', pages_path
 
       %header.global-header= render 'layouts/header'
 
@@ -41,11 +43,16 @@
           = yield
 
       - else
-        = render 'layouts/title' if content_for :title
         = yield
 
-    %footer.main-footer
-      .container
-        - if @pages.any?
-          - @pages.each do |page|
-            = link_to page.title, page
+    - if user_signed_in?
+      %footer.main-footer
+        .container
+          = link_to 'All Resources', resources_path, class: "icon-resource" if can? :read, Resource
+          = link_to 'All Tags', tags_path, class: "icon-tag" if can? :read, Tag
+
+          %hr
+
+          - if @pages.any?
+            - @pages.each do |page|
+              = link_to page.title, page

@@ -1,22 +1,17 @@
+= content_for :full_width, true
 = content_for :title, 'Search results'
-= content_for :title_icon, 'icon-search3'
 
-= content_for :actions do
-  = link_to 'Refine search', edit_saved_search_path(@saved_search), class: "button icon-search3"
 
-.tags
-  %input{ type: "hidden", value: @saved_search.tag_ids.join(','), id: 'result-tag-ids' }
+.hero.map-hero
+  #results-map
+  = link_to 'Refine search', edit_saved_search_path(@saved_search), class: "button icon-search3 refine-search-button"
 
-  - @saved_search.tags.each do |tag|
-    = link_to tag.name, tag_path(tag), class: 'tag'
+.container.results
+  .tags
+    %label Search terms:
+    %input{ type: "hidden", value: @saved_search.tag_ids.join(','), id: 'result-tag-ids' }
+    - @saved_search.tags.each do |tag|
+      = link_to tag.name, tag_path(tag), class: 'tag'
 
-.tabs
-  %ul
-    %li= link_to "List", "#results"
-    %li= link_to "Map", "#map"
+  = render 'results', results: @results
 
-  #results.tab
-    = render 'results', results: @results
-
-  #map.tab
-    #results-map

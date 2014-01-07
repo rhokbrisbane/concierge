@@ -1,8 +1,9 @@
 = content_for :title, 'Resources'
 = content_for :title_icon, 'icon-document'
 
-= content_for :actions do
-  = link_to 'New resource', new_resource_path, class: 'button icon-plus'
+- if can? :create, Resource
+  = content_for :actions do
+    = link_to 'New resource', new_resource_path, class: 'button icon-plus'
 
 %table
   %thead
@@ -18,6 +19,7 @@
       %td= resource.category
       %td= resource.phone
       %td
-        - if can? :manage, resource
-          = link_to 'Edit', edit_resource_path(resource)
-          = link_to 'Delete', resource, method: :delete, data: { confirm: 'Are you sure?' }
+        .buttons>
+          - if can? :manage, resource
+            = link_to 'Edit', edit_resource_path(resource), class: 'button'
+            = link_to 'Delete', resource, method: :delete, class: 'button', data: { confirm: 'Are you sure?' }

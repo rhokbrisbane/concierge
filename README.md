@@ -1,6 +1,6 @@
 # [Queensland Kids](http://www.queenslandkids.org)
 
-**[Concierge](http://concierge.org.au)**
+**[Hummingbird Connect](http://hummingbirdconnect.org)**
 
 ## What is this project?
 

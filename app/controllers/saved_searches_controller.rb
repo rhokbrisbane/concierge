@@ -25,6 +25,7 @@ class SavedSearchesController < ApplicationController
     authorize! :create, SavedSearch
 
     @saved_search = current_user.saved_searches.new(saved_searches_params)
+    binding.pry
     @saved_search.name = Time.now.to_s(:time_with_date)
 
     respond_to do |format|
@@ -65,6 +66,6 @@ class SavedSearchesController < ApplicationController
 
   private
   def saved_searches_params
-    params.require(:saved_search).permit(tag_ids: [])
+    params.require(:saved_search).permit(:name, tag_ids: [])
   end
 end

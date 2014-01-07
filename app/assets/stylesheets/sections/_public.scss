@@ -1,5 +1,5 @@
 .public {
-  background: mix($green, white, 15%) url(blurry.jpg) no-repeat center;
+  background: mix($green, white, 15%) image-url("blurry.jpg") no-repeat center;
   @include background-size(cover);
   text-align: center;
 

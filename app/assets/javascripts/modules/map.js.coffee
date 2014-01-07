@@ -2,19 +2,13 @@
 getResults = (tagIds) ->
 
   handleRequest = (data, type) ->
-    layer = new L.featureGroup()
-
     _.each data, (result, i) ->
-
       if result.address and result.address.latitude
         address = result.address
         icon = L.divIcon({className: "marker icon-#{type}"})
         marker = L.marker([address.latitude, address.longitude], icon: icon)
         marker.bindPopup(HandlebarsTemplates["#{type}_popup"](result))
-        marker.addTo(layer)
-
-    map.addLayer layer
-    # map.fitBounds layer.getBounds()
+        layer.push marker
 
   resourcesRequest = $.ajax
     type: "POST"
@@ -28,13 +22,16 @@ getResults = (tagIds) ->
     data:
       tag_ids: tagIds
 
-  resourcesRequest.done (data) ->
-    handleRequest(data.search, 'resource')
+  window.layer = []
 
-  peopleRequest.done (data) ->
-    handleRequest(data.search, 'user')
+  $.when(resourcesRequest, peopleRequest).done (resources, users) ->
+    handleRequest(resources[0].search, 'resource')
+    handleRequest(users[0].search, 'user')
 
-
+    markers = new L.MarkerClusterGroup()
+    markers.addLayers layer
+    map.addLayer markers
+    map.fitBounds markers.getBounds()
 
 $ ->
 

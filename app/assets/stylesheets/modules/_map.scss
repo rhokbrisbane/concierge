@@ -3,7 +3,7 @@
   height: 480px;
 
   @media screen and (max-width: $breakpoint-small) {
-    margin: -#{$line-height} -#{$line-height} $line-height;
+    height: 280px;
   }
 }
 
@@ -29,5 +29,18 @@ $marker-size: 2em;
     font-size: 1em;
     line-height: 1.5em;
     text-align: center;
+  }
+}
+
+
+.map-hero {
+  position: relative;
+  background: #ffefcf;
+
+  .refine-search-button {
+    position: absolute;
+    z-index: 10;
+    top: 1em;
+    right: 1em;
   }
 }

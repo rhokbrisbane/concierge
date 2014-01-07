@@ -3,17 +3,27 @@ $title-icon-size: 2em;
 .main-header {
   @extend %clearfix;
   text-align: center;
-  margin-bottom: $line-height * 2;
+  margin-bottom: $line-height * 1.5;
 
   .title {
+    float: left;
     line-height: $line-height * .75;
   }
 
   .actions {
-    display: block;
-    margin-top: $line-height;
+    float: right;
 
     a, button { display: inline-block; }
+  }
+
+  @media screen and (max-width: $breakpoint-small) {
+    font-size: 80%;
+
+    .title, .actions {
+      float: none;
+      display: block;
+    }
+
   }
 }
 
@@ -22,21 +32,6 @@ $title-icon-size: 2em;
   font-size: $title-icon-size;
 
   &[class*="icon-"] {
-    padding-top: $title-icon-size * 1.25;
-    position: relative;
-
-    &:before {
-      font-size: $title-icon-size / 2;
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: $title-icon-size ;
-      line-height: $title-icon-size ;
-      height: $title-icon-size ;
-      margin-left: -#{$title-icon-size / 2};
-      color: $white;
-      background: $color-primary;
-      border-radius: 50%;
-    }
+    &:before { display: none; }
   }
 }

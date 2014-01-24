@@ -1,0 +1,24 @@
+= content_for :title, 'Categories'
+= content_for :title_icon, 'icon-document'
+
+= content_for :actions do
+  = link_to 'New category', new_category_path, class: 'button icon-plus'
+
+- if @categories.any?
+  %table
+    %thead
+      %tr
+        %th Name
+        %th
+
+    - @categories.each do |category|
+      %tr{ data: { created_at: category.created_at } }
+        %td= category.name
+        %td
+          = link_to 'Edit', edit_category_path(category)
+          = link_to 'Delete', category, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+- else
+  .empty
+    No categories found. Would you like to
+    = link_to 'create one?', new_category_path

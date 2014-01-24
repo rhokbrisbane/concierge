@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131220035159) do
+ActiveRecord::Schema.define(version: 20140124010817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,12 @@ ActiveRecord::Schema.define(version: 20131220035159) do
   end
 
   add_index "addresses", ["addressable_id", "addressable_type"], name: "index_addresses_on_addressable_id_and_addressable_type", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -144,8 +150,8 @@ ActiveRecord::Schema.define(version: 20131220035159) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category"
     t.string   "description"
+    t.integer  "category_id"
   end
 
   create_table "user_groups", force: true do |t|

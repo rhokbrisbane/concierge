@@ -16,7 +16,7 @@
   - @resources.each do |resource|
     %tr{ data: { created_at: resource.created_at } }
       %td= link_to resource.name, resource
-      %td= resource.category
+      %td= resource.category_humanize
       %td= resource.phone
       %td
         .buttons>

@@ -24,6 +24,10 @@ FactoryGirl.define do
     country  { 'USA' }
   end
 
+  factory :category do
+    name { Faker::Name.name }
+  end
+
   factory :user do
     name     { Faker::Name.name }
     email    { Faker::Internet.email }
@@ -52,8 +56,8 @@ FactoryGirl.define do
   end
 
   factory :tag do
-    name     { Faker::Lorem.sentence(2) }
-    category { Tag::CATEGORIES.sample }
+    name { Faker::Lorem.sentence(2) }
+    category
   end
 
   factory :comment do

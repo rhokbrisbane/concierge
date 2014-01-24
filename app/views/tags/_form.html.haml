@@ -4,8 +4,8 @@
     = f.text_field :name
 
   .field
-    = f.label :category
-    = f.select :category, Tag::CATEGORIES
+    = f.label :category_id
+    = f.select :category_id, @categories
 
   .field
     = f.label :description

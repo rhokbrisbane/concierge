@@ -2,6 +2,7 @@ class Tag < ActiveRecord::Base
   include Commentable
 
   CATEGORIES = %w(needs symptoms age_group weight_group)
+  validates :name, presence: true
 
   def to_s
     name

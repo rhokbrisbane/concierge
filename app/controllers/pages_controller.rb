@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   load_and_authorize_resource
-  skip_before_filter :authenticate_user!, only: :show
+
+  skip_before_filter :authenticate_user!,  only: :show
   skip_before_filter :check_authorization, only: :show
 
   def index
@@ -19,7 +20,7 @@ class PagesController < ApplicationController
     @page = Page.new page_params
 
     if @page.save
-      redirect_to @page, notice: 'page was successfully created.'
+      redirect_to @page, notice: 'Page was successfully created.'
     else
       flash.now[:alert] = @page.errors.full_messages.join(', ')
       render action: 'new'
@@ -31,7 +32,7 @@ class PagesController < ApplicationController
 
   def update
     if @page.update(page_params)
-      redirect_to @page, notice: 'page was successfully updated.'
+      redirect_to @page, notice: 'Page was successfully updated.'
     else
       flash.now[:alert] = @page.errors.full_messages.join(', ')
       render action: 'edit'
@@ -58,5 +59,4 @@ class PagesController < ApplicationController
   def page_params
     params.require(:page).permit(:title, :content, :sort)
   end
-
 end

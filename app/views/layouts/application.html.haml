@@ -37,11 +37,9 @@
 
     %main{ role: 'main' }
       - if !content_for :full_width
-
         .container
           = render 'layouts/title' if content_for :title
           = yield
-
       - else
         = yield
 

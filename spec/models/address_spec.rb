@@ -2,14 +2,12 @@ require 'spec_helper'
 
 describe Address do
   it { should belong_to(:addressable) }
-  it { should validate_presence_of(:street1) }
-  it { should validate_presence_of(:suburb) }
-  it { should validate_presence_of(:state) }
-  it { should validate_presence_of(:country) }
+
   it { should validate_presence_of(:addressable) }
 
   describe '#to_s' do
     let(:address) { build :ne_address }
+
     it 'formats address' do
       expect(address.to_s).to eql('7 Prospect St, Fortitude Valley, Queensland, Australia')
     end

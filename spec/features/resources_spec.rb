@@ -65,7 +65,7 @@ describe 'Resources' do
 
     context 'creating a resource' do
       before do
-        click_link 'Create a resource'
+        visit new_resource_path
 
         fill_in 'Name',     with: 'Good Foundation'
         select  'Info',     from: 'Category'

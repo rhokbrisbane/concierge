@@ -28,7 +28,7 @@ describe 'Kids' do
 
     context 'creating a kid profile' do
       it 'creates a kid' do
-        click_link 'Create a new kid profile'
+        click_link 'New child profile'
 
         fill_in 'Name', with: 'Kid 1'
 

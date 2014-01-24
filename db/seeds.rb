@@ -1,7 +1,15 @@
 ##### Users #####
 
-admin = FactoryGirl.create(:admin, email: 'admin@example.com', password: 'rhok2013')
-user  = FactoryGirl.create(:user,  email: 'user@example.com',  password: 'rhok2013')
+print "Creating / searching users.\t\t\t"
+
+users_attributes = [
+  { email: 'admin@example.com', password: 'rhok2013', admin: true },
+  { email: 'user@example.com',  password: 'rhok2013', admin: false },
+]
+
+users_attributes.each do |user_attributes|
+  User.where(email: user_attributes[:email]).first || User.create!(user_attributes)
+end
 
 ##### Groups ####
 

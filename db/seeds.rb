@@ -9,10 +9,16 @@ public_group = FactoryGirl.create(:group, name: 'Public')
 public_group.users << admin
 public_group.users << user
 
+##### Category ######
+
+['Needs', 'Symptoms', 'Age group', 'Weight group'].each do |category_name|
+  Category.create(name: category_name)
+end
+
 ##### Tags ######
 
 tag_attributes = File.open("#{Rails.root}/db/seeds/symptoms.txt").each_line.map do |tag_name|
-  { name: tag_name, category: 'symptoms' }
+  { name: tag_name, category_id: Category.find_by_name('Symptoms').id }
 end
 
 puts "Importing #{tag_attributes.count} tags, it could take a while..."

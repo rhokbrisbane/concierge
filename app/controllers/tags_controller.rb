@@ -1,6 +1,8 @@
 class TagsController < ApplicationController
   load_and_authorize_resource
 
+  before_action :load_categories, only: [:new, :edit]
+
   def index
   end
 
@@ -17,6 +19,7 @@ class TagsController < ApplicationController
     if @tag.save
       redirect_to @tag, notice: 'Tag was successfully created.'
     else
+      load_categories
       render action: 'new'
     end
   end
@@ -25,6 +28,7 @@ class TagsController < ApplicationController
     if @tag.update(tag_params)
       redirect_to @tag, notice: 'Tag was successfully updated.'
     else
+      load_categories
       render action: 'edit'
     end
   end
@@ -37,7 +41,10 @@ class TagsController < ApplicationController
   private
 
   def tag_params
-    params.require(:tag).permit(:name, :category, :description)
+    params.require(:tag).permit(:name, :category_id, :description)
   end
 
+  def load_categories
+    @categories = Category.all.map { |category| [category, category.id] }
+  end
 end

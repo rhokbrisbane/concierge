@@ -7,17 +7,11 @@ describe Tag do
   it { should have_many(:resources) }
   it { should have_many(:comments) }
 
-  describe 'Categories' do
-    let(:tag) { create :tag }
-
-    it { expect(Tag::CATEGORIES).to include(tag.category) }
-  end
-
   describe '#to_s' do
-    let(:tag) { build :tag }
+    subject { build :tag }
 
     it 'returns the name' do
-      expect(tag.to_s).to eql(tag.name)
+      expect(subject.to_s).to eql(subject.name)
     end
   end
 end

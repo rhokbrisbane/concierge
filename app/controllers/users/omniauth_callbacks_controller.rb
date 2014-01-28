@@ -10,4 +10,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
+
+  protected
+
+  def after_sign_in_path_for(resource)
+    resource.sign_in_count == 1 ? new_saved_search_path : root_path
+  end
 end

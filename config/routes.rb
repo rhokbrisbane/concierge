@@ -3,7 +3,10 @@ Concierge::Application.routes.draw do
 
   root to: 'dashboard#index'
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations:      'users/registrations'
+  }
 
   resources :categories, except: :show
   resources :comments,  only: [:create, :destroy]

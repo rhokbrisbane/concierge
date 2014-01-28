@@ -18,3 +18,4 @@
 .sass-cache
 coverage
 config/database.yml
+public/system

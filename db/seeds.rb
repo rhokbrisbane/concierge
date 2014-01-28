@@ -1,43 +1,53 @@
 ##### Users #####
 
-admin = FactoryGirl.create(:admin, email: 'admin@example.com', password: 'rhok2013')
-user  = FactoryGirl.create(:user,  email: 'user@example.com',  password: 'rhok2013')
+puts 'Creating users...'
+
+users_attributes = [
+  { email: 'admin@example.com', password: 'rhok2013', admin: true },
+  { email: 'user@example.com',  password: 'rhok2013', admin: false },
+]
+
+users = []
+users_attributes.each do |user_attributes|
+  users << (User.where(email: user_attributes[:email]).first || User.create!(user_attributes))
+end
 
 ##### Groups ####
 
-public_group = FactoryGirl.create(:group, name: 'Public')
-public_group.users << admin
-public_group.users << user
+puts 'Creating public group...'
+
+public_group = Group.where(name: 'Public').first_or_create
+users.each { |user| public_group.users << user }
 
 ##### Category ######
 
-['Needs', 'Symptoms', 'Age group', 'Weight group'].each do |category_name|
-  Category.create(name: category_name)
+puts 'Creating categories...'
+
+['Needs', 'Symptoms', 'Age group', 'Weight group'].each do |name|
+  Category.where(name: name).first_or_create
 end
 
 ##### Tags ######
 
-tag_attributes = File.open("#{Rails.root}/db/seeds/symptoms.txt").each_line.map do |tag_name|
+tags_attributes = File.open("#{Rails.root}/db/seeds/symptoms.txt").each_line.map do |tag_name|
   { name: tag_name, category_id: Category.find_by_name('Symptoms').id }
 end
 
-puts "Importing #{tag_attributes.count} tags, it could take a while..."
+puts "Importing #{tags_attributes.count} tags, it could take a while..."
 
-Tag.create(tag_attributes)
+tags_attributes.each do |tag_attributes|
+  Tag.where(name: tag_attributes[:name]).first || Tag.create!(tag_attributes)
+end
 
 ##### Resources #####
 
-resource_attributes = []
+resources_attributes = []
 CSV.foreach("#{Rails.root}/db/seeds/organisations.csv") do |category, name, url, phone, facebook, twitter|
-  resource_attributes << { category: category, name: name, url: url, phone: phone, facebook: facebook, twitter: twitter }
+  resources_attributes << { category: category, name: name, url: url, phone: phone, facebook: facebook, twitter: twitter }
 end
 
-puts "Importing #{resource_attributes.count} resources..."
+puts "Importing #{resources_attributes.count} resources, it could take a while..."
 
-Resource.create(resource_attributes)
-
-##### Public resource #####
-
-resource = FactoryGirl.create(:resource, name: "I'm a public resource, with all tags")
-resource.shared_groups << public_group
-resource.tags << Tag.first
+resources_attributes.each do |resource_attributes|
+  Resource.where(name: resource_attributes[:name]).first || Resource.create!(resource_attributes)
+end

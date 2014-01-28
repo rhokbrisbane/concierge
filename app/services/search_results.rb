@@ -23,6 +23,7 @@ class SearchResults
   end
 
   private
+
   def taggings
     Tagging.where(tag_id: tag_ids)
   end

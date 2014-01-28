@@ -1,11 +1,23 @@
-= form_for @resource do |f|
+= form_for @resource, html: { multipart: true } do |f|
   .field
     = f.label :name
     = f.text_field :name
 
   .field
+    = f.label :description
+    = f.text_field :description
+
+  .field
+    = f.label :avatar
+    = f.file_field :avatar
+
+  .field
     = f.label :category
     = f.select :category, ResourcesCategory.to_a
+
+  .field
+    = f.label :region
+    = f.select :region, Region.to_a
 
   .half-width-fields
     .field.one-half

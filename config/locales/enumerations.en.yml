@@ -10,3 +10,7 @@ en:
       equipment: 'Equipment'
       funding: 'Funding'
       other: 'Other'
+    region:
+      local: 'Local'
+      state_provincial: 'State / Provincial'
+      national: 'National'

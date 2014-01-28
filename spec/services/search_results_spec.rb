@@ -23,7 +23,7 @@ describe SearchResults do
       let(:c) { create(:tag, name: 'c') }
 
       context "when user1 is tagged 'a' - not required, and 'b' - required" do
-        let(:user1) { create(:user) }
+        let(:user1) { create :user, public: true }
 
         before do
           user1.taggings.create(tag: a)
@@ -31,7 +31,7 @@ describe SearchResults do
         end
 
         context "and user2 is tagged 'c'" do
-          let(:user2) { create(:user) }
+          let(:user2) { create :user, public: true }
 
           before do
             user2.tags << c
@@ -133,6 +133,18 @@ describe SearchResults do
             it "returns a SearchResults object including user2" do
               expect(result.people).to include(user2)
               expect(result.all).to include(user2)
+            end
+          end
+
+          context "searching for private users" do
+            let(:user3)  { create :user, public: false }
+            let(:result) { SearchResults.for(ability: Ability.new(user1), tag_ids: [a.id, b.id, c.id]) }
+
+            before { user3.tags << c }
+
+            it "returns a SearchResults object which does not include private users" do
+              expect(result.people).to_not include(user3)
+              expect(result.all).to_not include(user3)
             end
           end
         end

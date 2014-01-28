@@ -34,8 +34,12 @@ class SearchResults
 
   def results(type = nil)
     taggable_type(type).map(&:taggable).reject do |taggable|
-      missing_required_tags(taggable) || ability.cannot?(:read, taggable)
+      missing_required_tags(taggable) || ability.cannot?(:read, taggable) || private?(taggable)
     end
+  end
+
+  def private?(taggable)
+    taggable.respond_to?(:public?) && !taggable.public?
   end
 
   def missing_required_tags(taggable)

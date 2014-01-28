@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe SearchResults do
   describe ".for" do
-
     context "when supplying no tags" do
       it "does not throw an error" do
         expect { SearchResults.for }.to_not raise_error

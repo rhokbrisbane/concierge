@@ -12,7 +12,7 @@ describe 'Sign Up' do
       expect { click_button 'Sign up' }.to change{ User.count }.by(1)
 
       expect(page).to have_content('Welcome! You have signed up successfully.')
-      expect(page.current_path).to eql('/')
+      expect(page.current_path).to eql('/saved_searches/new')
     end
   end
 end

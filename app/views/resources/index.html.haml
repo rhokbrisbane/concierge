@@ -5,21 +5,7 @@
   = content_for :actions do
     = link_to 'New resource', new_resource_path, class: 'button icon-plus'
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Category
-      %th Phone
-      %th &nbsp;
+= render 'nav'
 
-  - @resources.each do |resource|
-    %tr{ data: { created_at: resource.created_at } }
-      %td= link_to resource.name, resource
-      %td= resource.category_humanize
-      %td= resource.phone
-      %td
-        .buttons>
-          - if can? :manage, resource
-            = link_to 'Edit', edit_resource_path(resource), class: 'button'
-            = link_to 'Delete', resource, method: :delete, class: 'button', data: { confirm: 'Are you sure?' }
+- @resources.each do |category, resources|
+  = render 'list', category: category, resources: resources

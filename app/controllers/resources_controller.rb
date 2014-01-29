@@ -2,7 +2,7 @@ class ResourcesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @resources = Resource.all
+    @resources = Resource.all.group_by(&:category_humanize)
   end
 
   def show

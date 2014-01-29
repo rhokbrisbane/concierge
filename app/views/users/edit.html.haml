@@ -9,6 +9,10 @@
     = f.label :email
     = f.email_field :email
 
+  .field
+    = f.label :public
+    = f.check_box :public
+
     = fields_for :address, @address do |a|
       .field
         = a.label :street1, 'Street'
@@ -26,7 +30,6 @@
         .field.one-third
           = a.label :country
           = a.text_field :country
-
 
   .submit
     = f.submit 'Save'

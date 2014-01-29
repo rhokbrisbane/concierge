@@ -25,7 +25,6 @@ class SavedSearchesController < ApplicationController
     authorize! :create, SavedSearch
 
     @saved_search = current_user.saved_searches.new(saved_searches_params)
-    binding.pry
     @saved_search.name = Time.now.to_s(:time_with_date)
 
     respond_to do |format|

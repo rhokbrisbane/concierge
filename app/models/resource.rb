@@ -6,13 +6,13 @@ class Resource < ActiveRecord::Base
   include Commentable
 
   belongs_to :user
+  belongs_to :resource_category
 
   has_one :address, as: :addressable, dependent: :destroy
 
   validates :name, presence: true
   validates :name, uniqueness: true
 
-  has_enumeration_for :category, with: ResourcesCategory
   has_enumeration_for :region
 
   has_attached_file :avatar, styles: { thumb: '100x100>' }

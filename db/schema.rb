@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129045534) do
+ActiveRecord::Schema.define(version: 20140129061736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,12 +110,17 @@ ActiveRecord::Schema.define(version: 20140129045534) do
     t.datetime "updated_at"
   end
 
+  create_table "resource_categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "resources", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "category"
     t.string   "url"
     t.string   "phone"
     t.string   "facebook"
@@ -126,6 +131,7 @@ ActiveRecord::Schema.define(version: 20140129045534) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "region"
+    t.integer  "resource_category_id"
   end
 
   create_table "saved_searches", force: true do |t|

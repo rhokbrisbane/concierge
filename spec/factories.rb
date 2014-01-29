@@ -28,6 +28,10 @@ FactoryGirl.define do
     name { Faker::Name.name }
   end
 
+  factory :resource_category do
+    name { Faker::Name.name }
+  end
+
   factory :user do
     name     { Faker::Name.name }
     email    { Faker::Internet.email }
@@ -69,7 +73,7 @@ FactoryGirl.define do
   factory :resource do
     user
     name     { Faker::Lorem.sentence(1) }
-    category ResourcesCategory::ADVOCACY
+    resource_category
     url      'http://resource.com'
     phone    '+61 1234 567 890'
     facebook 'resource_fb'

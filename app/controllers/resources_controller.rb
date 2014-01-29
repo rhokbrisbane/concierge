@@ -1,8 +1,10 @@
 class ResourcesController < ApplicationController
   load_and_authorize_resource
 
+  before_action :load_categories, only: [:new, :edit]
+
   def index
-    @resources = Resource.all.group_by(&:category_humanize)
+    @resources = Resource.all.group_by(&:resource_category)
   end
 
   def show
@@ -21,6 +23,7 @@ class ResourcesController < ApplicationController
       @resource.create_address address_params
       redirect_to @resource, notice: 'Resource was successfully created.'
     else
+      load_categories
       flash.now[:alert] = @resource.errors.full_messages.join(', ')
       render action: 'new'
     end
@@ -37,6 +40,7 @@ class ResourcesController < ApplicationController
     if @resource.update(resource_params) && @address.update(address_params)
       redirect_to @resource, notice: 'Resource was successfully updated.'
     else
+      load_categories
       flash.now[:alert] = @resource.errors.full_messages.join(', ')
       render action: 'edit'
     end
@@ -67,5 +71,9 @@ class ResourcesController < ApplicationController
 
   def address_params
     params.require(:address).permit(:street1, :suburb, :state, :country)
+  end
+
+  def load_categories
+    @categories = ResourceCategory.all.map { |category| [category, category.id] }
   end
 end

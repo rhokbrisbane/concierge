@@ -12,7 +12,7 @@ describe 'Resources' do
       it 'shows the resource details' do
         visit resource_path(resource)
         expect(page).to have_content(resource.name)
-        expect(page).to have_content(resource.category_humanize)
+        expect(page).to have_content(resource.resource_category.name)
         expect(page).to have_content(resource.url)
         expect(page).to have_content(resource.phone)
         expect(page).to have_content("facebook.com/#{resource.facebook}")

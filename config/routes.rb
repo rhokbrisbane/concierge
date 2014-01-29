@@ -8,7 +8,7 @@ Concierge::Application.routes.draw do
     registrations:      'users/registrations'
   }
 
-  resources :tag_categories, except: :show
+  resources :tag_categories, except: [:show, :destroy]
   resources :comments,  only: [:create, :destroy]
   resources :dashboard, only: :index
   resources :kids

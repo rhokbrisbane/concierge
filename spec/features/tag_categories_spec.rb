@@ -36,16 +36,5 @@ describe 'Tag Categories' do
       expect(page).to have_content('Category was successfully updated.')
       expect(page).to have_content('New category')
     end
-
-    it 'destroys a category' do
-      category = create :tag_category
-
-      visit tag_categories_path
-      expect(page).to have_content(category.name)
-
-      expect { click_link 'Delete' }.to change { TagCategory.count }.by(-1)
-
-      expect(page).to have_content('Category was successfully removed.')
-    end
   end
 end

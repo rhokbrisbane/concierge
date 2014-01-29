@@ -30,12 +30,6 @@ class TagCategoriesController < ApplicationController
     end
   end
 
-  def destroy
-    @tag_category.destroy
-
-    redirect_to tag_categories_path, notice: 'Category was successfully removed.'
-  end
-
   private
 
   def tag_category_params

@@ -19,7 +19,6 @@
         - if can? :manage, TagCategory
           %td
             = link_to 'Edit', edit_tag_category_path(category)
-            = link_to 'Delete', category, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 - else
   .empty

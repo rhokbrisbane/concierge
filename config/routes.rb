@@ -13,10 +13,9 @@ Concierge::Application.routes.draw do
   resources :dashboard, only: :index
   resources :kids
   resources :pages
-  resources :resources
   resources :saved_searches
   resources :tags
-  resources :users,      only: :show
+  resources :users, only: :show
 
   resources :resources do
     member do

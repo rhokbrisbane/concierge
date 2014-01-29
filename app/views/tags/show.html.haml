@@ -1,5 +1,5 @@
 = content_for :title, @tag
-= content_for :title_icon, "icon-#{@tag.category ? @tag.category : 'tag'}"
+= content_for :title_icon, "icon-#{@tag.tag_category ? @tag.tag_category : 'tag'}"
 
 - unless @tag.description.blank?
   .description

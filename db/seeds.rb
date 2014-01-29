@@ -19,18 +19,18 @@ puts 'Creating public group...'
 public_group = Group.where(name: 'Public').first_or_create
 users.each { |user| public_group.users << user }
 
-##### Category ######
+##### Tag Category ######
 
-puts 'Creating categories...'
+puts 'Creating tag categories...'
 
 ['Needs', 'Symptoms', 'Age group', 'Weight group'].each do |name|
-  Category.where(name: name).first_or_create
+  TagCategory.where(name: name).first_or_create
 end
 
 ##### Tags ######
 
 tags_attributes = File.open("#{Rails.root}/db/seeds/symptoms.txt").each_line.map do |tag_name|
-  { name: tag_name, category_id: Category.find_by_name('Symptoms').id }
+  { name: tag_name, category_id: TagCategory.find_by_name('Symptoms').id }
 end
 
 puts "Importing #{tags_attributes.count} tags, it could take a while..."

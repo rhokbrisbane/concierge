@@ -5,8 +5,15 @@
   = link_to 'Edit', edit_resource_path(@resource), class: "button icon-pencil"
 
 %dl.description
+  %h3= @resource.description
+
+  = image_tag @resource.avatar.url
+
   %dt Category
   %dd= @resource.category_humanize
+
+  %dt Region
+  %dd= @resource.region_humanize
 
   - unless @resource.url.blank?
     %dt URL

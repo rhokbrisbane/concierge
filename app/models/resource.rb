@@ -13,6 +13,9 @@ class Resource < ActiveRecord::Base
   validates :name, uniqueness: true
 
   has_enumeration_for :category, with: ResourcesCategory
+  has_enumeration_for :region
+
+  has_attached_file :avatar, styles: { thumb: '100x100>' }
 
   accepts_nested_attributes_for :address
 

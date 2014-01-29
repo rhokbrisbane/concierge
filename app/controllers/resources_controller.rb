@@ -62,7 +62,7 @@ class ResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:resource).permit(:name, :category, :url, :phone, :facebook, :twitter, :description, :avatar, :region)
+    params.require(:resource).permit(:name, :tag_category, :url, :phone, :facebook, :twitter, :description, :avatar, :region)
   end
 
   def address_params

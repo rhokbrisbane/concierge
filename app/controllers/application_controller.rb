@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def fetch_tags_by_category
-    @tags_by_category = Tag.includes(:category).group_by(&:category)
+    @tags_by_category = Tag.includes(:tag_category).group_by(&:tag_category)
   end
 
   def authenticate_admin_user!

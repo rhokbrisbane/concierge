@@ -1,4 +1,4 @@
-class Category < ActiveRecord::Base
+class TagCategory < ActiveRecord::Base
   validates :name, presence: true
 
   has_many :tags

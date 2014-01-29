@@ -24,7 +24,7 @@ FactoryGirl.define do
     country  { 'USA' }
   end
 
-  factory :category do
+  factory :tag_category do
     name { Faker::Name.name }
   end
 
@@ -57,7 +57,7 @@ FactoryGirl.define do
 
   factory :tag do
     name { Faker::Lorem.sentence(2) }
-    category
+    tag_category
   end
 
   factory :comment do

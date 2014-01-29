@@ -1,21 +1,21 @@
 require 'spec_helper'
 
-describe 'Categories' do
+describe 'Tag Categories' do
   context 'as an admin' do
     let!(:user) { find_or_create_user(admin: true) }
 
     before { authenticate }
 
     it 'shows all categories' do
-      category = create :category
+      category = create :tag_category
 
-      visit categories_path
+      visit tag_categories_path
 
       expect(page).to have_content(category.name)
     end
 
     it 'creates a new category' do
-      visit categories_path
+      visit tag_categories_path
       click_link 'New category'
 
       fill_in 'Name', with: 'Category 1'
@@ -26,9 +26,9 @@ describe 'Categories' do
     end
 
     it 'updates a category' do
-      category = create :category
+      category = create :tag_category
 
-      visit edit_category_path(category)
+      visit edit_tag_category_path(category)
 
       fill_in 'Name', with: 'New category'
       click_button 'Save'
@@ -38,12 +38,12 @@ describe 'Categories' do
     end
 
     it 'destroys a category' do
-      category = create :category
+      category = create :tag_category
 
-      visit categories_path
+      visit tag_categories_path
       expect(page).to have_content(category.name)
 
-      expect { click_link 'Delete' }.to change { Category.count }.by(-1)
+      expect { click_link 'Delete' }.to change { TagCategory.count }.by(-1)
 
       expect(page).to have_content('Category was successfully removed.')
     end

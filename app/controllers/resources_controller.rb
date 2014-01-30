@@ -4,7 +4,7 @@ class ResourcesController < ApplicationController
   before_action :load_categories, only: [:new, :edit]
 
   def index
-    @resources = Resource.all.group_by(&:resource_category)
+    @resources = Resource.includes(:resource_category).group_by(&:resource_category)
   end
 
   def show

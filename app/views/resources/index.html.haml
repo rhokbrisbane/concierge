@@ -1,11 +1,4 @@
-= content_for :title, 'Resources'
-= content_for :title_icon, 'icon-document'
-
-- if can? :create, Resource
-  = content_for :actions do
-    = link_to 'New resource', new_resource_path, class: 'button icon-plus'
-
-= render 'nav'
+= render 'resources/header'
 
 - @resources.each do |category, resources|
   = render 'list', category: category, resources: resources

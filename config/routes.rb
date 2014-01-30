@@ -16,7 +16,7 @@ Concierge::Application.routes.draw do
   resources :saved_searches
   resources :tags
   resources :users, only: :show
-  resources :resource_categories, except: [:show, :destroy]
+  resources :resource_categories, except: :destroy
 
   resources :resources do
     member do

@@ -5,6 +5,7 @@ class ResourcesController < ApplicationController
 
   def index
     @resources = Resource.includes(:resource_category).group_by(&:resource_category)
+    @resource_categories = ResourceCategory.all
   end
 
   def show

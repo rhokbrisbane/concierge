@@ -4,6 +4,10 @@ class ResourceCategoriesController < ApplicationController
   def index
   end
 
+  def show
+    @resource_categories = ResourceCategory.all
+  end
+
   def new
   end
 

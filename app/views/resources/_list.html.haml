@@ -1,6 +1,6 @@
-- if resources.any?
-  %h3= category
+%h3= category
 
+- if resources.any?
   %table
     %thead
       %tr
@@ -17,3 +17,6 @@
             - if can? :manage, resource
               = link_to 'Edit', edit_resource_path(resource), class: 'button'
               = link_to 'Delete', resource, method: :delete, class: 'button', data: { confirm: 'Are you sure?' }
+
+- else
+  %p There are no resources in this category.

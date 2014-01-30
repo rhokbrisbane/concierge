@@ -1,6 +1,4 @@
-
 getResults = (tagIds) ->
-
   handleRequest = (data, type) ->
     _.each data, (result, i) ->
       if result.address and result.address.latitude
@@ -34,7 +32,6 @@ getResults = (tagIds) ->
     map.fitBounds markers.getBounds()
 
 $ ->
-
   if $('#results-map').length
     bounds = [ [-29.726222319395504, 125.5078125], [-10.01212955790814, 163.4765625] ]
     window.map = new L.Map("results-map").fitBounds(bounds)

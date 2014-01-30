@@ -30,7 +30,7 @@ end
 ##### Tags ######
 
 tags_attributes = File.open("#{Rails.root}/db/seeds/symptoms.txt").each_line.map do |tag_name|
-  { name: tag_name, category_id: TagCategory.find_by_name('Symptoms').id }
+  { name: tag_name, tag_category_id: TagCategory.find_by_name('Symptoms').id }
 end
 
 puts "Importing #{tags_attributes.count} tags, it could take a while..."

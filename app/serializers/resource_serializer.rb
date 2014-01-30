@@ -3,6 +3,8 @@ class ResourceSerializer < ApplicationSerializer
 
   has_one :address, serializer: AddressSerializer
 
+  has_many :comments, embed: :objects
+
   private
 
   def category

@@ -20,7 +20,7 @@ class ResourceCategoriesController < ApplicationController
     if @resource_category.save
       redirect_to resource_categories_path, notice: 'Category was successfully created.'
     else
-      flash.now[:error] = @resource_category.errors.full_messages.join(', ')
+      flash.now[:error] = @resource_category.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -29,7 +29,7 @@ class ResourceCategoriesController < ApplicationController
     if @resource_category.update resource_category_params
       redirect_to resource_categories_path, notice: 'Category was successfully updated.'
     else
-      flash.now[:error] = @resource_category.errors.full_messages.join(', ')
+      flash.now[:error] = @resource_category.errors.full_messages.to_sentence
       render :edit
     end
   end

@@ -1,7 +1,9 @@
 require 'spec_helper'
 
-describe Category do
+describe ResourceCategory do
   it { should validate_presence_of(:name) }
+
+  it { should have_many(:resources) }
 
   describe '#to_s' do
     let(:category_name) { 'Weight group' }

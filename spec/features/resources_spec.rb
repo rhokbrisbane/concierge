@@ -12,7 +12,7 @@ describe 'Resources' do
       it 'shows the resource details' do
         visit resource_path(resource)
         expect(page).to have_content(resource.name)
-        expect(page).to have_content(resource.category_humanize)
+        expect(page).to have_content(resource.resource_category.name)
         expect(page).to have_content(resource.url)
         expect(page).to have_content(resource.phone)
         expect(page).to have_content("facebook.com/#{resource.facebook}")
@@ -65,10 +65,12 @@ describe 'Resources' do
 
     context 'creating a resource' do
       before do
+        create(:resource_category, name: 'Info')
+
         visit new_resource_path
 
         fill_in 'Name',     with: 'Good Foundation'
-        select  'Info',     from: 'Category'
+        select  'Info',     from: 'resource_resource_category_id'
         fill_in 'Url',      with: 'http://goodfoundation.com/'
         fill_in 'Phone',    with: '+61 1234 567 890'
         fill_in 'Facebook', with: 'goodfoundation'

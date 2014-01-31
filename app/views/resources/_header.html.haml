@@ -1,0 +1,11 @@
+= content_for :title, 'Resources'
+= content_for :title_icon, 'icon-document'
+
+- if can? :create, Resource
+  = content_for :actions do
+    = link_to 'New resource', new_resource_path, class: 'button icon-plus'
+
+%ul
+  %li= link_to 'All', resources_path
+  - @resource_categories.each do |resource_category|
+    %li= link_to resource_category.name, resource_category_path(resource_category)

@@ -22,7 +22,7 @@ class PagesController < ApplicationController
     if @page.save
       redirect_to @page, notice: 'Page was successfully created.'
     else
-      flash.now[:alert] = @page.errors.full_messages.join(', ')
+      flash.now[:alert] = @page.errors.full_messages.to_sentence
       render action: 'new'
     end
   end
@@ -34,7 +34,7 @@ class PagesController < ApplicationController
     if @page.update(page_params)
       redirect_to @page, notice: 'Page was successfully updated.'
     else
-      flash.now[:alert] = @page.errors.full_messages.join(', ')
+      flash.now[:alert] = @page.errors.full_messages.to_sentence
       render action: 'edit'
     end
   end

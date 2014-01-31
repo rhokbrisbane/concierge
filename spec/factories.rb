@@ -24,7 +24,11 @@ FactoryGirl.define do
     country  { 'USA' }
   end
 
-  factory :category do
+  factory :tag_category do
+    name { Faker::Name.name }
+  end
+
+  factory :resource_category do
     name { Faker::Name.name }
   end
 
@@ -57,7 +61,7 @@ FactoryGirl.define do
 
   factory :tag do
     name { Faker::Lorem.sentence(2) }
-    category
+    tag_category
   end
 
   factory :comment do
@@ -69,7 +73,7 @@ FactoryGirl.define do
   factory :resource do
     user
     name     { Faker::Lorem.sentence(1) }
-    category ResourcesCategory::ADVOCACY
+    resource_category
     url      'http://resource.com'
     phone    '+61 1234 567 890'
     facebook 'resource_fb'

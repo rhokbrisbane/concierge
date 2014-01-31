@@ -31,6 +31,7 @@ group :development do
   gem 'better_errors'
   gem 'bullet'
   gem 'quiet_assets'
+  gem 'routes', require: false
   gem 'thin'
 end
 

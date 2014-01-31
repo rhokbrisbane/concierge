@@ -15,7 +15,7 @@
   - @tags.each do |tag|
     %tr{ data: { created_at: tag.created_at } }
       %td= link_to tag.name, tag
-      %td= tag.category
+      %td= tag.tag_category
       %td.buttons>
         - if can? :manage, tag
           = link_to 'Edit', edit_tag_path(tag), class: 'button'

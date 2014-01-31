@@ -19,18 +19,18 @@ puts 'Creating public group...'
 public_group = Group.where(name: 'Public').first_or_create
 users.each { |user| public_group.users << user }
 
-##### Category ######
+##### Tag Category ######
 
-puts 'Creating categories...'
+puts 'Creating tag categories...'
 
 ['Needs', 'Symptoms', 'Age group', 'Weight group'].each do |name|
-  Category.where(name: name).first_or_create
+  TagCategory.where(name: name).first_or_create
 end
 
 ##### Tags ######
 
 tags_attributes = File.open("#{Rails.root}/db/seeds/symptoms.txt").each_line.map do |tag_name|
-  { name: tag_name, category_id: Category.find_by_name('Symptoms').id }
+  { name: tag_name, tag_category_id: TagCategory.find_by_name('Symptoms').id }
 end
 
 puts "Importing #{tags_attributes.count} tags, it could take a while..."
@@ -39,11 +39,31 @@ tags_attributes.each do |tag_attributes|
   Tag.where(name: tag_attributes[:name]).first || Tag.create!(tag_attributes)
 end
 
+##### Resource Category ######
+
+puts 'Creating resource categories...'
+
+resource_categories = [
+  'Advocacy',
+  'Community Centre',
+  'Counselling',
+  'Info',
+  'Disability & Chronic Illness',
+  'Education',
+  'Equipment',
+  'Funding',
+  'Other'
+]
+
+resource_categories.each { |name| ResourceCategory.where(name: name).first_or_create }
+
 ##### Resources #####
 
 resources_attributes = []
+
 CSV.foreach("#{Rails.root}/db/seeds/organisations.csv") do |category, name, url, phone, facebook, twitter|
-  resources_attributes << { category: category, name: name, url: url, phone: phone, facebook: facebook, twitter: twitter }
+  resources_attributes << { resource_category_id: ResourceCategory.find_by_name(category).id,
+    name: name, url: url, phone: phone, facebook: facebook, twitter: twitter }
 end
 
 puts "Importing #{resources_attributes.count} resources, it could take a while..."

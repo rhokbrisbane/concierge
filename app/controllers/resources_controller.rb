@@ -1,8 +1,11 @@
 class ResourcesController < ApplicationController
   load_and_authorize_resource
 
+  before_action :load_categories, only: [:new, :edit]
+
   def index
-    @resources = Resource.all
+    @resources = Resource.includes(:resource_category).group_by(&:resource_category)
+    @resource_categories = ResourceCategory.all
   end
 
   def show
@@ -21,7 +24,8 @@ class ResourcesController < ApplicationController
       @resource.create_address address_params
       redirect_to @resource, notice: 'Resource was successfully created.'
     else
-      flash.now[:alert] = @resource.errors.full_messages.join(', ')
+      load_categories
+      flash.now[:alert] = @resource.errors.full_messages.to_sentence
       render action: 'new'
     end
   end
@@ -37,7 +41,8 @@ class ResourcesController < ApplicationController
     if @resource.update(resource_params) && @address.update(address_params)
       redirect_to @resource, notice: 'Resource was successfully updated.'
     else
-      flash.now[:alert] = @resource.errors.full_messages.join(', ')
+      load_categories
+      flash.now[:alert] = @resource.errors.full_messages.to_sentence
       render action: 'edit'
     end
   end
@@ -62,10 +67,14 @@ class ResourcesController < ApplicationController
   private
 
   def resource_params
-    params.require(:resource).permit(:name, :category, :url, :phone, :facebook, :twitter, :description, :avatar, :region)
+    params.require(:resource).permit(:name, :tag_category, :url, :phone, :facebook, :twitter, :description, :avatar, :region)
   end
 
   def address_params
     params.require(:address).permit(:street1, :suburb, :state, :country)
+  end
+
+  def load_categories
+    @categories = ResourceCategory.for_select
   end
 end

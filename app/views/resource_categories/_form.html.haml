@@ -1,0 +1,13 @@
+= form_for @resource_category do |f|
+  - if @resource_category.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@resource_category.errors.count, 'error')} prohibited this category from being saved:"
+      %ul
+        - @resource_category.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+
+  .submit= f.submit 'Save'

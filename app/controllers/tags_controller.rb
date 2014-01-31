@@ -45,6 +45,6 @@ class TagsController < ApplicationController
   end
 
   def load_categories
-    @categories = Category.all.map { |category| [category, category.id] }
+    @categories = TagCategory.for_select
   end
 end

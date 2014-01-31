@@ -1,0 +1,28 @@
+= content_for :title, 'Categories for Tags'
+= content_for :title_icon, 'icon-document'
+
+- if can? :manage, TagCategory
+  = content_for :actions do
+    = link_to 'New category', new_tag_category_path, class: 'button icon-plus'
+
+- if @tag_categories.any?
+  %table
+    %thead
+      %tr
+        %th Name
+        - if can? :manage, TagCategory
+          %th
+
+    - @tag_categories.each do |category|
+      %tr{ data: { created_at: category.created_at } }
+        %td= category.name
+        - if can? :manage, TagCategory
+          %td
+            = link_to 'Edit', edit_tag_category_path(category)
+
+- else
+  .empty
+    No categories found.
+    - if can? :manage, TagCategory
+      Would you like to
+      = link_to 'create one?', new_tag_category_path

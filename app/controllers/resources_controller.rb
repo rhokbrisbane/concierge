@@ -25,7 +25,7 @@ class ResourcesController < ApplicationController
       redirect_to @resource, notice: 'Resource was successfully created.'
     else
       load_categories
-      flash.now[:alert] = @resource.errors.full_messages.join(', ')
+      flash.now[:alert] = @resource.errors.full_messages.to_sentence
       render action: 'new'
     end
   end
@@ -42,7 +42,7 @@ class ResourcesController < ApplicationController
       redirect_to @resource, notice: 'Resource was successfully updated.'
     else
       load_categories
-      flash.now[:alert] = @resource.errors.full_messages.join(', ')
+      flash.now[:alert] = @resource.errors.full_messages.to_sentence
       render action: 'edit'
     end
   end
@@ -75,6 +75,6 @@ class ResourcesController < ApplicationController
   end
 
   def load_categories
-    @categories = ResourceCategory.all.map { |category| [category, category.id] }
+    @categories = ResourceCategory.for_select
   end
 end

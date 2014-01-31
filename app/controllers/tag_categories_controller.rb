@@ -16,7 +16,7 @@ class TagCategoriesController < ApplicationController
     if @tag_category.save
       redirect_to tag_categories_path, notice: 'Category was successfully created.'
     else
-      flash.now[:error] = @tag_category.errors.full_messages.join(', ')
+      flash.now[:error] = @tag_category.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -25,7 +25,7 @@ class TagCategoriesController < ApplicationController
     if @tag_category.update tag_category_params
       redirect_to tag_categories_path, notice: 'Category was successfully updated.'
     else
-      flash.now[:error] = @tag_category.errors.full_messages.join(', ')
+      flash.now[:error] = @tag_category.errors.full_messages.to_sentence
       render :edit
     end
   end

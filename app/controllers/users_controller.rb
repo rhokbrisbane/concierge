@@ -17,11 +17,11 @@ class UsersController < ApplicationController
       if @address.update address_params
         redirect_to @user, notice: 'User was successfully updated.'
       else
-        flash.now[:alert] = @address.errors.full_messages.join(', ')
+        flash.now[:alert] = @address.errors.full_messages.to_sentence
         render action: 'edit'
       end
     else
-      flash.now[:alert] = @user.errors.full_messages.join(', ')
+      flash.now[:alert] = @user.errors.full_messages.to_sentence
       render action: 'edit'
     end
   end

@@ -41,12 +41,11 @@ Second challenge is how do we share the information on the site accessible and s
 
 ## Project Introduction and Roadmap
 
-There are currently 2 types of users. Administrators of HummingBird house, and everyone else. Administrators can do whatever they want.
+There are currently 2 types of users. Administrators of HummingBird house, and everyone else.
 
-Everyone else can
-
+Administrators can do whatever they want. Everyone else can:
 - Search for people, and for resources.
-- Update their own details
+- Update their own details:
     - Your address, localised yourself in search results if you choose to be visible to others.
     - Add Notes
         - share notes, so that they become visible to others.

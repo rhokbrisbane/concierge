@@ -39,7 +39,7 @@ tags_attributes.each do |tag_attributes|
   Tag.where(name: tag_attributes[:name]).first || Tag.create!(tag_attributes)
 end
 
-##### Resource Category ######
+##### Pages ######
 
 puts 'Creating landing page'
 

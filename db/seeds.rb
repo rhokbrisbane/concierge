@@ -3,8 +3,8 @@
 puts 'Creating users...'
 
 users_attributes = [
-  { email: 'admin@example.com', password: 'rhok2013', admin: true },
-  { email: 'user@example.com',  password: 'rhok2013', admin: false },
+  { name: "Admin User", email: 'admin@example.com', password: 'rhok2013', admin: true },
+  { name: "Example User", email: 'user@example.com',  password: 'rhok2013', admin: false },
 ]
 
 users = []
@@ -38,6 +38,15 @@ puts "Importing #{tags_attributes.count} tags, it could take a while..."
 tags_attributes.each do |tag_attributes|
   Tag.where(name: tag_attributes[:name]).first || Tag.create!(tag_attributes)
 end
+
+##### Resource Category ######
+
+puts 'Creating landing page'
+
+Page.create!({
+  title: "Home",
+  content: "Home page <em>content</em>"
+})
 
 ##### Resource Category ######
 

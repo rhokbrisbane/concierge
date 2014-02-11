@@ -8,51 +8,33 @@ class Ability
 
     can :manage, :all if user.admin?
 
-    can :create, Tagging
     can :manage, Resource, user_id: user.id
-    can :create, Kid
+
     can :create, SavedSearch
 
-    can :manage, User, id: user.id
+    can :read, Group
+    can :read, Address
+    can :read, Tag
+    can :read, Tagging
+    can :read, Comment
+    can :read, Resource
+    can :read, Page
+    can :read, User, public: true
 
-    can :read, :all
-
-    # can :read, Group
-    # can :read, Address
-    # can :read, Tag
-    # can :read, Tagging
-    # can :read, Comment
-
-    # can :read, Note do |note|
-    #   note.group_shares.where(shared_group_id: user.group_ids).any? ||
-    #   note.user_shares.where(shared_user_id: user.id).any?
-    # end
-
-    # can :read, Resource do |resource|
-    #   resource.group_shares.where(shared_group_id: user.group_ids).any? ||
-    #   resource.user_shares.where(shared_user_id: user.id).any?
-    # end
-
-    # can :read, User do |other_user|
-    #   other_user.group_shares.where(shared_group_id: user.group_ids).any? ||
-    #   other_user.user_shares.where(shared_user_id: user.id).any?
-    # end
-
-    # can :read, Kid do |kid|
-    #   kid.group_shares.where(shared_group_id: user.group_ids).any? ||
-    #   kid.user_shares.where(shared_user_id: user.id).any?
-    # end
-
-    # can :read,   User, id: user.id
-    # can :delete, User, id: user.id
-    # can :update, User, id: user.id
+    can :read,   User, id: user.id
+    can :delete, User, id: user.id
+    can :update, User, id: user.id
 
     can :manage, Note,        user_id: user.id
+
+    can :create, Tagging
     can :manage, Tagging,     user_id: user.id
+
     can :manage, Address,     addressable: user
     can :manage, SavedSearch, user_id: user.id
     can :manage, Comment,     user_id: user.id
 
+    can :create, Kid
     can :manage, Kid do |kid|
       kid.guardianships.where(user_id: user.id).any?
     end

@@ -3,6 +3,7 @@
 
 - if can? :update, @user
   = content_for :actions do
+    = link_to 'New child profile', new_kid_path, class: 'button icon-plus'
     = link_to 'Edit profile', edit_user_path, class: 'button icon-pencil'
 
 - if @user.description.present?

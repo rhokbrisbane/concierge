@@ -1,7 +1,6 @@
 .public {
   background: mix($green, white, 15%) image-url("blurry.jpg") no-repeat center;
   @include background-size(cover);
-  text-align: center;
 
   %heading { line-height: $line-height; }
 
@@ -17,5 +16,41 @@
     background: $white;
     color: $black;
     text-align: left;
+  }
+
+
+  .global-header {
+    position: relative;
+    background: transparent;
+    height: 4em;
+    line-height: 4em;
+    margin: 1em;
+
+    .logo {
+      min-width: 4em;
+
+      img { height: 4em; }
+    }
+  }
+
+  main {
+    margin: 0 1em;
+
+    > .container {
+      background: white;
+      border-radius: 5px;
+    }
+  }
+
+  .user-actions {
+    a, .label { border: 0; }
+
+    .avatar { margin: 1em .5em; }
+
+    em, span, label {
+      float: left;
+      margin: 0;
+      color: #eee;
+    }
   }
 }

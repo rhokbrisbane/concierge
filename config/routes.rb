@@ -1,7 +1,8 @@
 Concierge::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  root to: 'dashboard#index'
+  root to: 'pages#landing'
+  # root :to => "pages#show", :id => 1
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
@@ -15,7 +16,7 @@ Concierge::Application.routes.draw do
   resources :pages
   resources :saved_searches
   resources :tags
-  resources :users, only: :show
+  resources :users, only: [:show, :edit, :index]
   resources :resource_categories, except: :destroy
 
   resources :resources do

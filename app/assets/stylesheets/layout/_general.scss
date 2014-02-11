@@ -16,8 +16,8 @@ html {
   line-height: 1.5em;
   color: #666;
   padding: 3em 0;
-  border-top: thin dashed #eee;
-  border-bottom: thin dashed #eee;
+  border-top: thin dashed #ddd;
+  border-bottom: thin dashed #ddd;
 }
 
 
@@ -47,6 +47,10 @@ html {
       &:hover, &:visited, &:active { color: $white; }
     }
   }
+}
+
+a.button, a.button:visited {
+  color: white;
 }
 
 
@@ -87,8 +91,8 @@ main dl {
 
 @media screen and (max-width: $breakpoint-small) {
 
-  %heading {
-    font-size: 110%;
+  .big-button {
+    font-size: 1.25em;
   }
 
   .related-items li {
@@ -100,6 +104,12 @@ main dl {
 .admin {
   .admin-header {
     background: #444;
+    overflow: hidden;
+
+    &:hover {
+      height: auto;
+    }
+
     a, .label {
       border-color: #333;
     }

@@ -1,11 +1,10 @@
 class PagesController < ApplicationController
   load_and_authorize_resource
 
-  skip_before_filter :authenticate_user!,  only: :show
-  skip_before_filter :check_authorization, only: :show
+  skip_before_filter :authenticate_user!,  only: [:show]
+  skip_before_filter :check_authorization, only: [:show]
 
   def index
-    @pages = Page.all
   end
 
   def show
@@ -13,7 +12,10 @@ class PagesController < ApplicationController
   end
 
   def new
-    @page = page.new
+    @page = Page.new
+  end
+
+  def landing
   end
 
   def create

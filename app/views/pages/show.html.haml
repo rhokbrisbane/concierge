@@ -1,7 +1,12 @@
 = content_for :title, @page.title
+= content_for :public, true
 
 - if can? :manage, Page
   = content_for :actions do
     = link_to 'Edit', edit_page_path(@page), class: "button icon-pencil"
+
+-# - if @page.id == 1
+-#   = link_to image_tag('logo.png'), root_path, class: "public-logo"
+-#   %h3= t('sign_up')
 
 = @page.content.html_safe

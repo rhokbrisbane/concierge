@@ -1,16 +1,18 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:100,400,700,400italic);
 
-$bg-color: lighten(ivory, 1%);
+$bg-color: #f5f5f5;
 
 $font-family:             'Lato', sans-serif;
 $font-family-icons:       'icomoon';
 $line-height:             1.5em;
 
-$color-primary:           #8358A4;
+$green:                   #8bc53a;
+$purple:                  #8358A4;
+
+$color-primary:           $purple;
 $color-primary-light:     lighten($color-primary, 30%);
 $color-primary-dark:      darken($color-primary, 30%);
 
-$green:                   #8bc53a;
 
 $black:                   hsl(0,0%,9%);
 $white:                   lighten($black, 93.5%);
@@ -59,6 +61,10 @@ $input-focus-foreground-color:  $black;
 $input-focus-background-color:  $white;
 $input-focus-border-color:      $color-info;
 
+$select-foreground-color:       $black;
+$select-background-color:       $white;
+$select-border-color:           $gray-light;
+
 $fixed-left-nav: false;
 $fixed-top-header: true;
 
@@ -68,9 +74,9 @@ $tag-color: $gray-light;
 
 // Breakpoints
 
-$breakpoint-small:        42em !default;
-$breakpoint-medium:       54em !default;
-$breakpoint-large:        75em !default;
+$breakpoint-small:        40em !default;
+$breakpoint-medium:       50em !default;
+$breakpoint-large:        70em !default;
 
 
 // Layout
@@ -79,3 +85,7 @@ $gutter:                  $line-height * 1.5 !default;
 $page-margin:             $line-height * 2 !default;
 $max-width:               $breakpoint-medium !default;
 $center-layout:           true !default;
+
+
+$top-layer: 3000;
+$second-top-layer: 2000;

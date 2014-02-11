@@ -4,7 +4,7 @@
 <!--[if IE 7]>    <html lang="en" class="no-js ie7"> <![endif]-->
 <!--[if IE 8]>    <html lang="en" class="no-js ie8"> <![endif]-->
 <!--[if gt IE 8]><!-->
-%html.no-js{ :lang => "en", class: ("public" unless user_signed_in?) }
+%html.no-js{ :lang => "en", class: ("public" if !user_signed_in? or content_for?(:public)) }
   <!--<![endif]-->
 
   %head
@@ -25,17 +25,17 @@
   %body{ class: ("admin" if current_user && current_user.admin?) }
     = render 'flash'
 
-    - if user_signed_in?
-      - if current_user.admin?
-        %header.admin-header
-          .container
-            = link_to 'Resources', resources_path
-            = link_to 'Categories for Resources', resource_categories_path
-            = link_to 'Tags', tags_path
-            = link_to 'Categories for Tags', tag_categories_path
-            = link_to 'Pages', pages_path
 
-      %header.global-header= render 'layouts/header'
+    - if current_user && current_user.admin?
+      %header.admin-header
+        .container
+          = link_to 'Resources', resources_path
+          = link_to 'Categories for Resources', resource_categories_path
+          = link_to 'Tags', tags_path
+          = link_to 'Categories for Tags', tag_categories_path
+          = link_to 'Pages', pages_path
+
+    %header.global-header= render 'layouts/header'
 
     %main{ role: 'main' }
       - if !content_for :full_width
@@ -45,14 +45,13 @@
       - else
         = yield
 
-    - if user_signed_in?
-      %footer.main-footer
-        .container
+    %footer.main-footer
+      .container
+        - if user_signed_in?
           = link_to 'All Resources', resources_path, class: "icon-resource" if can? :read, Resource
           = link_to 'All Tags', tags_path, class: "icon-tag" if can? :read, Tag
 
+        - if @pages.any?
           %hr
-
-          - if @pages.any?
-            - @pages.each do |page|
-              = link_to page.title, page
+          - @pages.each do |page|
+            = link_to page.title, page

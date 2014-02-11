@@ -20,3 +20,20 @@
     }
   }
 }
+
+
+
+.tab-list {
+  a {
+    display: block;
+    line-height: 1.5em;
+    padding: .25em .75em;
+    border-top: thin solid #ddd;
+
+    &.active {
+      background: $color-primary;
+      border-color: $color-primary;
+      color: white;
+    }
+  }
+}

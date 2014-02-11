@@ -38,5 +38,12 @@ $ ->
     # new L.TileLayer.Stamen({style: 'watercolor'}).addTo(map)
     new L.TileLayer.MapBox({user: 'concierge', map: 'gjdmmp09'}).addTo(map)
 
+    unless localStorage.getItem('myLocation')
+      @MapUtils.getCurrentLocation (location) ->
+        localStorage.setItem('myLocation', location)
+
+    # locationMarker = L.marker(location, icon: L.divIcon({className: "current-location"}))
+    # map.addLayer locationMarker
+
     if $('#result-tag-ids').val().length
       getResults( $('#result-tag-ids').val().split(',') )

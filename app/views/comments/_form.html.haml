@@ -1,6 +1,7 @@
 = form_for [commentable.comments.new], remote: true do |f|
   = f.hidden_field :commentable_type, value: commentable.class.to_s
   = f.hidden_field :commentable_id, value: commentable.id.to_s
-  = f.text_area :content, placeholder: "Add comment"
+
+  = f.text_area :content, placeholder: "Add comment", class: "comment-text-area"
 
   = f.submit 'Comment', class: "comment-submit"

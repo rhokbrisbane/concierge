@@ -1,4 +1,5 @@
 = render 'resources/header'
 
-- @resources.each do |category, resources|
-  = render 'list', category: category, resources: resources
+.tab-body.two-thirds.last
+  - @resources.each do |category, resources|
+    = render 'list', category: category, resources: resources

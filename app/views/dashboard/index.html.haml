@@ -1,29 +1,27 @@
-- if user_signed_in?
+= link_to 'Search / Find Help', new_saved_search_path, class: 'big-button icon-search3 primary-button'
 
-  = link_to 'Search / Find Help', new_saved_search_path, class: 'big-button icon-search3 primary-button'
+%header.subheader
+  %h3
+    - if @kids.any? && @kids.count == 1
+      My Child
+    - else
+      My Children
 
-  %header.subheader
-    %h3 My Kids
-    .actions
-      = link_to 'New child profile', new_kid_path, class: 'button icon-plus'
-  - if @kids.any?
-    = render @kids
-  - else
-    .empty
-      You have not yet created a child profile, would you like to
-      = link_to 'create one', new_kid_path
-      now?
-
-  - if @saved_searches && @saved_searches.any?
-    %h3 Previous searches
-
-    %table
-      %thead
-        %tr
-          %th Date
-          %th Tags / Related
-      %tbody
-        = render @saved_searches
-
+- if @kids.any?
+  = render @kids
 - else
-  = render "layouts/public"
+  .empty
+    You have not yet created a child profile, would you like to
+    = link_to 'create one', new_kid_path
+    now?
+
+- if @saved_searches && @saved_searches.any?
+  %h3 Previous searches
+
+  %table
+    %thead
+      %tr
+        %th Date
+        %th Tags / Related
+    %tbody
+      = render @saved_searches

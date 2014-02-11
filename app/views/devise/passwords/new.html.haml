@@ -1,19 +1,13 @@
-= content_for :full_width, true
 
-.hero
-  .container= link_to image_tag('logo.png'), root_path, class: "public-logo"
+%h2 Forgot your password?
 
-.container
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+  = devise_error_messages!
 
-  %h2 Forgot your password?
+  .field
+    = f.label :email
+    = f.email_field :email, :autofocus => true
 
-  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
-    = devise_error_messages!
+  .submit= f.submit "Send me reset password instructions"
 
-    .field
-      = f.label :email
-      = f.email_field :email, :autofocus => true
-
-    .submit= f.submit "Send me reset password instructions"
-
-  = render "devise/shared/links"
+= render "devise/shared/links"

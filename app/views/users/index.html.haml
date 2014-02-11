@@ -1,0 +1,26 @@
+= content_for :title, 'All Users'
+= content_for :title_icon, 'icon-user'
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th Public
+      %th Admin?
+
+  - @users.each do |user|
+    %tr
+      %td
+        - if user.image_url.present?
+          = image_tag user.image_url, class: "avatar"
+        - else
+          = gravatar_image_tag user.email.downcase, class: "avatar"
+        = link_to user.name, user
+      %td= mail_to user.email, user.email
+      %th= user.public ? "&#x2714;".html_safe : ""
+      %th{style: 'color: red;'}= user.admin ? "&#x2714;".html_safe : ""
+      %td.buttons>
+        - if can? :manage, user
+          = link_to 'Edit', edit_user_path(user), class: 'button'
+          = link_to 'Delete', user, class: 'button', method: :delete, data: { confirm: 'Are you sure?' }

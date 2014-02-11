@@ -1,27 +1,23 @@
-= content_for :full_width, true
+%h2 Create account
 
-.hero
-  .container= link_to image_tag('logo.png'), root_path, class: "public-logo"
+%p
+  %em= t('sign_up')
 
-.container
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+  = devise_error_messages!
 
-  %h2= t('sign_up')
+  .field
+    = f.label :email
+    = f.email_field :email, :autofocus => true
 
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = devise_error_messages!
+  .field
+    = f.label :password
+    = f.password_field :password
 
-    .field
-      = f.label :email
-      = f.email_field :email, :autofocus => true
+  .field
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
 
-    .field
-      = f.label :password
-      = f.password_field :password
+  .submit= f.submit "Sign up"
 
-    .field
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation
-
-    .submit= f.submit "Sign up"
-
-    = render "devise/shared/links"
+  = render "devise/shared/links"

@@ -350,12 +350,13 @@ $leaflet-bar-button-size: 2em;
   padding: 1px;
   text-align: left;
 }
+
 .leaflet-popup-content {
   margin: 1em 1.5em;
   line-height: 1.5em;
-}
-.leaflet-popup-content p {
-  margin: 18px 0;
+  color: #444;
+
+  p { margin: 18px 0; }
 }
 .leaflet-popup-tip-container {
   margin: 0 auto;

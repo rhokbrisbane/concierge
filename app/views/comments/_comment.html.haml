@@ -1,8 +1,16 @@
 %li.comment{ id: dom_id(comment), data: { created_at: comment.created_at } }
   %header
-    %strong.comment-name= comment.user
-    %em.comment.date{title: comment.created_at.strftime("%d/%m/%y")}= "#{time_ago_in_words(comment.created_at)} ago"
+    %span.comment-user
+      - if comment.user.image_url.present?
+        = image_tag comment.user.image_url, class: "avatar"
+      - else
+        = gravatar_image_tag comment.user.email.downcase, class: "avatar"
+      = link_to comment.user, comment.user
+    %em.comment-date{title: comment.created_at.strftime("%d/%m/%y")}= "#{time_ago_in_words(comment.created_at)} ago"
 
-    = link_to "Delete", comment_path(comment), class: "icon-remove delete", data: { confirm: "Are you sure, this cannot be undone", method: "delete", remote: true }
 
-  = comment.content
+    - if can? :manage, comment
+      = link_to "Delete", comment_path(comment), class: "icon-close icon-only delete", data: { confirm: "Are you sure, this cannot be undone", method: "delete", remote: true }
+
+  .notes
+    = comment.content

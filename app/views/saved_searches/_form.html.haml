@@ -1,13 +1,13 @@
 = form_for @saved_search do |f|
   .field
-    = f.label :name
-    = f.text_field :name
+    = f.label :name, "Search name / reference"
+    = f.text_field :name, placeholder: "Optional"
 
   - tags_by_category.each do |category, tags|
     = label_tag category
 
-    - if category.in? %w(needs symptoms)
-      = collection_select 'saved_search', 'tag_ids', tags, :id, :name, {}, multiple: true
+    - if category.name.downcase.in? %w(needs symptoms)
+      = collection_select 'saved_search', 'tag_ids', tags, :id, :name, {}, { multiple: true }
     - else
       = collection_select 'saved_search[tag_ids]', nil, tags, :id, :name, {}
 

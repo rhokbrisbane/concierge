@@ -22,6 +22,7 @@ $title-icon-size: 2em;
     .title, .actions {
       float: none;
       display: block;
+      margin: 1em 0;
     }
 
   }
@@ -31,7 +32,7 @@ $title-icon-size: 2em;
 .title {
   font-size: $title-icon-size;
 
-  &[class*="icon-"] {
-    &:before { display: none; }
-  }
+  // &[class*="icon-"] {
+  //   &:before { display: none; }
+  // }
 }

@@ -1,6 +1,7 @@
 class DashboardController < ApplicationController
-  skip_before_filter :authenticate_user!
-  skip_authorization_check
+
+  # skip_before_filter :authenticate_user!
+  # skip_authorization_check
 
   def index
     if current_user

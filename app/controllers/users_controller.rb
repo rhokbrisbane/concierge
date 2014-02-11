@@ -32,7 +32,8 @@ class UsersController < ApplicationController
   def add_tag
     tag = Tag.find params[:tag_id]
     @user.tags << tag
-    head :no_content
+  rescue ActiveRecord::RecordInvalid
+    @flash = { class_name: 'alert', message: 'Tag has already been taken' }
   end
 
   def remove_tag

@@ -1,0 +1,15 @@
+= content_for :full_width, true
+
+.hero
+  .container
+    = @page.content.html_safe
+
+%section
+  .container
+    %div{ style: 'text-align: center;' }
+      %h3 Sign in with&hellip;
+    %div
+      .one-half= link_to "Facebook", user_omniauth_authorize_path(:facebook), class: 'big-button primary-button'
+      .one-half= link_to "Email", new_user_session_path, class: "big-button"
+
+

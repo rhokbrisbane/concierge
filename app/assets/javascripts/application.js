@@ -23,5 +23,8 @@
 //= require leaflet-markercluster
 //= require handlebars
 //= require fitvids/jquery.fitvids
+//= require jquery.wysiwyg
+//= require wysiwyg.link
+//= require wysiwyg.image
 //= require_tree ./templates
 //= require_tree .

@@ -5,17 +5,16 @@ class PagesController < ApplicationController
   skip_before_filter :check_authorization, only: [:show]
 
   def index
+    @landing_page = Page.find(1)
   end
 
   def show
+    @public = true
     @page = Page.find(params[:id])
   end
 
   def new
     @page = Page.new
-  end
-
-  def landing
   end
 
   def create

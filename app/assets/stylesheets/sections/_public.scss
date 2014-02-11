@@ -1,5 +1,5 @@
 .public {
-  background: mix($green, white, 15%) image-url("blurry.jpg") no-repeat center;
+  background: desaturate(darken($green, 10%), 10%) image-url("blurry.jpg") no-repeat center;
   @include background-size(cover);
 
   %heading { line-height: $line-height; }
@@ -34,11 +34,10 @@
   }
 
   main {
-    margin: 0 1em;
+    margin: 0;
 
     > .container {
       background: white;
-      border-radius: 5px;
     }
   }
 
@@ -51,6 +50,22 @@
       float: left;
       margin: 0;
       color: #eee;
+    }
+  }
+
+  .main-footer {
+    margin: 0;
+
+    .container {
+      background: rgba(black, .5);
+      padding-top: 2em;
+      padding-bottom: 2em;
+    }
+
+    a {
+      color: white;
+
+      &.active { color: $green; }
     }
   }
 }

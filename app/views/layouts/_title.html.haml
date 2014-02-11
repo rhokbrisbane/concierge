@@ -1,5 +1,7 @@
 %header.main-header
-  %h1.title{ class: (yield :title_icon if content_for :title_icon) }
+  %h1.title
+    - if content_for?(:title_icon)
+      .icon-in-circle.avatar{ class: yield(:title_icon) }
     = yield :title
 
   - if content_for :actions

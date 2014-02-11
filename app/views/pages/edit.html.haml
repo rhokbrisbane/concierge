@@ -2,8 +2,3 @@
 
 = render 'form'
 
-.main-footer
-  = link_to 'Back', pages_path
-
-  %div
-    = link_to 'Delete', @page, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "button", style: "background: red;"

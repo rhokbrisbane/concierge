@@ -1,8 +1,7 @@
 Concierge::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  root to: 'pages#landing'
-  # root :to => "pages#show", :id => 1
+  root :to => "pages#show", :id => 1
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
@@ -13,7 +12,7 @@ Concierge::Application.routes.draw do
   resources :comments,  only: [:create, :destroy]
   resources :dashboard, only: :index
   resources :kids
-  resources :pages
+  resources :pages, except: :landing
   resources :saved_searches
   resources :tags
   resources :users, only: [:show, :edit, :index]

@@ -36,27 +36,28 @@
 
 $inline-form-size: $line-height * 1.5;
 
-form.add-tag {
-  position: relative;
-  padding-right: $inline-form-size;
-
-  select, .chosen-single {
-    height: $inline-form-size;
-    line-height: $inline-form-size;
-    padding-top: 0;
-    padding-right: 0;
-  }
-
-  button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: $inline-form-size;
-    height: $inline-form-size;
-  }
-}
-
 
 table .tags {
   text-align: left;
+}
+
+
+
+.add-tag-form {
+  @extend %clearfix;
+  position: relative;
+
+  select, .chosen-container-single {
+    float: left;
+    width: 80% !important;
+
+    .chosen-single { width: 100% !important; }
+  }
+
+  button {
+    float: right;
+    width: 20%;
+    padding: 0;
+    line-height: 2em;
+  }
 }

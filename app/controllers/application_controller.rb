@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   private
 
   def fetch_pages
-    @pages = Page.all
+    @pages = Page.all.reject {|p| p.id == 1 }
   end
 
   def fetch_tags_by_category

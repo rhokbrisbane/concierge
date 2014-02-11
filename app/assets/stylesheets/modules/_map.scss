@@ -34,6 +34,7 @@ $marker-size: 2em;
 
 
 .map-hero {
+  margin: 0 -3em;
   position: relative;
   background: #ffefcf;
 
@@ -43,4 +44,13 @@ $marker-size: 2em;
     top: 1em;
     right: 1em;
   }
+
+  @media screen and (max-width: $breakpoint-small) {
+    margin: 0 -1.5em;
+  }
+}
+
+
+.results {
+  text-align: center;
 }

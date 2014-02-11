@@ -122,3 +122,28 @@ body > header {
 }
 
 
+
+
+.admin .admin-header {
+  @media screen and (max-width: $breakpoint-small) {
+    padding-top: 3em;
+    height: 3em;
+    box-sizing: border-box;
+    text-align: center;
+
+    &:before {
+      content: 'Admin links';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    a {
+      display: block;
+      clear: both;
+      width: 100%;
+      border-top: thin solid rgba(0,0,0,.1);
+    }
+  }
+}

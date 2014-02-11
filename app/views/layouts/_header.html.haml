@@ -1,5 +1,5 @@
 .container
-  = link_to image_tag('logo-header.png'), root_path, class: 'logo', title: 'Concierge'
+  = link_to image_tag('logo-header.png'), user_signed_in? ? dashboard_index_path : root_path, class: 'logo', title: 'Concierge'
 
   %hgroup.user-actions
     - if user_signed_in?

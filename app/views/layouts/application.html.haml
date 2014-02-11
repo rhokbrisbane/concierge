@@ -4,7 +4,7 @@
 <!--[if IE 7]>    <html lang="en" class="no-js ie7"> <![endif]-->
 <!--[if IE 8]>    <html lang="en" class="no-js ie8"> <![endif]-->
 <!--[if gt IE 8]><!-->
-%html.no-js{ :lang => "en", class: ("public" if !user_signed_in? or content_for?(:public)) }
+%html.no-js{ :lang => "en", class: "public" }
   <!--<![endif]-->
 
   %head
@@ -34,6 +34,7 @@
           = link_to 'Tags', tags_path
           = link_to 'Categories for Tags', tag_categories_path
           = link_to 'Pages', pages_path
+          = link_to 'Users', users_path
 
     %header.global-header= render 'layouts/header'
 
@@ -53,5 +54,6 @@
 
         - if @pages.any?
           %hr
+          = link_to 'Home', root_path, class: ('active' if request.path == root_path)
           - @pages.each do |page|
-            = link_to page.title, page
+            = link_to page.title, page, class: ('active' if request.path == page_path(page))

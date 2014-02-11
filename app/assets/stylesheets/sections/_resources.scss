@@ -24,3 +24,29 @@
 .social-links a {
   display: block;
 }
+
+.description {
+  margin: -1em 0 2em;
+}
+
+.details {
+  background: whitesmoke;
+  padding: 1em;
+  @extend %clearfix;
+
+  dt, dd {
+    float: left;
+    box-sizing: border-box;
+  }
+
+  dt {
+    width: 40%;
+    text-align: right;
+    padding-right: 1.5em;
+  }
+
+  dd {
+    width: 60%;
+  }
+
+}

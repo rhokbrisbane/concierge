@@ -1,19 +1,15 @@
 = content_for :title, @tag
-= content_for :title_icon, "icon-#{@tag.tag_category ? @tag.tag_category : 'tag'}"
+= content_for :title_icon, "icon-tag"
+
+%em= @tag.tag_category
 
 - unless @tag.description.blank?
   .description
     = @tag.description
 
-.tabs
-  %ul
-    - if @taggings.any?
-      %li= link_to "Related", "#related"
-      %li= link_to "Discussion", "#discussion"
 
-  - if @taggings.any?
-    #related.tab
-      = render 'taggings', taggings: @taggings
+- if @taggings.any?
+  %h3 Related
+  = render 'taggings', taggings: @taggings
 
-  #discussion.tab
-    = render 'comments', commentable: @tag
+= render 'comments', commentable: @tag

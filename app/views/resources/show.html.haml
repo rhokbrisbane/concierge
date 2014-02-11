@@ -1,14 +1,17 @@
-= content_for :title, @resource
-= content_for :title_icon, 'icon-resource'
+= content_for :title do
+  - if @resource.avatar.file?
+    = image_tag @resource.avatar.url, class: "avatar"
+  - else
+    .icon-resource.icon-in-circle.avatar
+  = @resource
 
 = content_for :actions do
   = link_to 'Edit', edit_resource_path(@resource), class: "button icon-pencil"
 
-%dl.description
-  %h3= @resource.description
+- if @resource.description.present?
+  .description= @resource.description
 
-  = image_tag @resource.avatar.url
-
+%dl.details
   %dt Category
   %dd= @resource.resource_category
 
@@ -29,18 +32,20 @@
       = link_to "<strong>facebook.com/</strong>#{@resource.facebook}".html_safe, "http://facebook.com/#{@resource.facebook}" unless @resource.facebook.blank?
       = link_to"<strong>twitter.com/</strong>#{@resource.twitter}".html_safe, "http://twitter.com/#{@resource.twitter}" unless @resource.twitter.blank?
 
+
 .tags
   .current_tags
     -# see tag_list_handler.js.coffee
 
-  = hidden_field_tag :entity_tags_list, @resource_tags.map { |tag| [tag.id, tag.name] }.to_json
-  = hidden_field_tag :tags_list,        @tags.map          { |tag| [tag.id, tag.name] }.to_json
-  = hidden_field_tag :add_tag_url,      add_tag_resource_path(@resource)
-  = hidden_field_tag :remove_tag_url,   "/resources/#{@resource.id}/remove_tag"
+    = hidden_field_tag :entity_tags_list, @resource_tags.map { |tag| [tag.id, tag.name] }.to_json
+    = hidden_field_tag :tags_list,        @tags.map          { |tag| [tag.id, tag.name] }.to_json
+    = hidden_field_tag :add_tag_url,      add_tag_resource_path(@resource)
+    = hidden_field_tag :remove_tag_url,   "/resources/#{@resource.id}/remove_tag"
 
-  .add-tag
-    = form_for @resource, remote: true, url: add_tag_resource_path(@resource) do |f|
-      = select_tag :tag_id, options_for_select(@tags.map { |tag| [tag.name, tag.id] })
-      %button.icon-plus{type: 'submit'} Add Tag
+    - if can? :update, @resource
+
+      = form_for @resource, remote: true, url: add_tag_resource_path(@resource), html: { class: 'add-tag-form' } do |f|
+        = select_tag :tag_id, options_for_select(@tags.map { |tag| [tag.name, tag.id] })
+        %button.icon-plus{type: 'submit'} Add Tag
 
 = render 'comments', commentable: @resource

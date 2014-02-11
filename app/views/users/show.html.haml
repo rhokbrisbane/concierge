@@ -1,5 +1,10 @@
-= content_for :title, @user
-= content_for :title_icon, 'icon-user'
+= content_for :title do
+  - if @user.image_url.present?
+    = image_tag @user.image_url, class: "avatar"
+  - else
+    = gravatar_image_tag @user.email.downcase, class: "avatar"
+
+  = @user
 
 - if can? :update, @user
   = content_for :actions do
@@ -20,7 +25,8 @@
     = hidden_field_tag :add_tag_url,      add_tag_user_path(@user)
     = hidden_field_tag :remove_tag_url,   "/users/#{@user.id}/remove_tag"
 
-    = form_for @user, remote: true, url: add_tag_user_path(@user) do |f|
+
+    = form_for @user, remote: true, url: add_tag_user_path(@user), html: { class: 'add-tag-form' } do |f|
       = select_tag :tag_id, options_for_select(@tags.map { |tag| [tag.name, tag.id] })
       %button.icon-plus{type: 'submit'} Add Tag
 

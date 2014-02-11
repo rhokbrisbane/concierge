@@ -9,9 +9,9 @@
 
     %em.comment-date{title: comment.created_at.strftime("%d/%m/%y")}= "#{time_ago_in_words(comment.created_at)} ago"
 
-    %span{ class: "icon-#{comment.commentable.class.to_s.downcase}" }
-      on
-      = link_to comment.commentable, comment.commentable
+    %span
+      regarding
+      = link_to comment.commentable, comment.commentable, class: "icon-#{comment.commentable.class.to_s.downcase}"
 
     - if can? :manage, comment
       = link_to "Delete", comment_path(comment), class: "icon-close icon-only delete",

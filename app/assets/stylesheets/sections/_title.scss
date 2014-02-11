@@ -32,7 +32,19 @@ $title-icon-size: 2em;
 .title {
   font-size: $title-icon-size;
 
-  // &[class*="icon-"] {
-  //   &:before { display: none; }
-  // }
+  .avatar {
+    float: left;
+    margin: -.333em;
+    margin-right: .5em;
+    width: 2em;
+    height: 2em;
+  }
+
+  .icon-in-circle {
+    background: #eee;
+    line-height: 2em;
+    text-align: center;
+
+    &:before { margin: 0; }
+  }
 }

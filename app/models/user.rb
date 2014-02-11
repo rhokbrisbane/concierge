@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :address
 
+  def comments_as_subject
+    Comment.where(commentable_type: 'User', commentable_id: id)
+  end
+
   def to_s
     name.presence || email.presence || "User#{id}"
   end

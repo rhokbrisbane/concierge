@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @tags = Tag.all.reject{ |tag| @user.tags.include?(tag) }
     @user_tags = @user.tags
+    @comments = [*@user.comments + @user.comments_as_subject].uniq_by(&:id)
   end
 
   def edit
@@ -32,7 +33,8 @@ class UsersController < ApplicationController
   def add_tag
     tag = Tag.find params[:tag_id]
     @user.tags << tag
-    head :no_content
+  rescue ActiveRecord::RecordInvalid
+    @flash = { class_name: 'alert', message: 'Tag has already been taken' }
   end
 
   def remove_tag

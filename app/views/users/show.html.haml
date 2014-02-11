@@ -24,4 +24,10 @@
       = select_tag :tag_id, options_for_select(@tags.map { |tag| [tag.name, tag.id] })
       %button.icon-plus{type: 'submit'} Add Tag
 
-= render 'comments', commentable: @user
+%header
+  %h3 Comments
+
+%ol#comments.comment-feed
+  = render @comments
+
+= render 'comments/form', commentable: @user

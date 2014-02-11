@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
 
   validates :user_id, :commentable_id, :commentable_type, :content, presence: true
 
-  validates :commentable_type, inclusion: { in: ['Resource', 'Tag'] }
+  validates :commentable_type, inclusion: { in: %w(Resource Tag User) }
 
   default_scope ->{ order('created_at ASC') }
 end

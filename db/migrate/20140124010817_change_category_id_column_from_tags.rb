@@ -1,6 +1,7 @@
+# Using SQL in this migration because the models had its names changed.
 class ChangeCategoryIdColumnFromTags < ActiveRecord::Migration
   def up
-    create_initial_categories if Category.count.zero?
+    create_initial_categories if connection.execute('select count(*) from categories').to_a.first['count'].to_i.zero?
 
     add_column :tags, :category_id, :integer
 
@@ -14,27 +15,22 @@ class ChangeCategoryIdColumnFromTags < ActiveRecord::Migration
         when 'weight_group' then 'Weight group'
       end
 
-      tag.update category_id: Category.find_by_name(new_category_name).id
+      category_id = connection.execute("select id from categories where name='#{new_category_name}'").to_a.first['id'].to_i
+      tag.update category_id: category_id
     end
 
     remove_column :tags, :category
   end
 
   def down
-    add_column :tags, :category, :string
-
-    Tag.all.each do |tag|
-      tag.update_column :category, Category.find(tag.category_id).name
-    end
-
-    remove_column :tags, :category_id
+    raise ActiveRecord::IrreversibleMigration
   end
 
   private
 
   def create_initial_categories
     ['Needs', 'Symptoms', 'Age group', 'Weight group'].each do |category_name|
-      Category.create(name: category_name)
+      connection.execute("INSERT INTO categories (name) VALUES ('#{category_name}')")
     end
   end
 end

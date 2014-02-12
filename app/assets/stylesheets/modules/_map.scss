@@ -99,7 +99,7 @@ $marker-size: 2em;
       width: 16em;
       right: -16em;
 
-      #toggle-results, #pan-to-location { display: none; }
+      #toggle-results { display: none; }
     }
   }
 }
@@ -107,11 +107,16 @@ $marker-size: 2em;
 
 @media screen and (max-width: $breakpoint-small) {
 
+  #pan-to-location {
+    bottom: auto;
+    top: 21em;
+  }
+
   .map-hero {
     height: auto;
 
     .results {
-      position: relative;
+      position: static;
       width: auto;
     }
 

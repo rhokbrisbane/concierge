@@ -12,3 +12,7 @@ form {
     width: 100%;
   }
 }
+
+textarea {
+  @include transition(none);
+}

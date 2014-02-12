@@ -14,6 +14,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   protected
 
   def after_sign_in_path_for(resource)
-    resource.sign_in_count == 1 ? new_saved_search_path : dashboard_path
+    resource.sign_in_count == 1 ? new_saved_search_path : dashboard_index_path
   end
 end

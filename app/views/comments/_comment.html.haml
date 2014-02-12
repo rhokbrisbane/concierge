@@ -11,7 +11,7 @@
 
     %span
       regarding
-      = link_to comment.commentable, comment.commentable, class: "icon-#{comment.commentable.class.to_s.downcase}"
+      = link_to comment.commentable, comment.commentable, class: "commentable icon-#{comment.commentable.class.to_s.downcase}"
 
     - if can? :manage, comment
       = link_to "Delete", comment_path(comment), class: "icon-close icon-only delete",

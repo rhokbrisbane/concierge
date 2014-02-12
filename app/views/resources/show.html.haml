@@ -1,26 +1,28 @@
-= content_for :title do
+= content_for :title, @resource
+
+= content_for :title_avatar do
   - if @resource.avatar.file?
     = image_tag @resource.avatar.url, class: "avatar"
   - else
     .icon-resource.icon-in-circle.avatar
-  = @resource
 
-= content_for :actions do
-  = link_to 'Edit', edit_resource_path(@resource), class: "button icon-pencil"
+= content_for :subtitle, @resource.resource_category
+
+- if can? :manage, @resource
+  = content_for :actions do
+    = link_to 'Edit', edit_resource_path(@resource), class: "button icon-pencil"
 
 - if @resource.description.present?
   .description= @resource.description
 
 %dl.details
-  %dt Category
-  %dd= @resource.resource_category
 
   %dt Region
   %dd= @resource.region_humanize
 
   - unless @resource.url.blank?
     %dt URL
-    %dd= link_to @resource.url, @resource.url, target: "_blank"
+    %dd= link_to @resource.url, url_with_protocol(@resource.url), target: "_blank"
 
   - unless @resource.phone.blank?
     %dt Phone
@@ -31,6 +33,11 @@
     %dd.social-links
       = link_to "<strong>facebook.com/</strong>#{@resource.facebook}".html_safe, "http://facebook.com/#{@resource.facebook}" unless @resource.facebook.blank?
       = link_to"<strong>twitter.com/</strong>#{@resource.twitter}".html_safe, "http://twitter.com/#{@resource.twitter}" unless @resource.twitter.blank?
+
+
+  - unless @resource.address.blank?
+    %dt Address
+    %dd= @resource.address
 
 
 .tags

@@ -2,7 +2,6 @@ $title-icon-size: 2em;
 
 .main-header {
   @extend %clearfix;
-  text-align: center;
   margin-bottom: $line-height * 1.5;
 
   .title {
@@ -16,13 +15,28 @@ $title-icon-size: 2em;
     a, button { display: inline-block; }
   }
 
+  .subtitle {
+    clear: left;
+    position: relative;
+    top: -1.5em;
+    margin: -2em 3.5em;
+    font-size: 1.25em;
+    font-style: italic;
+    color: #aaa;
+  }
+
   @media screen and (max-width: $breakpoint-small) {
+    text-align: center;
     font-size: 80%;
 
-    .title, .actions {
+    .title, .actions, .title .avatar, .subtitle {
       float: none;
       display: block;
-      margin: 1em 0;
+      margin: 1em auto;
+    }
+
+    .title .avatar {
+      margin: 0 auto .5em;
     }
 
   }

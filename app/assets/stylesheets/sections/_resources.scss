@@ -1,4 +1,13 @@
 
+#all-resources {
+  height: 300px;
+  margin: -1em -3em 2em;
+
+  @media screen and (max-width: $breakpoint-small) {
+    margin: 0 -1.5em;
+  }
+}
+
 .icon-resource { @extend .icon-document; }
 
 .field-with-text {

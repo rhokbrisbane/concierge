@@ -41,7 +41,7 @@ class TagsController < ApplicationController
   private
 
   def tag_params
-    params.require(:tag).permit(:name, :category_id, :description)
+    params.require(:tag).permit(:name, :tag_category_id, :description)
   end
 
   def load_categories

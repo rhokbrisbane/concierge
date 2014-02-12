@@ -18,6 +18,7 @@ class Ability
     can :read, Tagging
     can :read, Comment
     can :read, Resource
+    can :read, ResourceCategory
     can :read, Page
     can :read, User, public: true
 

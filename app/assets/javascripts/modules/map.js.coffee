@@ -1,10 +1,20 @@
+
+L.customDataMarker = L.Marker.extend
+  options:
+    map_id: "ID for map"
+    type: "Type"
+
+addCurrentLocationMarker = (location) ->
+  locationMarker = L.marker(location, icon: L.divIcon({className: "current-location icon-location"}))
+  map.addLayer locationMarker
+
 getResults = (tagIds) ->
   handleRequest = (data, type) ->
     _.each data, (result, i) ->
       if result.address and result.address.latitude
         address = result.address
         icon = L.divIcon({className: "marker icon-#{type}"})
-        marker = L.marker([address.latitude, address.longitude], icon: icon)
+        marker = new L.customDataMarker([address.latitude, address.longitude], icon: icon, map_id: result.id, type: type)
         marker.bindPopup(HandlebarsTemplates["#{type}_popup"](result))
         layer.push marker
 
@@ -23,13 +33,19 @@ getResults = (tagIds) ->
   window.layer = []
 
   $.when(resourcesRequest, peopleRequest).done (resources, users) ->
-    handleRequest(resources[0].search, 'resource')
-    handleRequest(users[0].search, 'user')
+    handleRequest( _.uniq(resources[0].search, 'id')  , 'resource')
+    handleRequest( _.uniq(users[0].search, 'id'), 'user')
 
     markers = new L.MarkerClusterGroup()
     markers.addLayers layer
-    map.addLayer markers
-    map.fitBounds markers.getBounds()
+
+    if layer.length
+      map.addLayer markers
+      if $(window).outerWidth() >= 640
+        padding = [$('.map-hero .results').outerWidth(), 0]
+      else
+        padding = [0, 0]
+      map.fitBounds markers.getBounds(), { paddingBottomRight: padding }
 
 $ ->
   if $('#results-map').length
@@ -38,12 +54,62 @@ $ ->
     # new L.TileLayer.Stamen({style: 'watercolor'}).addTo(map)
     new L.TileLayer.MapBox({user: 'concierge', map: 'gjdmmp09'}).addTo(map)
 
-    unless localStorage.getItem('myLocation')
+    if localStorage.getItem('myLocation')
+      current_location = _.map(localStorage.current_location.split(','), (item) -> return parseFloat(item))
+      addCurrentLocationMarker(current_location)
+    else
       @MapUtils.getCurrentLocation (location) ->
         localStorage.setItem('myLocation', location)
+        addCurrentLocationMarker(location)
 
-    # locationMarker = L.marker(location, icon: L.divIcon({className: "current-location"}))
-    # map.addLayer locationMarker
-
-    if $('#result-tag-ids').val().length
+    if $('#result-tag-ids').length && $('#result-tag-ids').val().length
       getResults( $('#result-tag-ids').val().split(',') )
+
+    if $('#all-resources').length
+      allResources()
+
+
+@allResources = ->
+  resourcesRequest = $.ajax
+    type: "GET"
+    url: '/api/v1/resources'
+
+  resourcesRequest.done (data) ->
+    markers = new L.MarkerClusterGroup()
+
+    $.each data.resources, (i, resource) ->
+      if resource.address && resource.address.latitude
+        address = resource.address
+        icon = L.divIcon({className: "marker icon-resource"})
+        marker = L.marker([address.latitude, address.longitude], icon: icon)
+        marker.bindPopup(HandlebarsTemplates["resource_popup"](resource))
+        markers.addLayer marker
+
+    map.addLayer markers
+    map.fitBounds markers.getBounds()
+
+$(document).off 'click', '#pan-to-location'
+$(document).on 'click', '#pan-to-location', (e) ->
+  map.panTo( localStorage.current_location.split(',') )
+
+$(document).off 'click', '#toggle-results'
+$(document).on 'click', '#toggle-results', (e) ->
+  $('.map-hero .results').toggleClass('active')
+
+
+
+
+$(document).on 'click', '.icon-location[data-map-user-id]', (e) ->
+  e.preventDefault()
+  id = $(this).data('map-user-id')
+  marker = _.find layer, (m) -> m.options.map_id == id and m.options.type == 'user'
+  map.panTo marker.getLatLng()
+  marker.openPopup()
+
+$(document).on 'click', '.icon-location[data-map-resource-id]', (e) ->
+  e.preventDefault()
+  id = $(this).data('map-resource-id')
+  marker = _.find layer, (m) -> m.options.map_id == id and m.options.type == 'resource'
+  map.panTo marker.getLatLng()
+  marker.openPopup()
+

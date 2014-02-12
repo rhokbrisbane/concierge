@@ -1,10 +1,10 @@
-= content_for :title do
+= content_for :title, @user
+
+= content_for :title_avatar do
   - if @user.image_url.present?
     = image_tag @user.image_url, class: "avatar"
   - else
     = gravatar_image_tag @user.email.downcase, class: "avatar"
-
-  = @user
 
 - if can? :update, @user
   = content_for :actions do

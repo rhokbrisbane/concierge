@@ -11,6 +11,7 @@
         = content_tag(:span, current_user)
 
         .dropdown
+          = link_to "Dashboard", dashboard_index_path
           = link_to "My Profile", user_path(current_user), title: current_user.name
           = link_to "My Searches", saved_searches_path
           = link_to "Sign Out", destroy_user_session_path, method: :delete

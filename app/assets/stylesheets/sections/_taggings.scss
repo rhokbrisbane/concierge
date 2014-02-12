@@ -1,9 +1,12 @@
 
+.taggings {
+  margin: 2em 0;
+}
+
 .related-items {
   li {
-    font-size: 1.25em;
     border-bottom: thin solid $gray-lighter;
-    padding: ($line-height / 2) 0;
+    padding: $line-height / 2;
 
     &:first-child {
       border-top: thin solid $gray-lighter;

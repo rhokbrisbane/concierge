@@ -1,24 +1,31 @@
-.one-half
-  %h4 Related resources
+.content
+  .tabs
+    %ul
+      %li= link_to 'Resources', '#resources'
+      %li= link_to 'People', '#people'
 
-  - if @results.resources.any?
+    #resources
+      - if @results.resources.any?
 
-    %ul.related-items.no-dot
-      - @results.resources.each do |resource|
-        %li{class: "icon-resource"}
-          = link_to resource.name, resource
+        %ul.related-items.no-dot
+          - @results.resources.uniq.each do |resource|
+            %li{class: resource.address ? "icon-location" : nil, data: { "map-resource-id" => resource.id } }
+              = link_to resource do
+                = resource.name
+                - if resource.region
+                  %small= "- #{resource.region.gsub('_', ' ').titleize}"
 
-  - else
-    .empty No resources found.
+      - else
+        .empty No resources found.
 
-.one-half
-  %h4 Related people
+    #people
+      - if @results.people.any?
+        %ul.related-items.no-dot
+          - @results.people.uniq.each do |user|
+            %li{class: user.address ? "icon-location" : nil, data: { "map-user-id" => user.id } }
+              = link_to user.name, user
 
-  - if @results.people.any?
-    %ul.related-items.no-dot
-      - @results.people.each do |user|
-        %li{class: "icon-user"}
-          = link_to user.name, user
+      - else
+        .empty No people found.
 
-  - else
-    .empty No people found.
+%button#toggle-results.icon-arrow-left.icon-only Toggle results

@@ -118,3 +118,10 @@ main dl {
   > .global-header { top: $fixed-top-header-height; }
   > main { margin-top: 4em; }
 }
+
+
+.full-width.main-footer {
+  background: rgba(black, .35);
+
+  .container { background: transparent; }
+}

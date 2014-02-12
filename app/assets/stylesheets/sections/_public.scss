@@ -63,9 +63,9 @@
     }
 
     a {
-      color: white;
+      color: white !important;
 
-      &.active { color: $green; }
+      &.active { color: $green !important; }
     }
   }
 }

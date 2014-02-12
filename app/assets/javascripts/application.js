@@ -17,7 +17,7 @@
 //= require jquery.turbolinks
 //= require jquery-ui/ui/jquery-ui
 //= require chosen.jquery
-//= require underscore
+//= require lodash
 //= require leaflet
 //= require leaflet-providers
 //= require leaflet-markercluster

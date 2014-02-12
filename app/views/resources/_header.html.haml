@@ -5,6 +5,10 @@
   = content_for :actions do
     = link_to 'New resource', new_resource_path, class: 'button icon-plus'
 
+
+#all-resources
+  #results-map
+
 %ul.no-dot.tab-list.one-third.first
   %li= link_to 'All', resources_path, class: ('active' if request.path == resources_path)
   - @resource_categories.each do |resource_category|

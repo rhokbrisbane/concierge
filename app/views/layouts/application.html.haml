@@ -46,7 +46,7 @@
       - else
         = yield
 
-    %footer.main-footer
+    %footer.main-footer{ class: ('full-width' if content_for?(:full_width)) }
       .container
         - if user_signed_in?
           = link_to 'All Resources', resources_path, class: "icon-resource" if can? :read, Resource

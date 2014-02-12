@@ -1,10 +1,6 @@
-<h1 class="title icon-resource">
+<h1 class="title">
   <a href="/users/{{id}}">{{name}}</a>
 </h1>
-
-<p>
-  <a href="/users/{{id}}">{{total_of_comments}} comment(s)</a>
-</p>
 
 <dl>
   {{#if email}}
@@ -12,3 +8,7 @@
     <dd><a href="mailto:{{email}}" target="_blank">{{email}}</a></dd>
   {{/if}}
 </dl>
+
+<p>
+  <a href="/users/{{id}}">{{total_of_comments}} comment(s)</a>
+</p>

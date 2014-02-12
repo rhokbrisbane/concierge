@@ -1,19 +1,27 @@
 
-#results-map {
-  height: 480px;
+.search-results {
+  background: white;
 
-  @media screen and (max-width: $breakpoint-small) {
-    height: 280px;
+  .refine-search-button {
+    display: block;
+    margin: 1em auto 0;
+    width: 10em;
   }
+
+  .tags {
+    margin: 0;
+  }
+}
+
+#results-map {
+  height: 100%;
 }
 
 $marker-size: 2em;
 
-.marker {
-  background: $color-primary;
+.leaflet-marker-icon {
   color: $white;
   border-radius: 50%;
-  font-size: 2em;
   width: $marker-size !important;
   height: $marker-size !important;
   margin: -#{$marker-size / 2} !important;
@@ -22,6 +30,29 @@ $marker-size: 2em;
   @include box-shadow(0 1px 2px rgba(black, .25));
 
   &:before { margin: 0; }
+
+
+  &.marker {
+    background: $color-primary;
+    font-size: 1.5em;
+  }
+
+  &.current-location {
+    background: $green;
+  }
+}
+
+#pan-to-location, #toggle-results {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 1em;
+  width: 2em;
+  height: 2em;
+}
+
+.active #toggle-results {
+  @extend .icon-arrow-right2;
 }
 
 .leaflet-popup {
@@ -32,25 +63,61 @@ $marker-size: 2em;
   }
 }
 
+#toggle-results {
+  left: -4em;
+}
 
 .map-hero {
-  margin: 0 -3em;
   position: relative;
-  background: #ffefcf;
+  height: 700px;
+  height: 80vh;
 
-  .refine-search-button {
+  .results {
     position: absolute;
-    z-index: 10;
-    top: 1em;
-    right: 1em;
-  }
+    top: 0;
+    right: -22em;
+    width: 22em;
+    bottom: 0;
+    background: white;
+    background: rgba(255,255,255,.8);
+    z-index: 2000;
+    @include transition(right .25s ease-in-out);
 
-  @media screen and (max-width: $breakpoint-small) {
-    margin: 0 -1.5em;
+    &.active {
+      right: 0;
+
+      #toggle-results { left: 0; }
+    }
+
+    .content {
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    @media screen and (max-width: $breakpoint-medium) {
+      width: 16em;
+      right: -16em;
+
+      #toggle-results, #pan-to-location { display: none; }
+    }
   }
 }
 
 
-.results {
-  text-align: center;
+@media screen and (max-width: $breakpoint-small) {
+
+  .map-hero {
+    height: auto;
+
+    .results {
+      position: relative;
+      width: auto;
+    }
+
+    #results-map {
+      height: 400px;
+    }
+  }
 }
+

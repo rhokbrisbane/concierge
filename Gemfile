@@ -51,3 +51,5 @@ group :test do
   gem 'spring'
   gem 'spring-commands-rspec', require: false
 end
+
+gem 'rails_12factor', group: :production

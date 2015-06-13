@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   include HasApiToken
   include Sharable
   include Taggable
+  include Commentable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable
@@ -12,12 +13,9 @@ class User < ActiveRecord::Base
 
   has_one :address, as: :addressable, dependent: :destroy
 
-  has_many :taggings, as: :taggable
-  has_many :tags, through: :taggings
   has_many :resources
   has_many :guardianships, dependent: :destroy
   has_many :kids, through: :guardianships
-  has_many :comments
 
   has_many :saved_searches
 

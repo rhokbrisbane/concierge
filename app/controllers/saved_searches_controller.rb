@@ -7,9 +7,7 @@ class SavedSearchesController < ApplicationController
 
   def show
     authorize! :read, @saved_search
-    @results = SearchResults.for(tag_ids: @saved_search.tag_ids,
-      ability: current_ability
-    )
+    @results = SimpleSearch.new(@saved_search.name).results
   end
 
   def new
@@ -25,20 +23,14 @@ class SavedSearchesController < ApplicationController
     authorize! :create, SavedSearch
 
     @saved_search = current_user.saved_searches.new(saved_searches_params)
-    @saved_search.name = Time.now.to_s(:time_with_date)
 
     respond_to do |format|
-      format.html do
-        if @saved_search.save
-          redirect_to @saved_search
-        else
-          render action: 'new'
-        end
-      end
-
-      format.json do
-        @saved_search.save
-        render json: @saved_search.to_json
+      if @saved_search.save
+        format.html { redirect_to @saved_search }
+        format.json { render json: @saved_search.to_json }
+      else
+        format.html { render action: :new }
+        format.json { render json: { errors: @saved_search.errors.to_a } }
       end
     end
   end

@@ -1,4 +1,6 @@
 updateMap = () ->
+  map._layersMaxZoom = 15
+  map._layersMinZoom = 2
   markers = new L.MarkerClusterGroup()
   markers.addLayers layer
 
@@ -17,8 +19,7 @@ bindAddressablePopup = (el) ->
   if address && address.latitude && address.longitude
     type = addressable.type
     icon = L.divIcon({ className: "marker icon-#{type}" })
-    marker = new L.customDataMarker([address.latitude, address.longitude],
-      icon: icon, map_id: addressable.id, type: type)
+    marker = new L.customDataMarker([address.latitude, address.longitude], icon: icon, map_id: addressable.id, type: type)
     marker.bindPopup(HandlebarsTemplates["#{type}_popup"](addressable))
     layer.push marker
 
@@ -47,15 +48,14 @@ getResults = (tagIds) ->
     data:
       tag_ids: tagIds
 
-  peopleRequest = $.ajax
-    type: "POST"
-    url: '/api/v1/search/people',
-    data:
-      tag_ids: tagIds
+  # peopleRequest = $.ajax
+  #   type: "POST"
+  #   url: '/api/v1/search/people',
+  #   data:
+  #     tag_ids: tagIds
 
-  $.when(resourcesRequest, peopleRequest).done (resources, users) ->
+  $.when(resourcesRequest).done (resources) ->
     handleRequest( _.uniq(resources[0].search, 'id')  , 'resource')
-    handleRequest( _.uniq(users[0].search, 'id'), 'user')
     updateMap()
 
 $ ->
@@ -65,9 +65,11 @@ $ ->
     window.layer = []
 
     _.each $('[data-addressable]'), bindAddressablePopup
+    updateMap()
 
-    # new L.TileLayer.Stamen({style: 'watercolor'}).addTo(map)
-    new L.TileLayer.MapBox({user: 'concierge', map: 'gjdmmp09'}).addTo(map)
+    # new L.TileLayer.Stamen({user: 'concierge', style: 'watercolor'}).addTo(map)
+    # new L.TileLayer.MapBox({user: 'concierge', map: 'gjdmmp09'}).addTo(map)
+    new L.TileLayer.Stamen({user: 'concierge', style: 'toner'}).addTo(map)
 
     if localStorage.getItem('myLocation')
       current_location = _.map(localStorage.current_location.split(','), (item) -> return parseFloat(item))

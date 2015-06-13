@@ -4,7 +4,7 @@ ruby '2.2.2'
 gem 'rails', '4.0.2'
 
 gem 'active_model_serializers'
-gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'activeadmin', github: 'gregbell/active_admin', branch: :master
 gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'compass-rails', '~> 1.1.2'

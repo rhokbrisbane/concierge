@@ -21,7 +21,6 @@ class SimpleSearch
   end
 
   def pages
-    binding.pry;"pry";
     Page.where("title ilike :q", q: "%#{query}%")
   end
 end

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.2.2'
 
 gem 'rails', '4.0.2'
 
@@ -43,7 +43,6 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'guard-rspec', github: 'guard/guard-rspec', require: false
   gem 'launchy'
   gem 'poltergeist'
   gem 'rspec-rails'

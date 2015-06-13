@@ -15,6 +15,7 @@
 .bundle
 .rbenv-gemsets
 .rvmrc
+.ruby-version
 .sass-cache
 coverage
 config/database.yml

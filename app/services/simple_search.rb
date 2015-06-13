@@ -15,6 +15,6 @@ class SimpleSearch
     resource_sql = %w(name url facebook twitter description).map { |field|
       "#{field} like :q"
     }.join(" or ")
-    Resource.where(resource_sql, q: "%#{query}%")
+    Resource.where(resource_sql, q: "%#{query}%").include(:address)
   end
 end

@@ -1,7 +1,7 @@
 Concierge::Application.routes.draw do
   ActiveAdmin.routes(self)
 
-  root :to => "pages#show", :id => 1
+  root to: "saved_searches#new" # "pages#show", :id => 1
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',

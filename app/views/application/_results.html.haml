@@ -9,7 +9,7 @@
 
         %ul.related-items.no-dot
           - @results.resources.each do |resource|
-            %li{class: resource.address ? "icon-location" : nil, data: { "map-resource-id" => resource.id } }
+            %li{class: resource.address ? "icon-location" : nil, data: { "map-resource-id" => resource.id, addressable: resource.to_h.to_json } }
               = link_to resource do
                 = resource.name
                 - if resource.region

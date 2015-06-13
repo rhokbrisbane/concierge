@@ -22,4 +22,12 @@ class Resource < ActiveRecord::Base
   def to_s
     name
   end
+
+  def to_h
+    {
+      id:      id,
+      type:    self.class.name.underscore,
+      address: address.to_h
+    }
+  end
 end

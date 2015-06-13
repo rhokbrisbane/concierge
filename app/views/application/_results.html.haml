@@ -8,7 +8,7 @@
       - if @results.resources.any?
 
         %ul.related-items.no-dot
-          - @results.resources.uniq.each do |resource|
+          - @results.resources.each do |resource|
             %li{class: resource.address ? "icon-location" : nil, data: { "map-resource-id" => resource.id } }
               = link_to resource do
                 = resource.name
@@ -21,9 +21,9 @@
     #pages
       - if @results.pages.any?
         %ul.related-items.no-dot
-          - @results.pages.uniq.each do |user|
-            %li{class: user.address ? "icon-location" : nil, data: { "map-user-id" => user.id } }
-              = link_to user.name, user
+          - @results.pages.each do |page|
+            %li
+              = link_to page.title, page
 
       - else
         .empty No pages found.

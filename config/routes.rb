@@ -1,6 +1,6 @@
 Concierge::Application.routes.draw do
-  ActiveAdmin.routes(self)
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: "saved_searches#new" # "pages#show", :id => 1
 
   devise_for :users, controllers: {

@@ -34,6 +34,6 @@ class ApplicationController < ActionController::Base
   end
 
   def admin_or_devise_controller?
-    self.kind_of?(ActiveAdmin::BaseController) || devise_controller?
+    devise_controller?
   end
 end

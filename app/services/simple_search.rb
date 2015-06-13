@@ -7,7 +7,7 @@ class SimpleSearch
   def results
     OpenStruct.new(
       resources: resources,
-      people: []
+      pages:     pages
     )
   end
 
@@ -16,5 +16,9 @@ class SimpleSearch
       "#{field} like :q"
     }.join(" or ")
     Resource.where(resource_sql, q: "%#{query}%").includes(:address)
+  end
+
+  def pages
+    Page.where("title like :q", q: "%#{query}%")
   end
 end

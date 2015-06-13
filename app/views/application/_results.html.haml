@@ -2,7 +2,7 @@
   .tabs
     %ul
       %li= link_to 'Resources', '#resources'
-      %li= link_to 'People', '#people'
+      %li= link_to 'Pages', '#pages'
 
     #resources
       - if @results.resources.any?
@@ -18,14 +18,14 @@
       - else
         .empty No resources found.
 
-    #people
-      - if @results.people.any?
+    #pages
+      - if @results.pages.any?
         %ul.related-items.no-dot
-          - @results.people.uniq.each do |user|
+          - @results.pages.uniq.each do |user|
             %li{class: user.address ? "icon-location" : nil, data: { "map-user-id" => user.id } }
               = link_to user.name, user
 
       - else
-        .empty No people found.
+        .empty No pages found.
 
 %button#toggle-results.icon-arrow-left.icon-only Toggle results

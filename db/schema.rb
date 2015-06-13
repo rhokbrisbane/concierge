@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140129061736) do
+ActiveRecord::Schema.define(version: 20150613043348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,12 @@ ActiveRecord::Schema.define(version: 20140129061736) do
     t.string   "region"
     t.integer  "resource_category_id"
   end
+
+  add_index "resources", ["description"], name: "index_resources_on_description", using: :btree
+  add_index "resources", ["facebook"], name: "index_resources_on_facebook", using: :btree
+  add_index "resources", ["name"], name: "index_resources_on_name", using: :btree
+  add_index "resources", ["twitter"], name: "index_resources_on_twitter", using: :btree
+  add_index "resources", ["url"], name: "index_resources_on_url", using: :btree
 
   create_table "saved_searches", force: true do |t|
     t.string   "name"

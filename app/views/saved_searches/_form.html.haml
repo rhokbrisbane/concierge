@@ -1,7 +1,7 @@
 = form_for @saved_search do |f|
   .field
     = f.label :name, "Search query / reference"
-    = f.text_field :name, placeholder: "term"
+    = f.text_field :name, placeholder: "term", autofocus: true
 
   .submit
     %button.icon-search3{ type: 'submit' } Search

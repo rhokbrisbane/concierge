@@ -19,7 +19,7 @@ bindAddressablePopup = (el) ->
     icon = L.divIcon({ className: "marker icon-#{type}" })
     marker = new L.customDataMarker([address.latitude, address.longitude],
       icon: icon, map_id: addressable.id, type: type)
-    marker.bindPopup(HandlebarsTemplates["#{type}_popup"](el))
+    marker.bindPopup(HandlebarsTemplates["#{type}_popup"](addressable))
     layer.push marker
 
 L.customDataMarker = L.Marker.extend

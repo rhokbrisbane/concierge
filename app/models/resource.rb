@@ -26,6 +26,8 @@ class Resource < ActiveRecord::Base
   def to_h
     {
       id:      id,
+      url:     url,
+      phone:   phone,
       type:    self.class.name.underscore,
       address: address.to_h
     }

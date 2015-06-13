@@ -4,6 +4,10 @@
 %section.search-results
   .container
 
+    %h3
+      Search term:
+      = @saved_search
+
     .tags
       %input{ type: "hidden", value: @saved_search.tag_ids.join(','), id: 'result-tag-ids' }
 

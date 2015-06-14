@@ -1,47 +1,48 @@
-# [Queensland Kids](http://www.queenslandkids.org)
+Read Me File for the Vanilla Platform called ‘Concierge’ (make general information)
 
-**[Hummingbird Connect](http://hummingbirdconnect.org)**
+# [PCQConnect](http://www.queenslandkids.org)
+
+**PCQ Connect](http://hummingbirdconnect.org)**
 
 ## What is this project?
 
-The biggest problem that **Queensland Kids** ([queenslandkids.org.au](http://www.queenslandkids.org)) and their families are facing is being able to access the services and information available to them.
+This platform provides the medical industry with a method of presenting information and resources for diagnosed patients, their carers and families in their immediate area using tagging.
 
-Our aim is to create a mobile or general web site for families allowing family to shine a beacon in the positive direction towards seeking help and finding resources. The problems today is a lot of those resources are scattered in various parts of the internet or medical services will hand you a info sheet, which may of completely irrelevant.
+It provides a general search function and a filtered search function using tags, catagories and geolocation.  The filter displays the information pertinent to the stage of the illness - Early Diagnosis, Needing Help, and Late Stages.
 
-Second challenge is how do we share the information on the site accessible and securely/confidentially to family members, emergency services, doctors, nurses and service providers.
+It has been developed to assist people in Queensland, Australia to link to resources in often remote areas.  The platform was built initially for http://www.queenslandkids.org who understood the problem of resources being shared by medical services handing out info sheets, which may be irrelevant, or not kept up to date.  It has been subsequently enhanced for Palliative Care Australia.
 
 ## Who's involved in the project:
 
-* Andy Fitzsimon
-* Balinder
-* Boris S
-* Brad Parker
-* Brett
+* John Haberecht
+* Paul Quilliam
+* Dr. William Syrmis
 * Bruce Stronge
+* Erik Ecoologic
+* John Morris
+* John Diamond
+* Ben Moriarty
+* Tom Manderson
+* Larissa McCollin
 * Christpherys Alva
 * Clinton Roy
 * Dan Sowter
 * Danny Johnson
 * Erik Ecoologic
-* Homan
-* Jaya
 * Justin Douglas
 * Lucas Caton
 * Mark Dunn
-* Matt Riley
 * Neil Estandarte
 * Olivier Pichon
 * Paul Quilliam
 * Paul Tasker
-* Ricardo Bernardeli
-* Robert Dickie
 * Rowan Hogan
 
 ([http://rhokbrisbane.org](http://rhokbrisbane.org))
 
 ## Project Introduction and Roadmap
 
-There are currently 2 types of users. Administrators of HummingBird house, and everyone else.
+There are currently 2 types of users. Administrators of Paliative Care Queensland, and everyone else.
 
 Administrators can do whatever they want. Everyone else can:
 - Search for people, and for resources.
@@ -82,3 +83,5 @@ Start the server passing the Facebook credentials (the length below is correct, 
     export HH_DEVISE_SECRET_KEY=62caa77c37f8e92d7562e06427766ce1a8e71d7c92f2ce26e46a6f3f035f6a0f197a4be64a33483d79b39d7c675c4ecfc39bbcc12d9631b084e2fc16a4fff18e
     export HH_SECRET_KEY_BASE=54e42d09f9198aad975e6d504dbf436483bc032311f6ed55735273ce9910f245ed220badddde98cd1926ee02c7e75fad15ac657e5953706fc898622aee8ffcb0
     rails s
+
+

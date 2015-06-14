@@ -1,3 +1,27 @@
+updateMap = () ->
+  map._layersMaxZoom = 15
+  map._layersMinZoom = 2
+  markers = new L.MarkerClusterGroup()
+  markers.addLayers layer
+
+  if layer.length
+    map.addLayer markers
+    if $(window).outerWidth() >= 640
+      padding = [$('.map-hero .results').outerWidth(), 0]
+    else
+      padding = [0, 0]
+    map.fitBounds markers.getBounds(), { paddingBottomRight: padding }
+
+bindAddressablePopup = (el) ->
+  addressable = $(el).data().addressable
+  address = addressable.address
+
+  if address && address.latitude && address.longitude
+    type = addressable.type
+    icon = L.divIcon({ className: "marker icon-#{type}" })
+    marker = new L.customDataMarker([address.latitude, address.longitude], icon: icon, map_id: addressable.id, type: type)
+    marker.bindPopup(HandlebarsTemplates["#{type}_popup"](addressable))
+    layer.push marker
 
 L.customDataMarker = L.Marker.extend
   options:
@@ -24,35 +48,28 @@ getResults = (tagIds) ->
     data:
       tag_ids: tagIds
 
-  peopleRequest = $.ajax
-    type: "POST"
-    url: '/api/v1/search/people',
-    data:
-      tag_ids: tagIds
+  # peopleRequest = $.ajax
+  #   type: "POST"
+  #   url: '/api/v1/search/people',
+  #   data:
+  #     tag_ids: tagIds
 
-  window.layer = []
-
-  $.when(resourcesRequest, peopleRequest).done (resources, users) ->
+  $.when(resourcesRequest).done (resources) ->
     handleRequest( _.uniq(resources[0].search, 'id')  , 'resource')
-    handleRequest( _.uniq(users[0].search, 'id'), 'user')
-
-    markers = new L.MarkerClusterGroup()
-    markers.addLayers layer
-
-    if layer.length
-      map.addLayer markers
-      if $(window).outerWidth() >= 640
-        padding = [$('.map-hero .results').outerWidth(), 0]
-      else
-        padding = [0, 0]
-      map.fitBounds markers.getBounds(), { paddingBottomRight: padding }
+    updateMap()
 
 $ ->
   if $('#results-map').length
     bounds = [ [-29.726222319395504, 125.5078125], [-10.01212955790814, 163.4765625] ]
     window.map = new L.Map("results-map").fitBounds(bounds)
-    # new L.TileLayer.Stamen({style: 'watercolor'}).addTo(map)
-    new L.TileLayer.MapBox({user: 'concierge', map: 'gjdmmp09'}).addTo(map)
+    window.layer = []
+
+    _.each $('[data-addressable]'), bindAddressablePopup
+    updateMap()
+
+    # new L.TileLayer.Stamen({user: 'concierge', style: 'watercolor'}).addTo(map)
+    # new L.TileLayer.MapBox({user: 'concierge', map: 'gjdmmp09'}).addTo(map)
+    new L.TileLayer.Stamen({user: 'concierge', style: 'toner'}).addTo(map)
 
     if localStorage.getItem('myLocation')
       current_location = _.map(localStorage.current_location.split(','), (item) -> return parseFloat(item))

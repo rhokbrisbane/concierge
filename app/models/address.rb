@@ -26,4 +26,11 @@ class Address < ActiveRecord::Base
       !coordinates?
     end
   end
+
+  def to_h
+    {
+      latitude:  latitude,
+      longitude: longitude
+    }
+  end
 end

@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.2.2'
 
 gem 'rails', '4.0.2'
 
 gem 'active_model_serializers'
-gem 'activeadmin', github: 'gregbell/active_admin'
-gem 'cancan'
+# gem 'activeadmin', github: 'gregbell/active_admin', branch: :master
+gem "rails_admin"
+gem 'cancancan'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'compass-rails', '~> 1.1.2'
 gem 'countries'
@@ -27,8 +28,6 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
-  gem 'better_errors'
-  gem 'bullet'
   gem 'quiet_assets'
   gem 'routes', require: false
   gem 'thin'
@@ -43,7 +42,6 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'guard-rspec', github: 'guard/guard-rspec', require: false
   gem 'launchy'
   gem 'poltergeist'
   gem 'rspec-rails'
@@ -52,3 +50,5 @@ group :test do
   gem 'spring'
   gem 'spring-commands-rspec', require: false
 end
+
+gem 'rails_12factor', group: :production

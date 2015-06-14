@@ -1,12 +1,8 @@
-Read Me File for the Vanilla Platform called ‘Concierge’ (make general information)
-
 # [PCQConnect](http://www.queenslandkids.org)
-
-**PCQ Connect](http://hummingbirdconnect.org)**
 
 ## What is this project?
 
-This platform provides the medical industry with a method of presenting information and resources for diagnosed patients, their carers and families in their immediate area using tagging.
+This platform provides the healthcare industry with a method of presenting information and resources for diagnosed patients, their carers and families in their immediate area using tagging.
 
 It provides a general search function and a filtered search function using tags, catagories and geolocation.  The filter displays the information pertinent to the stage of the illness - Early Diagnosis, Needing Help, and Late Stages.
 

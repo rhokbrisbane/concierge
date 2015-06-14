@@ -6,7 +6,7 @@ This platform provides the healthcare industry with a method of presenting infor
 
 It provides a general search function and a filtered search function using tags, catagories and geolocation.  The filter displays the information pertinent to the stage of the illness - Early Diagnosis, Needing Help, and Late Stages.
 
-It has been developed to assist people in Queensland, Australia to link to resources in often remote areas.  The platform was built initially for http://www.queenslandkids.org who understood the problem of resources being shared by medical services handing out info sheets, which may be irrelevant, or not kept up to date.  It has been subsequently enhanced for Palliative Care Australia.
+It has been developed to assist people in Queensland, Australia to link to resources in often remote areas.  The platform was built initially for Queensland Kids http://www.queenslandkids.org who understood the problem of resources being shared by medical services handing out info sheets, which may be irrelevant, or not kept up to date.  It has been subsequently enhanced for Palliative Care Australia http://palliativecareqld.org.au/ .
 
 ## Who's involved in the project:
 

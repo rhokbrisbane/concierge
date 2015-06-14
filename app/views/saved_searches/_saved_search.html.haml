@@ -1,9 +1,0 @@
-%tr
-  %td
-    = link_to saved_search.name, saved_search
-
-  %td.tags
-    - saved_search.tags.limit(3).each do |tag|
-      = link_to tag.name.truncate(30), tag, class: 'tag', title: tag.name
-    - if saved_search.tags.count > 3
-      %strong= link_to '&hellip;'.html_safe, saved_search

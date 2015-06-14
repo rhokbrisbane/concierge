@@ -1,6 +1,0 @@
-en:
-  enumerations:
-    region:
-      local: 'Local'
-      state_provincial: 'State / Provincial'
-      national: 'National'

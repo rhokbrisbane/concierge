@@ -1,7 +1,0 @@
-{
-  "name": "rhokbrisbane_2013 dependencies",
-  "dependencies": {
-    "trove": "*",
-    "jquery-ui": "~1.10.3"
-  }
-}

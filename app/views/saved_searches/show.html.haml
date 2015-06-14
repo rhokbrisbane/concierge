@@ -17,7 +17,11 @@
           - tags.each do |tag|
             = link_to tag.name, tag_path(tag), class: 'tag'
 
-      = link_to 'Refine search', edit_saved_search_path(@saved_search), class: "button icon-search3 refine-search-button"
+      - if @saved_search.persisted?
+        = link_to 'Refine search', edit_saved_search_path(@saved_search), class: "button icon-search3 refine-search-button"
+      - else
+        = link_to 'Refine search', new_saved_search_path, class: "button icon-search3 refine-search-button"
+
 
 .hero.map-hero
   #results-map

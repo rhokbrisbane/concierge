@@ -1,7 +1,9 @@
 Concierge::Application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  root to: "saved_searches#new" # "pages#show", :id => 1
+  root to: "public_searches#new" # "pages#show", :id => 1
+
+  resources :public_searches
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
@@ -40,3 +42,4 @@ Concierge::Application.routes.draw do
     end
   end
 end
+
